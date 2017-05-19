@@ -3,13 +3,10 @@ title: 张英伟的博客
 motto: 专业喝咖啡
 email: zhangyw001@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  我是张英伟，山西人，现在北京，java程序员（狗）。
-  我是一个会ps的程序员！PS设计作品曾在汇图网出售！
-  我又是一个会3DsMax的程序员！我的作品曾在全国比赛中拿过二等奖!
-  但是我最自豪的还是我是一个程序员。
+  我是张英伟，山西人，现在北京，java程序员（狗）。我是一个会ps的程序员！PS设计作品曾在汇图网出售！我又是一个会3DsMax的程序员！我的作品曾在全国比赛中拿过二等奖!但是我最自豪的还是我是一个程序员。
 baseurl: "http://blog.zhangyingwei.com" # the subpath of your site, e.g. /blog/
 url: "http://blog.zhangyingwei.com" # the base hostname & protocol for your site
-twitter_username: ""
+twitter_username: zhangyingwei
 github_username:  zhangyingwei
 
 # Build settings
