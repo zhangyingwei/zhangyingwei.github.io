@@ -12,7 +12,8 @@ layout: default
     {{ content }}
   </article>
 </div>
-<div style="margin-top: 20px;border-top: 1px solid #000;">
+<!--评论-->
+<div style="margin-top: 50px;border-top: 1px solid #000;">
 	<!--PC和WAP自适应版-->
 <div id="SOHUCS" sid="{{ page.id }}" ></div> 
 <script type="text/javascript"> 
@@ -30,4 +31,9 @@ document.getElementsByClassName("btn-fw").innerHTML="评论"
 		display: none !important;
 	}
 </style>
+<script type="text/javascript">
+	$(function(){
+		$("span[node-type='prop']").remove()
+	})
+</script>
 </div>
