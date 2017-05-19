@@ -9,6 +9,12 @@ url: "http://blog.zhangyingwei.com" # the base hostname & protocol for your site
 twitter_username: zhangyingwei
 github_username:  zhangyingwei
 
+# info
+home: 首页
+archive: 归档
+category: 主页
+about: 关于我
+
 # Build settings
 markdown: kramdown
 

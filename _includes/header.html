@@ -4,45 +4,45 @@
 			{% if page.path == "index.html" %}
 			<span class="title">
 				<li>
-					<a href="/index.html">主页</a>
+					<a href="/index.html">{{ site.home }}</a>
 				</li>
 			</span>			
 			{% else %}
 				<li>
-					<a href="/index.html">home</a>
+					<a href="/index.html">{{ site.home }}</a>
 				</li>			
 			{% endif %}
 			{% if page.path == "archive.html" %}
 			<span class="title">
 				<li>
-					<a href="/archive.html">archive</a>
+					<a href="/archive.html">{{ site.archive }}</a>
 				</li>
 			</span>			
 			{% else %}
 				<li>
-					<a href="/archive.html">archive</a>
+					<a href="/archive.html">{{ site.archive }}</a>
 				</li>			
 			{% endif %}
 			{% if page.path == "category.html" %}
 			<span class="title">
 				<li>
-					<a href="/category.html">category</a>
+					<a href="/category.html">{{ site.category }}</a>
 				</li>
 			</span>			
 			{% else %}
 				<li>
-					<a href="/category.html">category</a>
+					<a href="/category.html">{{ site.category }}</a>
 				</li>			
 			{% endif %}
 			{% if page.path == "about.html" %}
 			<span class="title">
 				<li>
-					<a href="/about.html">about</a>
+					<a href="/about.html">{{ site.about }}</a>
 				</li>
 			</span>			
 			{% else %}
 				<li>
-					<a href="/about.html">about</a>
+					<a href="/about.html">{{ site.about }}</a>
 				</li>			
 			{% endif %}
 		</div>
