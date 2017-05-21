@@ -17,6 +17,24 @@ layout: default
   <article class="post-content">
     {{ content }}
   </article>
+  <footer>
+    <div class="dashang" style="text-align: center;">
+      <div class="img">
+        <img src="http://7vzt96.com1.z0.glb.clouddn.com/zizhuwo.jpg?imageMogr2/auto-orient/thumbnail/x250/blur/1x0/quality/55|imageslim">
+      </div>
+      <button class="btn">打赏</button>
+    </div>
+    <script type="text/javascript">
+      $(function(){
+        $(".dashang").find(".btn").hover(function(){
+          $(".dashang").find(".img").show(200)
+        })
+        $(".dashang").find(".btn").mouseleave(function(){
+          $(".dashang").find(".img").hide(200)
+        })
+      })
+    </script>
+  </footer>
 </div>
 <!--评论-->
 <div style="margin-top: 50px;">

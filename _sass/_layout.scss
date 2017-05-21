@@ -209,3 +209,28 @@ li {
     color: white;
     cursor: pointer;
 }
+
+.dashang{
+    text-align: center;
+    margin-top: 20px;
+}
+.dashang .btn{
+    width: 60px; 
+    height: 60px;
+    outline: none;
+    border-radius: 30px; 
+    border: 0;
+    background-color: #f1b60e;
+}
+.dashang .img{
+    display: none;
+    position: absolute;
+    padding: 10px;
+    background-color: #dbdfe4;
+    left: 50%;
+    margin-left: -205px;
+    margin-top: -280px;
+}
+.dashang .btn:hover{
+    cursor: pointer;
+}
