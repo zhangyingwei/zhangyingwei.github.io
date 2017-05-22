@@ -202,12 +202,14 @@ li {
 #gotop {
     position: fixed;
     right: 20px;
-    bottom: 20px;    
-    padding: 10px 15px;    
+    bottom: 20px;   
     font-size: 20px;
     background: #515865;
     color: white;
     cursor: pointer;
+    width: 38px;
+    height: 38px;
+    line-height: 40px;
 }
 
 .dashang{
@@ -233,4 +235,37 @@ li {
 }
 .dashang .btn:hover{
     cursor: pointer;
+}
+
+article h1,h2,h3,h4,h5,h6{
+    margin: 15px 0;
+}
+
+article h1::before{
+    content: ":) ";
+}
+
+article h2::before{
+    content: ":) ";
+}
+
+article h3::before{
+    content: ":) ";
+}
+
+article h4::before{
+    content: ":) ";
+}
+
+article h5::before{
+    content: ":) ";
+}
+
+article h6::before{
+    content: ":) ";
+}
+
+.auth-info{
+    color: #f05f70;
+    margin-top: 40px;
 }

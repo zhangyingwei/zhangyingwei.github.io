@@ -8,6 +8,7 @@ baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://blog.zhangyingwei.com" # the base hostname & protocol for your site
 twitter_username: zhangyingwei
 github_username:  zhangyingwei
+username: 张英伟
 
 # info
 home: 首页
