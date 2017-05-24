@@ -18,8 +18,8 @@ html,body {
 .nav {
 	color: #707070;
 	text-transform: uppercase;
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 17px;
+    font-weight: 100;
     font-family: "Montserrat",sans-serif;
     display:inline;
 }
@@ -32,7 +32,7 @@ html,body {
 
 li {
     margin-left: 0px;
-    line-height: 1.7em;
+    line-height: 180%;
 }
 
 .nav a {
@@ -147,7 +147,7 @@ li {
 }
 
 #line {
-	opacity: 0.2;
+	opacity: 0.6;
 	color: #000;
 }
 

@@ -7,9 +7,9 @@
 
 // Our variables
 $base-font-family: "Raleway",Arial,sans-serif;
-$base-font-size:   16px;
+$base-font-size:   14px;
 $small-font-size:  $base-font-size * 0.875;
-$base-line-height: 1.5;
+$base-line-height: 22px;
 
 $spacing-unit:     30px;
 
@@ -18,7 +18,7 @@ $background-color: #fdfdfd;
 $brand-color:      #2a7ae2;
 
 $grey-color:       #828282;
-$grey-color-light: lighten($grey-color, 30%);
+$grey-color-light: lighten($grey-color, 2%);
 $grey-color-dark:  darken($grey-color, 25%);
 $blue-color:	   #515865;
 
