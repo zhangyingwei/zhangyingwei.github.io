@@ -1,0 +1,40 @@
+# This is a basic workflow to help you get started with Actions
+
+name: blog deploy pipline
+
+on:
+  push:
+    tags:
+      - '*'
+    branches: [ main ]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{github.repository}}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: ${{github.workflow}} - ${{github.ref}}
+    
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+          fetch-depth: 0
+      - name: setup hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.92.0'
+          extended: true
+      - name: build
+        run: hugo --minify
+
+      - name: deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{github.ref == 'refs/heads/main'}}
+        with: 
+          github_token: ${{secrets.GITHUB_TOKEN}}
+          publish_dir: ./public

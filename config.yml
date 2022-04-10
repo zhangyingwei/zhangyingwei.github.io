@@ -1,0 +1,115 @@
+baseURL: 'http://example.org/'
+languageCode: 'zh-ch'
+title: '胡说'
+theme: "PaperMod"
+
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+disableRSS: false
+disableSitemap: false
+
+pygmentsStyle: "monokai"
+pygmentsUseClasses: false
+
+minify:
+  disableXML: true
+  minifyOutput: true
+
+params:
+  env: production # to enable google analytics, opengraph, twitter-cards and schema.
+  title: '胡说'
+  description: "这里是博客简介"
+  keywords: [Blog, zhangyignwei, java,大数据]
+  author: zhangyw
+  # author: ["Me", "You"] # multiple authors
+  images: ["<link or path of image for opengraph, twitter-cards>"]
+  DateFormat: "2006/01/02"
+  defaultTheme: auto # dark, light
+  disableThemeToggle: false
+
+  ShowReadingTime: true
+  ShowShareButtons: false
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: false
+  ShowWordCount: true
+  ShowCodeCopyButtons: true
+  disableSpecial1stPost: false
+  disableScrollToTop: false
+  comments: true
+  hidemeta: false
+  hideSummary: false
+  showtoc: false
+  tocopen: false
+
+  # assets:
+  #   # disableHLJS: true # to disable highlight.js
+  #   # disableFingerprinting: true
+  #   favicon: "<link / abs url>"
+  #   favicon16x16: "<link / abs url>"
+  #   favicon32x32: "<link / abs url>"
+  #   apple_touch_icon: "<link / abs url>"
+  #   safari_pinned_tab: "<link / abs url>"
+
+  label:
+    text: "胡说"
+    # icon: /apple-touch-icon.png
+    iconHeight: 35
+
+  # home-info mode
+  homeInfoParams:
+    Title: "关于我 \U0001F44B"
+    Content: "我是一个啥样人啊"
+
+  # socialIcons:
+  #   - name: twitter
+  #     url: "https://twitter.com/"
+  #   - name: stackoverflow
+  #     url: "https://stackoverflow.com"
+  #   - name: github
+  #     url: "https://github.com/"
+
+  # analytics:
+  #   google:
+  #     SiteVerificationTag: "XYZabc"
+  #   bing:
+  #     SiteVerificationTag: "XYZabc"
+  #   yandex:
+  #     SiteVerificationTag: "XYZabc"
+
+  cover:
+    hidden: true # hide everywhere but not in structured data
+    hiddenInList: true # hide on list pages and home
+    hiddenInSingle: true # hide on single page
+
+  # editPost:
+  #   URL: "https://github.com/<path_to_repo>/content"
+  #   Text: "Suggest Changes" # edit text
+  #   appendFilePath: true # to append file path to Edit link
+
+  # for search
+  # https://fusejs.io/api/options.html
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: ["title", "permalink", "zhangyingwei", "java",大数据]
+menu:
+  main:
+    - identifier: categories
+      name: 归档
+      url: /categories/
+      weight: 10
+    - identifier: tags
+      name: 标签
+      url: /tags/
+      weight: 20
+    - identifier: aboutme
+      # name: 我👤
+      # url: /aboutme/
+      # weight: 30
