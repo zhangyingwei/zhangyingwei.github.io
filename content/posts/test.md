@@ -1,7 +1,7 @@
 ---
 title: "Test"
 date: 2022-04-10T21:23:17+08:00
-draft: true
+draft: false
 tags: ["标签"]
 series: ["系列"]
 categories: ["分类"]
