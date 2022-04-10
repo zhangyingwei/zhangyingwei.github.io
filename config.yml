@@ -26,11 +26,11 @@ taxonomies:
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: '胡说'
-  description: "胡说，一个寂寞的IT从业者的自言自语"
+  description: "胡说，一个寂寞的、即将被时代潮流冲刷在沙滩上的 IT 从业者的自言自语"
   keywords: [博客,blog, 张英伟,zhangyignwei, java,大数据,计算机]
   author: zhangyw
   # author: ["Me", "You"] # multiple authors
-  images: ["<link or path of image for opengraph, twitter-cards>"]
+  # images: ["<link or path of image for opengraph, twitter-cards>"]
   DateFormat: "2006/01/02"
   defaultTheme: auto # dark, light
   disableThemeToggle: false
@@ -66,7 +66,7 @@ params:
   # home-info mode
   homeInfoParams:
     Title: "关于我 \U0001F44B"
-    Content: "我是一个啥样人啊"
+    Content: "一个生活在北京的 IT 从业者，一个悲观主义者，一个注定被时代拍在沙滩上的 Loser。 一个努力拼搏使自己看着没有那么糟糕的人！"
 
   # socialIcons:
   #   - name: twitter
@@ -103,7 +103,7 @@ params:
     distance: 1000
     threshold: 0.4
     minMatchCharLength: 0
-    keys: ["title", "permalink", "zhangyingwei", "java",大数据]
+    keys: [博客,blog, 张英伟,zhangyignwei, java,大数据,计算机]
 menu:
   main:
     - identifier: series

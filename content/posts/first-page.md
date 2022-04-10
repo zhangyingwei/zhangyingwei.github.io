@@ -7,10 +7,15 @@ series: ["Blog养成记"]
 categories: ["杂技浅尝"]
 ---
 
+这里是文章的简介
+
+<!--more-->
+
 一、基本介绍
 ----------
 
 ### 1，什么是 Disruptor? ###
+
 
 1. Disruptor 是英国外汇交易公司 LMAX 开发的一个高性能的并发框架。可以认为是线程间通信的高效低延时的内存消息组件，它最大的特点是高性能。与 Kafka、RabbitMQ 用于服务间的消息队列不同，disruptor 一般用于一个 JVM 中多个线程间消息的传递。
 2. 从功能上来看，Disruptor 实现了“队列”的功能，而且是一个有界队列（事实上它是一个无锁的线程间通信库）。作用与 ArrayBlockingQueue 有相似之处，但是disruptor 从功能、性能上又都远好于 ArrayBlockingQueue。
