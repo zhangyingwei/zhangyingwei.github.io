@@ -1,8 +1,10 @@
 ---
 title: "第一篇文章"
 date: 2022-04-09T21:27:00+08:00
-draft: false
-tag: tag1,tag3
+draft: true
+tags: ["hugo","hugo1","hugo2"]
+series: ["Blog养成记"]
+categories: ["杂技浅尝"]
 ---
 
 一、基本介绍

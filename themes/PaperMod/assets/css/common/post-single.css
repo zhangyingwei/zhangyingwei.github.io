@@ -443,3 +443,32 @@ h6:hover .anchor {
 [dir="rtl"] .paginav .next {
     text-align: left;
 }
+
+.post-info {
+    padding: 10px 0;
+    font-size: 0.9em;
+}
+
+.post-info > ul {
+    padding: 0 5px;
+}
+
+.post-info > ul > li {
+    display: inline-block;
+    padding: 0 3px;
+}
+
+.post-info #tags {
+    list-style: none;
+    display: inline-block;
+}
+
+.post-info #series {
+    list-style: none;
+    display: inline-block;
+}
+
+.post-info #categories {
+    list-style: none;
+    display: inline-block;
+}

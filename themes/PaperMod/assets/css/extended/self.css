@@ -12,3 +12,13 @@ code {
   letter-spacing: 0.05em;
   font-weight: 600 !important;
 }
+
+.gt-comment-content {
+  background-color: #ffffffec !important;
+  border-radius: 5px;
+}
+
+.terms-tags a sup {
+  position: absolute !important;
+  /* left: -10px !important; */
+}

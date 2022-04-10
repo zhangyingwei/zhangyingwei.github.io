@@ -71,7 +71,23 @@ body:not(.dark) #sun {
 
 #menu .active {
     font-weight: 500;
-    border-bottom: 2px solid currentColor;
+    /* border-bottom: 2px solid currentColor; */
+}
+#menu span.active {
+    position: relative;
+    z-index: 2;
+}
+#menu span.active::after {
+    content: "";
+    position: absolute;
+    left: calc(15%);
+    bottom: -4px;
+    display: inline-block;
+    width: 70%;
+    height: 8px;
+    border-radius: 3px;
+    background-color: rgb(15, 124, 88);
+    z-index: -1;
 }
 
 .lang-switch li,

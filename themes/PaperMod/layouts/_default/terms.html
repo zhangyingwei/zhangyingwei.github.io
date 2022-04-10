@@ -1,6 +1,6 @@
 {{- define "main" }}
 
-{{- if .Title }}
+<!-- {{- if .Title }}
 <header class="page-header">
     <h1>{{ .Title }}</h1>
     {{- if .Description }}
@@ -9,7 +9,47 @@
     </div>
     {{- end }}
 </header>
+{{- end }} -->
+
+{{- if .Title }}
+    {{- if (eq .Title "Categories") }}
+    <header class="page-header">
+        <h1>✨ 分类</h1>
+        {{- if .Description }}
+        <div class="post-description">
+            {{ .Description }}
+        </div>
+        {{- end }}
+    </header>
+    {{- end }}
 {{- end }}
+
+{{- if .Title }}
+    {{- if (eq .Title "Tags") }}
+    <header class="page-header">
+        <h1>🏷️ 标签</h1>
+        {{- if .Description }}
+        <div class="post-description">
+            {{ .Description }}
+        </div>
+        {{- end }}
+    </header>
+    {{- end }}
+{{- end }}
+
+{{- if .Title }}
+    {{- if (eq .Title "Series") }}
+    <header class="page-header">
+        <h1>🅰️ 系列文章</h1>
+        {{- if .Description }}
+        <div class="post-description">
+            {{ .Description }}
+        </div>
+        {{- end }}
+    </header>
+    {{- end }}
+{{- end }}
+
 
 <ul class="terms-tags">
     {{- $type := .Type }}

@@ -18,6 +18,11 @@ minify:
   disableXML: true
   minifyOutput: true
 
+taxonomies:
+  tag: tags
+  series: series
+  category: categories
+
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: '胡说'
@@ -101,15 +106,22 @@ params:
     keys: ["title", "permalink", "zhangyingwei", "java",大数据]
 menu:
   main:
+    - identifier: series
+      name: 系列文章
+      url: /series/
+      weight: 10
+
     - identifier: categories
-      name: 归档
+      name: 分类
       url: /categories/
       weight: 10
+
     - identifier: tags
       name: 标签
       url: /tags/
-      weight: 20
-    - identifier: aboutme
+      weight: 10
+    
+      # - identifier: aboutme
       # name: 我👤
       # url: /aboutme/
       # weight: 30
