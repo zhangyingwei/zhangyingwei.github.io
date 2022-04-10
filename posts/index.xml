@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Posts on 胡说</title>
-    <link>http://example.org/posts/</link>
+    <link>https://zhangyingwei.github.io/posts/</link>
     <description>Recent content in Posts on 胡说</description>
     <image>
-      <url>http://example.org/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>http://example.org/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://zhangyingwei.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://zhangyingwei.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-ch</language>
-    <lastBuildDate>Sat, 09 Apr 2022 21:27:00 +0800</lastBuildDate><atom:link href="http://example.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 09 Apr 2022 21:27:00 +0800</lastBuildDate><atom:link href="https://zhangyingwei.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>第一篇文章</title>
-      <link>http://example.org/posts/first-page/</link>
+      <link>https://zhangyingwei.github.io/posts/first-page/</link>
       <pubDate>Sat, 09 Apr 2022 21:27:00 +0800</pubDate>
       
-      <guid>http://example.org/posts/first-page/</guid>
+      <guid>https://zhangyingwei.github.io/posts/first-page/</guid>
       <description>一、基本介绍 1，什么是 Disruptor?  Disruptor 是英国外汇交易公司 LMAX 开发的一个高性能的并发框架。可以认为是线程间通信的高效低延时的内存消息组件，它最大的特点是高性能。与 Kafka、RabbitMQ 用于服务间的消息队列不同，disruptor 一般用于一个 JVM 中多个线程间消息的传递。 从功能上来看，Disruptor 实现了“队列”的功能，而且是一个有界队列（事实上它是一个无锁的线程间通信库）。作用与 ArrayBlockingQueue 有相似之处，但是disruptor 从功能、性能上又都远好于 ArrayBlockingQueue。  实际上这个框架在 log4j，以及 activeMQ 源码扩展中都有使用。(例如：由于采用了 Disruptor，Log4j 2 性能明显优于 Log4j 1.x，Logback 和 java.util.logging，尤其是在多线程应用程序中，异步记录器的吞吐量比 Log4j 1.x 和 Logback 高 18 倍，延迟低。)
 2，Disruptor 的优势 （1）Disruptor 最直接的应用场景自然就是“生产者-消费者”模型的应用场合了，虽然这些我们使用 JDK 的 BlockingQueue 也能做到（我之前也写过相关文章：点击查看），但 Disruptor 的性能比 BlockingQueue 提高了 5~10 倍左右：
 下图是官方对 disruptor 和 ArrayBlockingQueue 的性能在不同的应用场景下做了对比，数据中 P 代表 producer，C 代表 consumer，ABS 代表 ArrayBlockingQueue。
