@@ -1,0 +1,96 @@
+{
+  "main": {
+    "id": "67e6433860df24b8",
+    "type": "split",
+    "children": [
+      {
+        "id": "10ee065e8492164b",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "content/posts/test.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "7ad1569556e250c3",
+    "type": "split",
+    "children": [
+      {
+        "id": "1012ee8512f91072",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ab9ffd6c83996c4b",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "cb6c970554b4a987",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "e16ccf180aa9c785",
+    "type": "split",
+    "children": [
+      {
+        "id": "6232a8cb36f3024f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "219e8297faf5c063",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "content/posts/test.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "10ee065e8492164b",
+  "lastOpenFiles": [
+    "content/posts/test.md",
+    "static/images/Pasted image 20220411132241.png",
+    "content/posts/first-page.md"
+  ]
+}
