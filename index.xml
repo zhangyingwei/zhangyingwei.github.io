@@ -5,18 +5,6 @@
     <link>https://zhangyingwei.github.io/</link>
     <description>Recent content on 胡说</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-ch</language>
-    <lastBuildDate>Sun, 10 Apr 2022 21:23:17 +0800</lastBuildDate><atom:link href="https://zhangyingwei.github.io/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Test</title>
-      <link>https://zhangyingwei.github.io/posts/test/</link>
-      <pubDate>Sun, 10 Apr 2022 21:23:17 +0800</pubDate>
-      
-      <guid>https://zhangyingwei.github.io/posts/test/</guid>
-      <description>这里是测试内容
-这里需要插入图片
-标题 </description>
-    </item>
-    
+    <language>zh-ch</language><atom:link href="https://zhangyingwei.github.io/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
