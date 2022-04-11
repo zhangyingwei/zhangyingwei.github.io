@@ -6,5 +6,6 @@
   "showUnsupportedFiles": true,
   "attachmentFolderPath": "static",
   "newLinkFormat": "relative",
-  "alwaysUpdateLinks": true
+  "alwaysUpdateLinks": true,
+  "strictLineBreaks": true
 }

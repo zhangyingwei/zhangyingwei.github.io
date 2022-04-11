@@ -1,3 +1,6 @@
 {
-  "baseFontSize": 16
+  "baseFontSize": 17,
+  "enabledCssSnippets": [
+    "字体修改"
+  ]
 }

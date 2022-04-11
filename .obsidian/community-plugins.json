@@ -1,5 +1,7 @@
 [
   "obsidian-git",
   "obsidian-image-auto-upload-plugin",
-  "quickadd"
+  "quickadd",
+  "obsidian-pangu",
+  "obsidian-emoji-toolbar"
 ]
