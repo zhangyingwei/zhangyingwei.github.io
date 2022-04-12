@@ -1,5 +1,6 @@
 baseURL: 'https://zhangyingwei.github.io/'
 languageCode: 'zh-ch'
+hasCJKLanguage: true
 title: '胡说'
 theme: "PaperMod"
 
