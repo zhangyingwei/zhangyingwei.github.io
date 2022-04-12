@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "defaultNote": "obs_scripts/主面板",
+  "workspace": "Home",
+  "workspaceEnabled": false,
+  "hasRibbonIcon": true,
+  "openMode": "Replace all open notes",
+  "view": "Reading view",
+  "refreshDataview": false
+}
