@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "obs_scripts/主面板.md",
+            "file": "content/posts/2022m4d12h13m13s22.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "obs_scripts/主面板.md",
+                "file": "content/posts/2022m4d12h13m13s22.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,9 +89,10 @@
   },
   "active": "74e2b331a2b47ced",
   "lastOpenFiles": [
+    "content/posts/2022m4d12h13m13s22.md",
+    "content/posts/2022m4d11h19m42s28.md",
     "obs_scripts/主面板.md",
     "content/posts/first-page.md",
-    "content/posts/2022m4d11h19m42s28.md",
     "content/posts/2022m4d11h17m57s48.md",
     "content/posts/test.md",
     "content/posts/asdfasfasdfas.md",
