@@ -4,7 +4,7 @@
     "type": "split",
     "children": [
       {
-        "id": "71e4cd3da28b6b78",
+        "id": "10ee065e8492164b",
         "type": "leaf",
         "state": {
           "type": "markdown",
@@ -87,12 +87,9 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "71e4cd3da28b6b78",
+  "active": "10ee065e8492164b",
   "lastOpenFiles": [
     "content/posts/2022m4d11h19m42s28.md",
-    "content/posts/2022m4d11h21m28s19.md",
-    "content/posts/2022m4d11h21m26s57.md",
-    "archetypes/default.md",
     "content/posts/2022m4d11h17m57s48.md",
     "content/posts/test.md",
     "content/posts/first-page.md",

@@ -67,7 +67,7 @@
   </div>
   {{- end }}
 
-  <footer class="post-footer">
+  <!-- <footer class="post-footer">
     {{- if .Params.tags }}
     <ul class="post-tags">
       {{- range ($.GetTerms "tags") }}
@@ -81,7 +81,7 @@
     {{- if (and site.Params.ShowShareButtons (ne .Params.disableShare true)) }}
     {{- partial "share_icons.html" . -}}
     {{- end }}
-  </footer>
+  </footer> -->
 
   {{- if (.Param "comments") }}
   {{- partial "comments.html" . }}
