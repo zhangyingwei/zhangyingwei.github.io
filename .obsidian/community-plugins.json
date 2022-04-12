@@ -3,5 +3,7 @@
   "obsidian-image-auto-upload-plugin",
   "quickadd",
   "homepage",
-  "dataview"
+  "dataview",
+  "obsidian-pangu",
+  "obsidian-charts"
 ]

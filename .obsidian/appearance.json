@@ -2,5 +2,6 @@
   "baseFontSize": 17,
   "enabledCssSnippets": [
     "字体修改"
-  ]
+  ],
+  "theme": "obsidian"
 }

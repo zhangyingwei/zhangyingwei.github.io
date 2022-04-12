@@ -1,3 +1,7 @@
 .view-content div.cm-line,.cm-string {
   font-family: "仿宋" !important;
 }
+
+.markdown-preview-section {
+  font-family: "仿宋" !important;
+}
