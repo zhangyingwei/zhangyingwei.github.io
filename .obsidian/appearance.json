@@ -1,7 +1,8 @@
 {
   "baseFontSize": 17,
   "enabledCssSnippets": [
-    "字体修改"
+    "字体修改",
+    "按钮样式修改"
   ],
   "theme": "obsidian"
 }
