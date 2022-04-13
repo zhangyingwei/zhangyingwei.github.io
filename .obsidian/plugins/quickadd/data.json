@@ -6,6 +6,13 @@
       "type": "Macro",
       "command": false,
       "macroId": "11226ba0-ac67-4c3e-abd4-59e083c09a2c"
+    },
+    {
+      "id": "98c342db-008f-4ac7-b268-7f0e2f91b0f7",
+      "name": "发布博客",
+      "type": "Macro",
+      "command": false,
+      "macroId": "566b8332-8529-4ab6-bcca-1571b8dd382d"
     }
   ],
   "macros": [
@@ -19,6 +26,25 @@
           "id": "708292ca-25fc-4bdc-895d-85d40cd91e7b",
           "path": "obs_scripts/NewBlog.js",
           "settings": {}
+        }
+      ],
+      "runOnStartup": false
+    },
+    {
+      "name": "发布文章",
+      "id": "566b8332-8529-4ab6-bcca-1571b8dd382d",
+      "commands": [
+        {
+          "name": "Obsidian Git: Commit all changes",
+          "type": "Obsidian",
+          "id": "d27bc95b-a957-41d8-b9e5-885f41096ada",
+          "commandId": "obsidian-git:commit"
+        },
+        {
+          "name": "Obsidian Git: Push",
+          "type": "Obsidian",
+          "id": "8b2a9dfb-b991-4853-92d1-993b5463c149",
+          "commandId": "obsidian-git:push2"
         }
       ],
       "runOnStartup": false

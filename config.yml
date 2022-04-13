@@ -109,19 +109,19 @@ menu:
     - identifier: series
       name: 系列文章
       url: /series/
-      weight: 10
+      weight: 1
 
     - identifier: categories
       name: 分类
       url: /categories/
-      weight: 10
+      weight: 2
 
     - identifier: tags
       name: 标签
       url: /tags/
       weight: 10
     
-      # - identifier: aboutme
-      # name: 我👤
-      # url: /aboutme/
-      # weight: 30
+    # - identifier: archives
+    #   name: 归档
+    #   url: /archives/
+    #   weight: 3
