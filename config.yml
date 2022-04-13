@@ -104,24 +104,28 @@ params:
     threshold: 0.4
     minMatchCharLength: 0
     keys: [博客,blog, 张英伟,zhangyignwei, java,大数据,计算机]
+
+  baiduAnalytics:
+    url: https://hm.baidu.com/hm.js?d49ee6f85b43e02f356ca3b9d04d1e7f
+    
 menu:
   main:
     - identifier: series
       name: 系列文章
       url: /series/
-      weight: 10
+      weight: 1
 
     - identifier: categories
       name: 分类
       url: /categories/
-      weight: 10
+      weight: 2
 
     - identifier: tags
       name: 标签
       url: /tags/
       weight: 10
     
-      # - identifier: aboutme
-      # name: 我👤
-      # url: /aboutme/
-      # weight: 30
+    # - identifier: archives
+  #   name: 归档
+    #   url: /archives/
+    #   weight: 3
