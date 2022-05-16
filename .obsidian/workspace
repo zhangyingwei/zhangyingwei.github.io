@@ -4,7 +4,7 @@
     "type": "split",
     "children": [
       {
-        "id": "c60be05f4f90f71d",
+        "id": "b22eb7bce677f9a0",
         "type": "leaf",
         "state": {
           "type": "markdown",
@@ -79,25 +79,33 @@
                 "unlinkedCollapsed": true
               }
             }
+          },
+          {
+            "id": "9611ba7a2256cca0",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
-  "active": "c60be05f4f90f71d",
+  "active": "b22eb7bce677f9a0",
   "lastOpenFiles": [
     "obs_scripts/主面板.md",
-    "content/posts/2022m4d12h13m13s22.md",
+    "content/posts/2022m5d16h20m22s20.md",
     "content/posts/2022m4d11h19m42s28.md",
+    "content/posts/2022m4d12h13m13s22.md",
     "content/posts/2022m4d11h21m28s19.md",
     "content/posts/2022m4d11h21m26s57.md",
     "archetypes/default.md",
     "content/posts/2022m4d11h17m57s48.md",
     "content/posts/test.md",
-    "content/posts/first-page.md",
-    "content/posts/asdfasfasdfas.md"
+    "content/posts/first-page.md"
   ]
 }
