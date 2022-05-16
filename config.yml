@@ -27,7 +27,7 @@ params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: '胡说'
   description: "胡说，一个寂寞的、即将被时代潮流冲刷在沙滩上的 IT 从业者的自言自语"
-  keywords: [博客,blog, 张英伟,zhangyignwei, java,大数据,计算机]
+  keywords: [博客,blog, 独立博客 , 张英伟的独立博客 ,张英伟,zhangyignwei, java,大数据,计算机]
   author: zhangyw
   # author: ["Me", "You"] # multiple authors
   # images: ["<link or path of image for opengraph, twitter-cards>"]
