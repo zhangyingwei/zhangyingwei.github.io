@@ -64,5 +64,6 @@ Obsidian 编辑器本身作为一个颜值在线的编辑器，已经具备了�
 name: blog deploy pipline on: push: tags: - &amp;#39;*&amp;#39; branches: [ main ] env: REGISTRY: ghcr.</description>
     </item>
     
+    
   </channel>
 </rss>
