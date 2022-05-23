@@ -115,10 +115,10 @@ menu:
       url: /series/
       weight: 1
 
-    - identifier: categories
-      name: 分类
-      url: /categories/
-      weight: 2
+    # - identifier: categories
+    #   name: 分类
+    #   url: /categories/
+    #   weight: 2
 
     - identifier: tags
       name: 标签

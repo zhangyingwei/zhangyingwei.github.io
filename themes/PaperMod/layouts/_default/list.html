@@ -7,7 +7,7 @@
 {{- if not .IsHome | and .Title }}
 <header class="page-header">
   {{- partial "breadcrumbs.html" . }}
-  <h1>{{ .Title }}</h1>
+  <h1>{{ .Title }} ✨</h1>
   {{- if .Description }}
   <div class="post-description">
     {{ .Description | markdownify }}
@@ -34,6 +34,18 @@
 
 {{- if and .IsHome site.Params.homeInfoParams (eq $paginator.PageNumber 1) }}
 {{- partial "home_info.html" . }}
+{{- end }}
+
+{{- if $.IsHome }}
+<div class="main-page-categories-wrapper">
+  {{ range $_, $taxonomy := .Site.Taxonomies.categories }}
+  <span>
+    <a href="{{ .Page.Permalink }}">{{.Page.Title}} 
+      <!-- <small>({{ $taxonomy.Count }})</small> -->
+    </a>
+  </span>
+  {{ end }}
+</div>
 {{- end }}
 
 {{- $term := .Data.Term }}
