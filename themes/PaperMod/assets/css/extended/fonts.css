@@ -28,13 +28,13 @@
 }
 
 .font-activate {
-  font-family: SourceCodePro, "Times New Roman", "Liberation Serif", lxgwwk, "CWTEX\-F", serif !important;
+  font-family: SourceCodePro, "Times New Roman", "Liberation Serif", STFangsong, FangSong, FangSong_GB2312, "CWTEX\-F", serif;
 }
 
 
 @font-face {
   font-family: 'lxgwwk';
-  src: url(https://hushuo.zhangyingwei.com/LXGWWenKaiMono-Regular.ttf);
+  src: url(https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1/files/lxgwwenkai-regular-subset-103.woff2);
 }
 
 @font-face {
