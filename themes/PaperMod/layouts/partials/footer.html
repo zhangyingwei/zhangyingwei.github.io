@@ -93,6 +93,7 @@
     document.querySelectorAll('pre > code').forEach((codeblock) => {
         const container = codeblock.parentNode.parentNode;
 
+        codeblock.classList.add('font-activate');
         const copybutton = document.createElement('button');
         copybutton.classList.add('copy-code');
         copybutton.innerText = '{{- i18n "code_copy" | default "copy" }}';
@@ -137,4 +138,3 @@
     });
 </script>
 {{- end }}
-    

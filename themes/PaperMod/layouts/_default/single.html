@@ -21,22 +21,24 @@
     </div>
     {{- end }}
 
-    {{- if not (.Param "hideMeta") }}
+    {{- if not (.Param "hidePostInfo") }}
     <div class="post-info">
+      {{- (.Date | time.Format (default "January 2, 2006" site.Params.DateFormat)) }}
+      {{- if (.Param "showTags") }}
       {{ with .Params.tags }}
       <ul id="tags">
-        🏷️
         {{ range . }}
-          <li> <a href="{{ "tags" | absURL }}/{{ . | urlize }}">#{{ . }} </a> </li>
+        <li> <a href="{{ " tags" | absURL }}/{{ . | urlize }}">#{{ . }} </a> </li>
         {{ end }}
       </ul>
+      {{ end }}
       {{ end }}
 
       {{ with .Params.series }}
       <ul id="series">
         🅰️
         {{ range . }}
-          <li> <a href="{{ "topics" | absURL }}/{{ . | urlize }}">{{ . }}</a> </li>
+        <li> <a href="{{ " topics" | absURL }}/{{ . | urlize }}">{{ . }}</a> </li>
         {{ end }}
       </ul>
       {{ end }}
@@ -45,7 +47,7 @@
       <ul id="categories">
         ✨
         {{ range . }}
-          <li><a href="{{ "categories" | absURL}}/{{ . | urlize }}">{{ . }}</a> </li>
+        <li><a href="{{ " categories" | absURL}}/{{ . | urlize }}">{{ . }}</a> </li>
         {{ end }}
       </ul>
       {{ end }}

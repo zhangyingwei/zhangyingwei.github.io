@@ -1,16 +1,14 @@
-
-
 .post-content p {
   margin-top: 30px !important;
   margin-bottom: 30px !important;
 }
 
 code {
-  font-family: "Source Serif 4" !important;
+  /* font-family: "Source Serif 4" !important; */
   font-size: 13px !important;
   line-height: 2em !important;
   letter-spacing: 0.05em;
-  font-weight: 600 !important;
+  font-weight: 200 !important;
 }
 
 .gt-comment-content {
@@ -21,4 +19,9 @@ code {
 .terms-tags a sup {
   position: absolute !important;
   /* left: -10px !important; */
+}
+
+.post-date {
+  font-size: 14px;
+  padding: 10px 0;
 }

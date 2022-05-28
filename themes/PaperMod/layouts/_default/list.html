@@ -40,7 +40,7 @@
 <div class="main-page-categories-wrapper">
   {{ range $_, $taxonomy := .Site.Taxonomies.categories }}
   <span>
-    <a href="{{ .Page.Permalink }}">{{.Page.Title}} 
+    <a href="{{ .Page.Permalink }}">{{.Page.Title}}
       <!-- <small>({{ $taxonomy.Count }})</small> -->
     </a>
   </span>
@@ -60,6 +60,9 @@
 {{- $class = "post-entry tag-entry" }}
 {{- end }}
 
+<div class="post-date">
+  📅 {{ (.Date | time.Format (default "January 2, 2006")) }}
+</div>
 <article class="{{ $class }}">
   {{- $isHidden := (site.Params.cover.hidden | default site.Params.cover.hiddenInList) }}
   {{- partial "cover.html" (dict "cxt" . "IsHome" true "isHidden" $isHidden) }}

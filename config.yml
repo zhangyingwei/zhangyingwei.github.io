@@ -34,17 +34,19 @@ params:
   DateFormat: "2006/01/02"
   defaultTheme: auto # dark, light
   disableThemeToggle: false
+  showTags: false
 
-  ShowReadingTime: true
+  ShowReadingTime: false
   ShowShareButtons: false
   ShowPostNavLinks: true
   ShowBreadCrumbs: false
-  ShowWordCount: true
+  ShowWordCount: false
   ShowCodeCopyButtons: true
   disableSpecial1stPost: false
   disableScrollToTop: false
   comments: true
-  hidemeta: false
+  hidemeta: true
+  hidePostInfo: false
   hideSummary: false
   showtoc: false
   tocopen: false
