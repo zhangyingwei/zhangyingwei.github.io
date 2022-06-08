@@ -4,7 +4,7 @@
     "type": "split",
     "children": [
       {
-        "id": "9652acdc1dcb6bb2",
+        "id": "a299c39e6a5c437c",
         "type": "leaf",
         "state": {
           "type": "markdown",
@@ -95,7 +95,7 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "9652acdc1dcb6bb2",
+  "active": "a299c39e6a5c437c",
   "lastOpenFiles": [
     "obs_scripts/主面板.md",
     "content/posts/2022m5d16h20m22s20.md",
