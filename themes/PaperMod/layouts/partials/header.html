@@ -39,7 +39,7 @@
 </script>
 {{- end }}
 
-<header class="header font-activate">
+<header class="header font-activate sticky-element">
     <nav class="nav">
         <div class="logo">
             {{- $label_text := (site.Params.label.text | default site.Title) }}
@@ -139,3 +139,4 @@
         </ul>
     </nav>
 </header>
+<shadow></shadow>
