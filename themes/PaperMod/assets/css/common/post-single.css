@@ -34,6 +34,7 @@
 
 .post-content {
     color: var(--content);
+    font-size: 20px;
 }
 
 .post-content h3,
@@ -50,19 +51,19 @@
 
 .post-content h2 {
     margin: 28px auto 20px;
-    font-size: 28px;
+    font-size: 36px;
 }
 
 .post-content h3 {
-    font-size: 20px;
+    font-size: 30px;
 }
 
 .post-content h4 {
-    font-size: 16px;
+    font-size: 26px;
 }
 
 .post-content h5 {
-    font-size: 14px;
+    font-size: 20px;
 }
 
 .post-content h6 {
@@ -146,6 +147,7 @@
 
 .post-content table {
     margin-bottom: 28px;
+    font-size: 18px;
 }
 
 .post-content table th,
@@ -157,7 +159,7 @@
 }
 
 .post-content table th {
-    font-size: 14px;
+    font-size: 18px;
     text-align: start;
 }
 

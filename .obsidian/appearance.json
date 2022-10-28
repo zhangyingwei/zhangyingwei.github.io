@@ -4,5 +4,6 @@
     "字体修改",
     "按钮样式修改"
   ],
-  "theme": "obsidian"
+  "theme": "system",
+  "accentColor": ""
 }

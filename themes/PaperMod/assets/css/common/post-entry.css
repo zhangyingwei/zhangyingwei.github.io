@@ -21,7 +21,7 @@
 
 .first-entry .entry-content {
     margin: 14px 0;
-    font-size: 16px;
+    font-size: 18px;
     -webkit-line-clamp: 3;
 }
 
@@ -54,7 +54,8 @@
 }
 
 .entry-header h2 {
-    font-size: 24px;
+    /* font-size: 24px; */
+    font-size: 26px;
     line-height: 1.3;
 }
 
@@ -63,7 +64,8 @@
     color: var(--secondary);
     /* font-size: 14px; */
     /* self style */
-    font-size: 16px;
+    /* font-size: 16px; */
+    font-size: 18px;
     line-height: 1.6;
     overflow: hidden;
     display: -webkit-box;

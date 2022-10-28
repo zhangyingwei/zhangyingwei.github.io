@@ -7,5 +7,6 @@
   "attachmentFolderPath": "static",
   "newLinkFormat": "relative",
   "alwaysUpdateLinks": true,
-  "strictLineBreaks": true
+  "strictLineBreaks": true,
+  "defaultViewMode": "preview"
 }
