@@ -11,6 +11,7 @@
   border: 0;
   border-radius: 4px !important;
   font-size: 14px !important;
+  line-height: 1.5em !important;
 }
 
 code {
@@ -53,4 +54,15 @@ html {
   background-color: #e8e8e8 !important;
   border-top-right-radius: 4px !important;
   border-bottom-right-radius: 4px !important;
+}
+
+.dark .post-content blockquote {
+  background-color: #3b3b3b !important;
+  border-top-right-radius: 4px !important;
+  border-bottom-right-radius: 4px !important;
+}
+
+.post-content code {
+  display: inline-block !important;
+  line-height: 100% !important;
 }
