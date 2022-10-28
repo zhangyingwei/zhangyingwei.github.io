@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "165b44db980c44c1",
+        "id": "1ed3677af1c16e2e",
         "type": "tabs",
         "children": [
           {
-            "id": "914a371665e52c50",
+            "id": "84132bdad4aa98df",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -101,9 +101,10 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
-  "active": "914a371665e52c50",
+  "active": "84132bdad4aa98df",
   "lastOpenFiles": [
     "content/posts/2022m10d28h10m10s31.md",
     "obs_scripts/主面板.md",
