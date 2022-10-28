@@ -47,3 +47,10 @@ code {
 html {
   overflow: auto !important;
 }
+
+
+.post-content blockquote {
+  background-color: #e8e8e8 !important;
+  border-top-right-radius: 4px !important;
+  border-bottom-right-radius: 4px !important;
+}
