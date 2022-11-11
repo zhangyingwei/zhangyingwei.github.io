@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "526f998423d3189b",
+        "id": "a330dabb0b89b2c9",
         "type": "tabs",
         "children": [
           {
-            "id": "ddc2b81f858855a7",
+            "id": "3ef8910558da2aff",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -104,7 +104,7 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "ddc2b81f858855a7",
+  "active": "3ef8910558da2aff",
   "lastOpenFiles": [
     "content/posts/2022m10d28h10m10s31.md",
     "obs_scripts/主面板.md",

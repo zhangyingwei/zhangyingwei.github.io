@@ -66,3 +66,7 @@ html {
   display: inline-block !important;
   line-height: 100% !important;
 }
+
+.post-content li {
+  margin-left: 10px !important;
+}
