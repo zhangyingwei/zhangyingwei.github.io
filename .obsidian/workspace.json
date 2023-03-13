@@ -4,22 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "37ba5ff3fcb26450",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "af2d2e429c081e06",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "obs_scripts/主面板.md",
-                "mode": "preview",
-                "source": false
-              }
-            }
+        "id": "4b7e5d7072f2d274",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "obs_scripts/主面板.md",
+            "mode": "preview",
+            "source": false
           }
-        ]
+        }
       }
     ],
     "direction": "vertical"
@@ -116,7 +110,7 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "ab9ffd6c83996c4b",
+  "active": "4b7e5d7072f2d274",
   "lastOpenFiles": [
     "obs_scripts/主面板.md",
     "content/posts/2022m10d28h10m10s31.md",
