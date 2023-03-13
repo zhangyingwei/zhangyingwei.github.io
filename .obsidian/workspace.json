@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "44311cd9baf1c52b",
+        "id": "37ba5ff3fcb26450",
         "type": "tabs",
         "children": [
           {
-            "id": "4c1d1def25f3163a",
+            "id": "af2d2e429c081e06",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -104,10 +104,22 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "4c1d1def25f3163a",
+  "left-ribbon": {
+    "hiddenItems": {
+      "homepage:Open homepage": false,
+      "obsidian-metatable:Metatable": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "command-palette:打开命令面板": false,
+      "markdown-importer:打开 Markdown 格式转换器": false
+    }
+  },
+  "active": "ab9ffd6c83996c4b",
   "lastOpenFiles": [
-    "content/posts/2022m10d28h10m10s31.md",
     "obs_scripts/主面板.md",
+    "content/posts/2022m10d28h10m10s31.md",
     "content/posts/2022m5d16h20m22s20.md",
     "content/posts/2022m5d24h15m23s26.md",
     "content/posts/2022m4d11h19m42s28.md",
