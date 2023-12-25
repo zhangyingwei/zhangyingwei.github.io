@@ -4,16 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "4b7e5d7072f2d274",
-        "type": "leaf",
-        "state": {
-          "type": "markdown",
-          "state": {
-            "file": "obs_scripts/主面板.md",
-            "mode": "preview",
-            "source": false
+        "id": "b3752172b873d8ea",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0e56f8d36aeca3e5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "content/posts/2023m10d23h20m28s40.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        }
+        ]
       }
     ],
     "direction": "vertical"
@@ -42,13 +48,21 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:标签",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
               }
+            }
+          },
+          {
+            "id": "02d2393a26cc6669",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
             }
           }
         ]
@@ -71,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "obs_scripts/主面板.md",
+                "file": "content/posts/2023m10d23h20m28s40.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,33 +103,43 @@
               "type": "advanced-tables-toolbar",
               "state": {}
             }
+          },
+          {
+            "id": "d0c5e79acd0148e4",
+            "type": "leaf",
+            "state": {
+              "type": "copilot-chat-view",
+              "state": {}
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 344.5
   },
   "left-ribbon": {
     "hiddenItems": {
       "homepage:Open homepage": false,
       "obsidian-metatable:Metatable": false,
-      "table-editor-obsidian:Advanced Tables Toolbar": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
       "canvas:新建白板": false,
       "command-palette:打开命令面板": false,
-      "markdown-importer:打开 Markdown 格式转换器": false
+      "markdown-importer:打开 Markdown 格式转换器": false,
+      "copilot:Copilot Chat": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "4b7e5d7072f2d274",
+  "active": "ab9ffd6c83996c4b",
   "lastOpenFiles": [
-    "obs_scripts/主面板.md",
-    "content/posts/2022m10d28h10m10s31.md",
-    "content/posts/2022m5d16h20m22s20.md",
+    "public/assets/css/stylesheet.min.ae3f7c8e26fc0b3d71fb776834ff42bffb163e4e4030cba36c4e6116a6f3bf74.css",
     "content/posts/2022m5d24h15m23s26.md",
+    "content/posts/2023m10d23h20m28s40.md",
+    "content/posts/2022m10d28h10m10s31.md",
+    "obs_scripts/主面板.md",
+    "content/posts/2022m5d16h20m22s20.md",
     "content/posts/2022m4d11h19m42s28.md",
     "content/posts/2022m4d12h13m13s22.md",
     "content/posts/2022m4d11h21m28s19.md",

@@ -1,5 +1,6 @@
 {{- with site.Params.homeInfoParams }}
 <article class="first-entry home-info">
+    <div style="height: 30px;"></div>
     <header class="entry-header">
         <h1>{{ .Title | markdownify }}</h1>
     </header>
@@ -11,5 +12,6 @@
         {{ partial "social_icons.html" site.Params.socialIcons }}
     </footer>
     {{- end }}
+    <div style="height: 30px;"></div>
 </article>
 {{- end -}}

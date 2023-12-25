@@ -48,6 +48,8 @@
 </div>
 {{- end }}
 
+<div class="article-item-wrapper fg-color">
+
 {{- $term := .Data.Term }}
 {{- range $index, $page := $paginator.Pages }}
 
@@ -60,10 +62,10 @@
 {{- $class = "post-entry tag-entry" }}
 {{- end }}
 
-<div class="post-date">
-  📅 {{ (.Date | time.Format (default "January 2, 2006")) }}
-</div>
-<article class="{{ $class }}">
+<article class="{{ $class }} item-padding">
+  <div class="post-date">
+    📅 {{ (.Date | time.Format (default "January 2, 2006")) }}
+  </div>
   {{- $isHidden := (site.Params.cover.hidden | default site.Params.cover.hiddenInList) }}
   {{- partial "cover.html" (dict "cxt" . "IsHome" true "isHidden" $isHidden) }}
   <header class="entry-header">
@@ -85,6 +87,7 @@
   <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
 </article>
 {{- end }}
+</div>
 
 {{- if gt $paginator.TotalPages 1 }}
 <footer class="page-footer">

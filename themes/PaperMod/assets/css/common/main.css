@@ -3,7 +3,11 @@
     min-height: calc(100vh - var(--header-height) - var(--footer-height));
     max-width: calc(var(--main-width) + var(--gap) * 2);
     margin: auto;
-    padding: var(--gap);
+    /* padding: var(--gap); */
+}
+
+.item-padding {
+    padding: 10px var(--gap) 0 var(--gap) !important;
 }
 
 .page-header h1 {
@@ -68,9 +72,13 @@ pre:hover .copy-code {
     display: block;
 }
 
+.article-item-wrapper {
+    padding: 30px 0;
+}
+
 
 .main-page-categories-wrapper {
-    padding: 10px 0px 20px 0px;
+    padding: 10px 0 20px 0 !important;
 }
 
 .main-page-categories-wrapper > span {
@@ -92,4 +100,16 @@ pre:hover .copy-code {
 
 .font-fang-songlist.dark .main-page-categories-wrapper > span > a {
     color: rgb(0, 0, 0) !important;
+}
+
+.bg-color {
+    background-color: var(--code-bg);
+}
+
+.fg-color {
+    background-color: var(--theme) !important;
+}
+
+.shadow-b {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

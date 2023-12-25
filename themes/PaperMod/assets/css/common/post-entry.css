@@ -30,7 +30,9 @@
     /* self style */
     font-size: 14px;
 }
-
+.home-info {
+    background-color: var(--code-bg);
+}
 .home-info .entry-content {
     -webkit-line-clamp: unset;
 }

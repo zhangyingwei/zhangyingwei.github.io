@@ -1,6 +1,11 @@
+.post-single {
+    background-color: var(--theme);
+}
+
 .page-header,
 .post-header {
-    margin: 20px auto var(--content-gap) auto;
+    margin: 20px auto 40px auto;
+    /* margin: 20px auto var(--content-gap) auto; */
 }
 
 .post-title {
@@ -228,6 +233,7 @@
     border-radius: var(--radius);
     overflow-x: auto;
     word-break: break-all;
+    font-weight: 400 !important;
 }
 
 .post-content blockquote {
@@ -389,6 +395,7 @@ h6:hover .anchor {
 .post-content :not(table) ::-webkit-scrollbar-thumb {
     border: 2px solid var(--hljs-bg);
     background: rgb(113, 113, 117);
+    transition: .2s;
 }
 
 .post-content :not(table) ::-webkit-scrollbar-thumb:hover {

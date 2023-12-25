@@ -18,7 +18,7 @@
 {{- end }}
 
 {{- if (not site.Params.disableScrollToTop) }}
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+<a href="#" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
         <path d="M12 6H0l6-6z" />
     </svg>
@@ -28,32 +28,39 @@
 {{- partial "extend_footer.html" . }}
 
 <script>
-    let menu = document.getElementById('menu')
-    if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
-    }
+    // let menu = document.getElementById('top-link')
+    // menu.addEventListener('click', () => {
+    //     document.documentElement.scrollIntoView({ 
+    //         behavior: 'smooth',
+    //         block: 'start'
+    //     });
+    // });
+    // let menu = document.getElementById('menu')
+    // if (menu) {
+    //     menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+    //     menu.onscroll = function () {
+    //         localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+    //     }
+    // }
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
+    // document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    //     anchor.addEventListener("click", function (e) {
+    //         e.preventDefault();
+    //         var id = this.getAttribute("href").substr(1);
+    //         if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    //             document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+    //                 behavior: "smooth"
+    //             });
+    //         } else {
+    //             document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+    //         }
+    //         if (id === "top") {
+    //             history.replaceState(null, null, " ");
+    //         } else {
+    //             history.pushState(null, null, `#${id}`);
+    //         }
+    //     });
+    // });
 
 </script>
 

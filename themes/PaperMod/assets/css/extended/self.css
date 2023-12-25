@@ -34,9 +34,14 @@ code {
   /* left: -10px !important; */
 }
 
+.dark .post-date {
+  color: rgb(236, 236, 236) !important;
+}
+
 .post-date {
   font-size: 14px;
-  padding: 10px 0;
+  padding: 0 0 10px 0;
+  color: black !important;
 }
 
 .sticky-element {

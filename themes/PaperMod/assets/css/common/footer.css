@@ -2,6 +2,7 @@
 .top-link {
     font-size: 14px;
     color: var(--secondary);
+    line-height: 15px;
 }
 
 .footer {
