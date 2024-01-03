@@ -1,0 +1,133 @@
+baseURL: 'https://zhangyingwei.github.io/'
+languageCode: 'zh-ch'
+title: '胡说'
+theme: "PaperMod"
+
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+disableRSS: false
+disableSitemap: false
+
+pygmentsStyle: "monokai"
+pygmentsUseClasses: false
+
+minify:
+  disableXML: true
+  minifyOutput: true
+
+taxonomies:
+  tag: tags
+  series: series
+  category: categories
+
+params:
+  env: production # to enable google analytics, opengraph, twitter-cards and schema.
+  title: '胡说'
+  description: "胡说，一个寂寞的、即将被时代潮流冲刷在沙滩上的 IT 从业者的自言自语"
+  keywords: [博客,blog, 独立博客 , 张英伟的独立博客 ,张英伟,zhangyignwei, java,大数据,计算机]
+  author: zhangyw
+  # author: ["Me", "You"] # multiple authors
+  # images: ["<link or path of image for opengraph, twitter-cards>"]
+  DateFormat: "2006/01/02"
+  defaultTheme: auto # dark, light
+  disableThemeToggle: false
+  showTags: false
+
+  ShowReadingTime: false
+  ShowShareButtons: false
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: false
+  ShowWordCount: false
+  ShowCodeCopyButtons: true
+  disableSpecial1stPost: false
+  disableScrollToTop: false
+  comments: true
+  hidemeta: true
+  hidePostInfo: false
+  hideSummary: false
+  showtoc: false
+  tocopen: false
+
+  assets:
+    # disableHLJS: true # to disable highlight.js
+    # disableFingerprinting: true
+    favicon: "images/favicon64.ico"
+    favicon16x16: "images/favicon16.ico"
+    favicon32x32: "images/favicon32.ico"
+  #   apple_touch_icon: "<link / abs url>"
+  #   safari_pinned_tab: "<link / abs url>"
+
+  label:
+    text: "胡说"
+    # icon: /apple-touch-icon.png
+    iconHeight: 35
+
+  # home-info mode
+  homeInfoParams:
+    Title: "关于我 \U0001F44B"
+    Content: "一个生活在北京的 IT 从业者，一个悲观主义者，一个注定被时代拍在沙滩上的 Loser。 一个努力拼搏使自己看着没有那么糟糕的人！"
+
+  # socialIcons:
+  #   - name: twitter
+  #     url: "https://twitter.com/"
+  #   - name: stackoverflow
+  #     url: "https://stackoverflow.com"
+  #   - name: github
+  #     url: "https://github.com/"
+
+  # analytics:
+  #   google:
+  #     SiteVerificationTag: "XYZabc"
+  #   bing:
+  #     SiteVerificationTag: "XYZabc"
+  #   yandex:
+  #     SiteVerificationTag: "XYZabc"
+
+  cover:
+    hidden: true # hide everywhere but not in structured data
+    hiddenInList: true # hide on list pages and home
+    hiddenInSingle: true # hide on single page
+
+  # editPost:
+  #   URL: "https://github.com/<path_to_repo>/content"
+  #   Text: "Suggest Changes" # edit text
+  #   appendFilePath: true # to append file path to Edit link
+
+  # for search
+  # https://fusejs.io/api/options.html
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: [博客,blog, 张英伟,zhangyignwei, java,大数据,计算机]
+
+  baiduAnalytics:
+    url: https://hm.baidu.com/hm.js?d49ee6f85b43e02f356ca3b9d04d1e7f
+    
+menu:
+  main:
+    - identifier: series
+      name: 系列文章
+      url: /series/
+      weight: 1
+
+    # - identifier: categories
+    #   name: 分类
+    #   url: /categories/
+    #   weight: 2
+
+    - identifier: tags
+      name: 标签
+      url: /tags/
+      weight: 10
+    
+    - identifier: archives
+      name: 归档
+      url: /archives/
+      weight: 3

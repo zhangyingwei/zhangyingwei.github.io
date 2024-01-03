@@ -1,0 +1,25 @@
+{{- /* Comments area start */ -}}
+{{- /* to add comments read => https://gohugo.io/content-management/comments/ */ -}}
+{{- /* Comments area end */ -}}
+
+
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<script>
+var gitalk = new Gitalk({
+  // clientID: '8655c29fce673368e6e5',
+  clientID: '3e3776fdfa7e265e5f50',
+  // clientSecret: 'ef357d8004dee38f1c0009780a3e3d6c381b0da4',
+  clientSecret: '306d642edfc1de8272f6dd8df9b00cf04d874688',
+  repo: 'zhangyingwei.github.io',
+  owner: 'zhangyingwei',
+  admin: ['zhangyingwei'],
+  id: location.pathname,      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false,  // Facebook-like distraction free mode,
+  language: "zh-CN"
+})
+
+gitalk.render('comment-container')
+</script>

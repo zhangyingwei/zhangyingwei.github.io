@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>博客 on 胡说</title>
+    <link>https://zhangyingwei.github.io/tags/%E5%8D%9A%E5%AE%A2/</link>
+    <description>Recent content in 博客 on 胡说</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-ch</language>
+    <lastBuildDate>Mon, 11 Apr 2022 19:42:28 +0800</lastBuildDate><atom:link href="https://zhangyingwei.github.io/tags/%E5%8D%9A%E5%AE%A2/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hugo 博客写作最佳实践</title>
+      <link>https://zhangyingwei.github.io/posts/2022m4d11h19m42s28/</link>
+      <pubDate>Mon, 11 Apr 2022 19:42:28 +0800</pubDate>
+      
+      <guid>https://zhangyingwei.github.io/posts/2022m4d11h19m42s28/</guid>
+      <description>如今，如果你仅仅为了更好的分享或者记录东西，想做一个博客；静态博客几乎是最好的选择。不需要太多的技术含量，网上有大把的教程，不需要花钱买服务器，甚至不需要花钱买域名。
+这篇文章是在使用 hugo 将博客搭建起来的基础上，摸索出来的一套写作流程。可有最大程度上简化除了写作之外的流程。
+🏖️前提 这篇文章的前提是你已经通过 hugo 和 github 搭建起来一个可以访问的 Github Pages 主页。如果尚未完成这个步骤，建议通过其他教程先做到这一步。
+🤣当前痛点 在当前的流程中，假如你需要新建一篇文章并发布，大体流程如下：
+打开命令行工具，切换到博客目录下，执行 hugo new posts/newarticle.md 创建一个新页面 构思编写文章，如果中途需要贴图片，需要先将图片拷贝到指定静态资源目录下或者上传到图床并复制外链到剪贴板，然后在文章中通过图片引入语法添加图片。 文章写完之后，再次打开命令行工具，切换到博客目录下，执行 hugo -D 编译静态网站文件。 通过 git 命令行或者图形话工具，将更新上传至 Github 仓库中。完成！ 以上便是发布一篇文章的基础工作，其中最麻烦便是图片资源的管理以及来回切换工具操作。
+☝️如何解决 1. 自动编译 首要解决的问题是如何才能不需要每次手动编译之后再上传。这也是最好解决的部分。我们可以搭配 Github Actions 使仓库在更新的时候自动编译部署。
+Github Actions 是 Github 提供的一套持续集成服务。
+操作流程：
+在仓库的根目录新建 .github/workfolws 目录 在 .gitub/workflows 目录中新建流程配置文件 main.yml 在 main.yml 中配置每当监听到仓库提交更新，就触发编译，并将编译后的静态网页部署在 gh-pages 分支。 文件目录如下：
+配置内容如下：
+name: blog deploy pipline on: push: tags: - &amp;#39;*&amp;#39; branches: [ main ] env: REGISTRY: ghcr.</description>
+    </item>
+    
+  </channel>
+</rss>

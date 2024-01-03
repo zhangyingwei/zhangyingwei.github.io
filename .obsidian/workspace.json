@@ -13,8 +13,8 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "content/posts/2023m10d23h20m28s40.md",
-                "mode": "source",
+                "file": "content/posts/2024m1d3h13m25s53.md",
+                "mode": "preview",
                 "source": false
               }
             }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "content/posts/2023m10d23h20m28s40.md",
+                "file": "content/posts/2024m1d3h13m25s53.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -112,12 +112,12 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 344.5
+    "width": 344.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -132,13 +132,30 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "ab9ffd6c83996c4b",
+  "active": "0e56f8d36aeca3e5",
   "lastOpenFiles": [
-    "public/assets/css/stylesheet.min.ae3f7c8e26fc0b3d71fb776834ff42bffb163e4e4030cba36c4e6116a6f3bf74.css",
-    "content/posts/2022m5d24h15m23s26.md",
-    "content/posts/2023m10d23h20m28s40.md",
-    "content/posts/2022m10d28h10m10s31.md",
+    "_site/themes/PaperMod/layouts/partials/templates/twitter_cards.html",
+    "_site/themes/PaperMod/layouts/partials/templates/schema_json.html",
+    "_site/themes/PaperMod/layouts/partials/templates/opengraph.html",
+    "_site/themes/PaperMod/layouts/partials/templates/baidu_analytics.html",
+    "_site/themes/PaperMod/assets/css/hljs/an-old-hope.min.css",
+    "_site/themes/PaperMod/assets/css/extended/self.css",
+    "_site/themes/PaperMod/assets/css/extended/fonts.css",
+    "_site/themes/PaperMod/assets/css/extended/blank.css",
+    "_site/themes/PaperMod/assets/css/core/zmedia.css",
+    "_site/themes/PaperMod/assets/css/core/theme-vars.css",
+    "_site/themes/PaperMod/assets/css/core/reset.css",
+    "_site/themes/PaperMod/images/tn.png",
+    "_site/themes/PaperMod/images/screenshot.png",
+    "_site/themes/PaperMod/README.md",
+    "_site/static/images/image-20220410212822738.png",
+    "_site/public/images/image-20220410212822738.png",
+    "_site/obs_scripts/主面板.md",
     "obs_scripts/主面板.md",
+    "content/posts/2024m1d3h13m25s53.md",
+    "content/posts/2023m10d23h20m28s40.md",
+    "content/posts/2022m5d24h15m23s26.md",
+    "content/posts/2022m10d28h10m10s31.md",
     "content/posts/2022m5d16h20m22s20.md",
     "content/posts/2022m4d11h19m42s28.md",
     "content/posts/2022m4d12h13m13s22.md",

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Posts on 胡说</title>
+    <link>https://zhangyingwei.github.io/posts/</link>
+    <description>Recent content in Posts on 胡说</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-ch</language>
+    <lastBuildDate>Wed, 01 Jun 2022 15:23:27 +0800</lastBuildDate><atom:link href="https://zhangyingwei.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>QuickDashboard 产品更新 [V0.0.9.0]</title>
+      <link>https://zhangyingwei.github.io/posts/2022m5d24h15m23s26/</link>
+      <pubDate>Wed, 01 Jun 2022 15:23:27 +0800</pubDate>
+      
+      <guid>https://zhangyingwei.github.io/posts/2022m5d24h15m23s26/</guid>
+      <description>这个项目到目前为止没做过什么推广，只在 V 站和其他一两个常逛的论坛发了一下，因此也没有太多人知道。 Chrome 和 Edge 两个商店加起来大概有一百五十个左右的用户。所以很大程度还是属于一个自娱自乐的项目。
+近期需要经常关注 B 站 几个账号的粉丝数量，因此设计并上线了一个监控看板的功能。
+监控看板主要为了监控数字类的数据内容，比如上边提到的 B 站某个账号的粉丝等。
+这个版本共包含了 4 个监控项。
+B 站某个账号的粉丝数量 B 站某个账号的视频数量 Github 账号的 Follower 数量 Github 某个仓库的 Star 数量 效果图如下：
+感兴趣的可以在 ChromeStore 或者 Edge Store 进行更新试用。
+有问题可以直接在评论区反馈</description>
+    </item>
+    
+    <item>
+      <title>QuickDashboard 产品介绍</title>
+      <link>https://zhangyingwei.github.io/posts/2022m5d16h20m22s20/</link>
+      <pubDate>Mon, 16 May 2022 20:22:21 +0800</pubDate>
+      
+      <guid>https://zhangyingwei.github.io/posts/2022m5d16h20m22s20/</guid>
+      <description>我的新作品 QuickDashboard，是一款 Chrome 浏览器插件。得益于 Chromium 内核的成功，理论上只要是基于 Chromium 内核的浏览器都可以兼容。
+下载地址： 七牛云 下载 Chrome 商店 下载 QuickDashboard 是一款新标签页插件，所谓新标签页插件就是插件安装之后会接管 Chrome 浏览器新建标签页行为，取代默认的空白标签页，打开插件作为浏览器的新标签页。
+这个插件，一共提供了四个大的功能项。
+以下所有说明均基于目前的最新版本 V0.8.0.0
+1. 时钟 时钟模块提供了翻页时钟和点阵时钟两种展示方式
+翻页时钟 点阵时钟 时钟的颜色可以自定义，详细操作见设置说明
+2. 书签管理 书签管理功能主要基于 Chrome 的书签管理接口，作为 Chrome 书签的增强功能。在 Chrome 自身书签的基础上进行扩展。
+为书签增加了界面 扩展了标签功能，支持为每个书签增加标签，方便分类，每个书签最多可以设置 5 个标签 增加搜索功能，支持模糊搜索；可以通过书签名、书签目录名以及标签名进行搜索 3. 导航页 导航页是一个高频使用的功能， QuickDashboard 提供的导航页具备了目前市面上绝大多数导航页具备的功能：
+快捷搜索功能，提供搜索框，可以快速搜索 可以自定义添加导航网址 导航网址支持分类 在此基础上，还额外创新提供了根据设置进行差异化导航的功能。
+在添加导航的时候可以设置该网址每天或者每周几或者每月几号出现到导航栏中。这样就很好的解决了导航项比较多而且不是每个导航都需要每天访问的问题。在添加一些周刊月刊类导航的时候尤为好用。
+4. 历史浏览记录 该功能可以快捷显示浏览器访问的历史记录，在不小心关掉网页的时候非常好用。
+设置说明 为了保持整体界面的干净清爽，设置项至于插件的右键选项中。
+选项界面如下：
+整个设置界面的设置项非常少，包括了：
+主题切换设置 历史快捷按钮显示设置 时钟类型设置 点阵时钟颜色设置 整体功能基本上介绍完毕，其他细节后续慢慢出专题进行介绍。</description>
+    </item>
+    
+    <item>
+      <title>Obsidian &#43; Hugo 最佳配置推荐</title>
+      <link>https://zhangyingwei.github.io/posts/2022m4d12h13m13s22/</link>
+      <pubDate>Tue, 12 Apr 2022 13:13:22 +0800</pubDate>
+      
+      <guid>https://zhangyingwei.github.io/posts/2022m4d12h13m13s22/</guid>
+      <description>静态博客的出现，革了后端的命，极大的简化了搭建环节。但是与此同时，在写作方式上，更加依赖第三方编辑器，能否找到一个合适的编辑器成了大多数人能否坚持使用下去的源动力。本文基于 Hugo 静态博客推荐个人认为最优的编辑器 Obsidian。
+Obsidian 是一款非常优秀的双链笔记编辑器。其最主要亮点功能是通过双链构建知识网络。具有完备的编辑器、强大的命令工具以及众多优秀的插件。
+关于 Obsidian 的相关配置方案可以参考上一篇文章《 Hugo 博客写作最佳实践 》，在文章中，介绍了如何通过 QuickAdd 插件快速创建一篇博文，以及如何快速编写发布文章，其中还包括如何进行静态资源同步上传图床以及外链回写的实现。
+本文主要介绍在实现上文的工作流的基础上，一些写作最佳实践。
+1.美观 写作是一个长期的行为，在写作过程中需要一直面对编辑器进行构思，编写，排版，调整。所以，一个符合个人审美的编辑器尤为重要。
+Obsidian 编辑器本身作为一个颜值在线的编辑器，已经具备了很高的颜值起点。而且如果对官方主题不满意的话，可以在设置中的外观菜单项里打开主题管理功能，在主题社区中选择符合个人需求的主题进行替换。
+除此之外，我们还可以通过自定义 CSS 代码片段对部分展示效果进行调整。这里提供修改编辑器字体的样例。
+在外观选项中点击文件夹图标打开 CSS 代码片段目录
+在打开的目录中新建文件 字体修改.css 并在文件中输入如下内容。
+.view-content div.cm-line,.cm-string { font-family: &amp;#34;仿宋&amp;#34; !important; } .markdown-preview-section { font-family: &amp;#34;仿宋&amp;#34; !important; } 效果如下：
+2.方便 基于当前的工作流程，在 Obsidian 中我们已经可以完成从创建到编写到发布所有工作。但是这还不够，既然使用了 Obsidian，我们虽然没办法使用其丰富的 markdown 语法。但是不耽误享受其丰富的插件系统带来的种种便利。
+这里推荐另外两个插件 homepage 和 dataview
+homepage 允许 Obsidian 在打开之后显示默认笔记页面作为仪表面板 dataview 是 Obsidian 众多插件中，构建索引的王者。 通过 homepage ，可以设定一个页面作为 Obsidian 打开之后的默认主仪表面板。在上篇文章中，创建了 obs_scripts 目录用来存储创建文章的脚本。本文复用该目录，在其中创建一篇名叫 主面板 的笔记。</description>
+    </item>
+    
+    <item>
+      <title>Hugo 博客写作最佳实践</title>
+      <link>https://zhangyingwei.github.io/posts/2022m4d11h19m42s28/</link>
+      <pubDate>Mon, 11 Apr 2022 19:42:28 +0800</pubDate>
+      
+      <guid>https://zhangyingwei.github.io/posts/2022m4d11h19m42s28/</guid>
+      <description>如今，如果你仅仅为了更好的分享或者记录东西，想做一个博客；静态博客几乎是最好的选择。不需要太多的技术含量，网上有大把的教程，不需要花钱买服务器，甚至不需要花钱买域名。
+这篇文章是在使用 hugo 将博客搭建起来的基础上，摸索出来的一套写作流程。可有最大程度上简化除了写作之外的流程。
+🏖️前提 这篇文章的前提是你已经通过 hugo 和 github 搭建起来一个可以访问的 Github Pages 主页。如果尚未完成这个步骤，建议通过其他教程先做到这一步。
+🤣当前痛点 在当前的流程中，假如你需要新建一篇文章并发布，大体流程如下：
+打开命令行工具，切换到博客目录下，执行 hugo new posts/newarticle.md 创建一个新页面 构思编写文章，如果中途需要贴图片，需要先将图片拷贝到指定静态资源目录下或者上传到图床并复制外链到剪贴板，然后在文章中通过图片引入语法添加图片。 文章写完之后，再次打开命令行工具，切换到博客目录下，执行 hugo -D 编译静态网站文件。 通过 git 命令行或者图形话工具，将更新上传至 Github 仓库中。完成！ 以上便是发布一篇文章的基础工作，其中最麻烦便是图片资源的管理以及来回切换工具操作。
+☝️如何解决 1. 自动编译 首要解决的问题是如何才能不需要每次手动编译之后再上传。这也是最好解决的部分。我们可以搭配 Github Actions 使仓库在更新的时候自动编译部署。
+Github Actions 是 Github 提供的一套持续集成服务。
+操作流程：
+在仓库的根目录新建 .github/workfolws 目录 在 .gitub/workflows 目录中新建流程配置文件 main.yml 在 main.yml 中配置每当监听到仓库提交更新，就触发编译，并将编译后的静态网页部署在 gh-pages 分支。 文件目录如下：
+配置内容如下：
+name: blog deploy pipline on: push: tags: - &amp;#39;*&amp;#39; branches: [ main ] env: REGISTRY: ghcr.</description>
+    </item>
+    
+  </channel>
+</rss>

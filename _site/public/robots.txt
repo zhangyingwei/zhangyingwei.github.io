@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://zhangyingwei.github.io/sitemap.xml

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tags on 胡说</title>
+    <link>https://zhangyingwei.github.io/tags/</link>
+    <description>Recent content in Tags on 胡说</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-ch</language>
+    <lastBuildDate>Wed, 01 Jun 2022 15:23:27 +0800</lastBuildDate><atom:link href="https://zhangyingwei.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chrome</title>
+      <link>https://zhangyingwei.github.io/tags/chrome/</link>
+      <pubDate>Wed, 01 Jun 2022 15:23:27 +0800</pubDate>
+      
+      <guid>https://zhangyingwei.github.io/tags/chrome/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>标签页</title>
+      <link>https://zhangyingwei.github.io/tags/%E6%A0%87%E7%AD%BE%E9%A1%B5/</link>
+      <pubDate>Wed, 01 Jun 2022 15:23:27 +0800</pubDate>
+      
+      <guid>https://zhangyingwei.github.io/tags/%E6%A0%87%E7%AD%BE%E9%A1%B5/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>浏览器插件</title>
+      <link>https://zhangyingwei.github.io/tags/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6/</link>
+      <pubDate>Wed, 01 Jun 2022 15:23:27 +0800</pubDate>
+      
+      <guid>https://zhangyingwei.github.io/tags/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hugo</title>
+      <link>https://zhangyingwei.github.io/tags/hugo/</link>
+      <pubDate>Tue, 12 Apr 2022 13:13:22 +0800</pubDate>
+      
+      <guid>https://zhangyingwei.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Obsidian</title>
+      <link>https://zhangyingwei.github.io/tags/obsidian/</link>
+      <pubDate>Tue, 12 Apr 2022 13:13:22 +0800</pubDate>
+      
+      <guid>https://zhangyingwei.github.io/tags/obsidian/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>博客</title>
+      <link>https://zhangyingwei.github.io/tags/%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Mon, 11 Apr 2022 19:42:28 +0800</pubDate>
+      
+      <guid>https://zhangyingwei.github.io/tags/%E5%8D%9A%E5%AE%A2/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

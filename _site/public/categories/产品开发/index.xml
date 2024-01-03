@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>产品开发 on 胡说</title>
+    <link>https://zhangyingwei.github.io/categories/%E4%BA%A7%E5%93%81%E5%BC%80%E5%8F%91/</link>
+    <description>Recent content in 产品开发 on 胡说</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-ch</language>
+    <lastBuildDate>Wed, 01 Jun 2022 15:23:27 +0800</lastBuildDate><atom:link href="https://zhangyingwei.github.io/categories/%E4%BA%A7%E5%93%81%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>QuickDashboard 产品更新 [V0.0.9.0]</title>
+      <link>https://zhangyingwei.github.io/posts/2022m5d24h15m23s26/</link>
+      <pubDate>Wed, 01 Jun 2022 15:23:27 +0800</pubDate>
+      
+      <guid>https://zhangyingwei.github.io/posts/2022m5d24h15m23s26/</guid>
+      <description>这个项目到目前为止没做过什么推广，只在 V 站和其他一两个常逛的论坛发了一下，因此也没有太多人知道。 Chrome 和 Edge 两个商店加起来大概有一百五十个左右的用户。所以很大程度还是属于一个自娱自乐的项目。
+近期需要经常关注 B 站 几个账号的粉丝数量，因此设计并上线了一个监控看板的功能。
+监控看板主要为了监控数字类的数据内容，比如上边提到的 B 站某个账号的粉丝等。
+这个版本共包含了 4 个监控项。
+B 站某个账号的粉丝数量 B 站某个账号的视频数量 Github 账号的 Follower 数量 Github 某个仓库的 Star 数量 效果图如下：
+感兴趣的可以在 ChromeStore 或者 Edge Store 进行更新试用。
+有问题可以直接在评论区反馈</description>
+    </item>
+    
+    <item>
+      <title>QuickDashboard 产品介绍</title>
+      <link>https://zhangyingwei.github.io/posts/2022m5d16h20m22s20/</link>
+      <pubDate>Mon, 16 May 2022 20:22:21 +0800</pubDate>
+      
+      <guid>https://zhangyingwei.github.io/posts/2022m5d16h20m22s20/</guid>
+      <description>我的新作品 QuickDashboard，是一款 Chrome 浏览器插件。得益于 Chromium 内核的成功，理论上只要是基于 Chromium 内核的浏览器都可以兼容。
+下载地址： 七牛云 下载 Chrome 商店 下载 QuickDashboard 是一款新标签页插件，所谓新标签页插件就是插件安装之后会接管 Chrome 浏览器新建标签页行为，取代默认的空白标签页，打开插件作为浏览器的新标签页。
+这个插件，一共提供了四个大的功能项。
+以下所有说明均基于目前的最新版本 V0.8.0.0
+1. 时钟 时钟模块提供了翻页时钟和点阵时钟两种展示方式
+翻页时钟 点阵时钟 时钟的颜色可以自定义，详细操作见设置说明
+2. 书签管理 书签管理功能主要基于 Chrome 的书签管理接口，作为 Chrome 书签的增强功能。在 Chrome 自身书签的基础上进行扩展。
+为书签增加了界面 扩展了标签功能，支持为每个书签增加标签，方便分类，每个书签最多可以设置 5 个标签 增加搜索功能，支持模糊搜索；可以通过书签名、书签目录名以及标签名进行搜索 3. 导航页 导航页是一个高频使用的功能， QuickDashboard 提供的导航页具备了目前市面上绝大多数导航页具备的功能：
+快捷搜索功能，提供搜索框，可以快速搜索 可以自定义添加导航网址 导航网址支持分类 在此基础上，还额外创新提供了根据设置进行差异化导航的功能。
+在添加导航的时候可以设置该网址每天或者每周几或者每月几号出现到导航栏中。这样就很好的解决了导航项比较多而且不是每个导航都需要每天访问的问题。在添加一些周刊月刊类导航的时候尤为好用。
+4. 历史浏览记录 该功能可以快捷显示浏览器访问的历史记录，在不小心关掉网页的时候非常好用。
+设置说明 为了保持整体界面的干净清爽，设置项至于插件的右键选项中。
+选项界面如下：
+整个设置界面的设置项非常少，包括了：
+主题切换设置 历史快捷按钮显示设置 时钟类型设置 点阵时钟颜色设置 整体功能基本上介绍完毕，其他细节后续慢慢出专题进行介绍。</description>
+    </item>
+    
+  </channel>
+</rss>

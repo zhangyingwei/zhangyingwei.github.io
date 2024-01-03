@@ -1,0 +1,260 @@
+<p>如今，如果你仅仅为了更好的分享或者记录东西，想做一个博客；静态博客几乎是最好的选择。不需要太多的技术含量，网上有大把的教程，不需要花钱买服务器，甚至不需要花钱买域名。</p>
+
+<p>这篇文章是在使用 hugo 将博客搭建起来的基础上，摸索出来的一套写作流程。可有最大程度上简化除了写作之外的流程。</p>
+
+<!-- more -->
+
+<h2 id="️前提">🏖️前提</h2>
+<p>这篇文章的前提是你已经通过 hugo 和 github 搭建起来一个可以访问的 Github Pages 主页。如果尚未完成这个步骤，建议通过其他教程先做到这一步。</p>
+
+<h2 id="当前痛点">🤣当前痛点</h2>
+<p>在当前的流程中，假如你需要新建一篇文章并发布，大体流程如下：</p>
+
+<ol>
+  <li>打开命令行工具，切换到博客目录下，执行 <code class="language-plaintext highlighter-rouge">hugo new posts/newarticle.md</code> 创建一个新页面</li>
+  <li>构思编写文章，如果中途需要贴图片，需要先将图片拷贝到指定静态资源目录下或者上传到图床并复制外链到剪贴板，然后在文章中通过图片引入语法添加图片。</li>
+  <li>文章写完之后，再次打开命令行工具，切换到博客目录下，执行 <code class="language-plaintext highlighter-rouge">hugo -D</code> 编译静态网站文件。</li>
+  <li>通过 git 命令行或者图形话工具，将更新上传至 Github 仓库中。完成！</li>
+</ol>
+
+<p>以上便是发布一篇文章的基础工作，其中最麻烦便是图片资源的管理以及来回切换工具操作。</p>
+
+<h2 id="️如何解决">☝️如何解决</h2>
+<h3 id="1-自动编译">1. 自动编译</h3>
+<p>首要解决的问题是如何才能不需要每次手动编译之后再上传。这也是最好解决的部分。我们可以搭配 Github Actions 使仓库在更新的时候自动编译部署。</p>
+
+<blockquote>
+  <p>Github Actions 是 Github 提供的一套持续集成服务。</p>
+</blockquote>
+
+<p>操作流程：</p>
+
+<ol>
+  <li>在仓库的根目录新建 .github/workfolws 目录</li>
+  <li>在 .gitub/workflows 目录中新建流程配置文件 <code class="language-plaintext highlighter-rouge">main.yml</code></li>
+  <li>在 <code class="language-plaintext highlighter-rouge">main.yml</code> 中配置每当监听到仓库提交更新，就触发编译，并将编译后的静态网页部署在 <code class="language-plaintext highlighter-rouge">gh-pages</code> 分支。</li>
+</ol>
+
+<p>文件目录如下：</p>
+
+<p><img src="https://hushuo.zhangyingwei.com/20220411203341.png" alt="" /></p>
+
+<p>配置内容如下：</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">blog deploy pipline</span>
+<span class="na">on</span><span class="pi">:</span>
+    <span class="na">push</span><span class="pi">:</span>
+    <span class="na">tags</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s1">'</span><span class="s">*'</span>
+    <span class="na">branches</span><span class="pi">:</span> <span class="pi">[</span> <span class="nv">main</span> <span class="pi">]</span>
+ 
+<span class="na">env</span><span class="pi">:</span>
+    <span class="na">REGISTRY</span><span class="pi">:</span> <span class="s">ghcr.io</span>
+    <span class="na">IMAGE_NAME</span><span class="pi">:</span> <span class="s">$</span>
+
+<span class="na">jobs</span><span class="pi">:</span>
+    <span class="na">build</span><span class="pi">:</span>
+        <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+        <span class="na">concurrency</span><span class="pi">:</span>
+            <span class="na">group</span><span class="pi">:</span> <span class="s">$ - $</span>
+        <span class="na">steps</span><span class="pi">:</span>
+            <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">checkout</span>
+              <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v2</span>
+              <span class="na">with</span><span class="pi">:</span>
+                <span class="na">submodules</span><span class="pi">:</span> <span class="no">true</span>
+                <span class="na">fetch-depth</span><span class="pi">:</span> <span class="m">0</span>
+            <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">setup hugo</span>
+              <span class="na">uses</span><span class="pi">:</span> <span class="s">peaceiris/actions-hugo@v2</span>
+              <span class="na">with</span><span class="pi">:</span>
+                <span class="na">hugo-version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">0.92.0'</span>
+                <span class="na">extended</span><span class="pi">:</span> <span class="no">true</span>
+            <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">build</span>
+            <span class="na">run</span><span class="pi">:</span> <span class="s">hugo --minify</span>
+            
+            <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">deploy</span>
+            <span class="na">uses</span><span class="pi">:</span> <span class="s">peaceiris/actions-gh-pages@v3</span>
+            <span class="na">if</span><span class="pi">:</span> <span class="s">$</span>
+            <span class="na">with</span><span class="pi">:</span>
+                <span class="na">github_token</span><span class="pi">:</span> <span class="s">$</span>
+                <span class="na">publish_dir</span><span class="pi">:</span> <span class="s">./public</span>
+</code></pre></div></div>
+
+<p>通过以上配置，每当 <code class="language-plaintext highlighter-rouge">push</code> 新内容的时候，就会在 github 仓库触发这个名叫 <code class="language-plaintext highlighter-rouge">blog deploy pipline</code> 的 <code class="language-plaintext highlighter-rouge">workflow</code> ，<code class="language-plaintext highlighter-rouge">workflow</code> 会将执行编译操作，并将编译之后的文件部署在 <code class="language-plaintext highlighter-rouge">gh-pages</code> 这个分支。</p>
+
+<p>执行效果如下：</p>
+
+<p><img src="https://hushuo.zhangyingwei.com/20220411204153.png" alt="" /></p>
+
+<h3 id="2-选择合适的编辑器">2. 选择合适的编辑器</h3>
+
+<p>写作最重要的便是找到一款功能垂直，颜值过关的编辑器。在尝试了几乎所有 <code class="language-plaintext highlighter-rouge">markdown</code> 编辑器之后，终于找到一款能够满足几乎说有需求的工具。</p>
+
+<p>解决了手动编译的问题之后，其余的问题都可以通过 Obsidian 编辑器解决，</p>
+
+<blockquote>
+  <p>Obsidian 是一款非常流行的双链编辑器，其强大的插件功能，使得这个编辑器仿佛一把瑞士军刀，能够满足诸多场景下的使用需求。</p>
+</blockquote>
+
+<p><a href="https://obsidian.md/">⬇️ Obsidian 下载地址</a></p>
+
+<p>需要注意的是，由于 Obsidian 对 markdown 语法进行了很多丰富，因此在使用 Obsidian 进行创作的时候，一些特殊语法是不能使用的，否则 hugo 的 markdown 解释器无法解析相应的语法。</p>
+
+<h4 id="21-创建文章">2.1 创建文章</h4>
+<p>通常情况下，我们需要执行 hugo 提供的创建命令新建文章，这样就需要切换到命令行在切换回编辑器。</p>
+
+<p>Obsidian 有一款插件叫 QuickAdd，这个插件的 Macro 模式可以快速执行 js 脚本，我们的办法就是通过 js 脚本将创建命令进行封装，通过调用 QuickAdd 命令，快速创建新文章。</p>
+
+<ol>
+  <li>插件安装</li>
+</ol>
+
+<p>打开设置中心，选择第三方插件中心，点击浏览按钮打开插件中心。</p>
+
+<p><img src="https://hushuo.zhangyingwei.com/20220411210919.png" alt="" /></p>
+
+<p>在搜索框中输入 QuickAdd 搜索插件，在 QuickAdd 插件中点击安装进行安装。</p>
+
+<p><img src="https://hushuo.zhangyingwei.com/20220411211026.png" alt="" /></p>
+
+<ol>
+  <li>插件配置</li>
+</ol>
+
+<p>在博客的根目录中新建 obs_sctipts 目录用于存放 QuickAdd 脚本文件，在目录中新建 NewBlog.js 脚本文件，脚本内容如下：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">util</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">util</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">child_process</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">child_process</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">exec</span> <span class="o">=</span> <span class="nx">util</span><span class="p">.</span><span class="nx">promisify</span><span class="p">(</span><span class="nx">child_process</span><span class="p">.</span><span class="nx">exec</span><span class="p">);</span>
+
+  
+<span class="kd">function</span> <span class="nx">getCreateTimeAsFileName</span><span class="p">()</span> <span class="p">{</span>
+     <span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+     <span class="kd">var</span> <span class="nx">year</span> <span class="o">=</span> <span class="nx">d</span><span class="p">.</span><span class="nx">getFullYear</span><span class="p">();</span>
+     <span class="kd">var</span> <span class="nx">month</span> <span class="o">=</span> <span class="nx">d</span><span class="p">.</span><span class="nx">getMonth</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+     <span class="kd">var</span> <span class="nx">day</span> <span class="o">=</span> <span class="nx">d</span><span class="p">.</span><span class="nx">getDate</span><span class="p">();</span>
+     <span class="kd">var</span> <span class="nx">hour</span> <span class="o">=</span> <span class="nx">d</span><span class="p">.</span><span class="nx">getHours</span><span class="p">();</span>
+     <span class="kd">var</span> <span class="nx">minute</span> <span class="o">=</span> <span class="nx">d</span><span class="p">.</span><span class="nx">getMinutes</span><span class="p">();</span>
+     <span class="kd">var</span> <span class="nx">second</span> <span class="o">=</span> <span class="nx">d</span><span class="p">.</span><span class="nx">getSeconds</span><span class="p">();</span>
+     <span class="kd">var</span> <span class="nx">time</span> <span class="o">=</span> <span class="nx">year</span><span class="o">+</span><span class="dl">"</span><span class="s2">m</span><span class="dl">"</span><span class="o">+</span><span class="nx">month</span><span class="o">+</span><span class="dl">"</span><span class="s2">d</span><span class="dl">"</span><span class="o">+</span><span class="nx">day</span><span class="o">+</span><span class="dl">"</span><span class="s2">h</span><span class="dl">"</span><span class="o">+</span><span class="nx">hour</span><span class="o">+</span><span class="dl">"</span><span class="s2">m</span><span class="dl">"</span><span class="o">+</span><span class="nx">minute</span><span class="o">+</span><span class="dl">"</span><span class="s2">s</span><span class="dl">"</span><span class="o">+</span><span class="nx">second</span><span class="p">;</span>
+     <span class="k">return</span> <span class="nx">time</span><span class="p">;</span>
+<span class="p">}</span>
+
+  
+
+<span class="c1">// execute command function</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">executeCommand</span><span class="p">()</span> <span class="p">{</span>
+     <span class="kd">const</span> <span class="nx">fileName</span> <span class="o">=</span> <span class="nx">getCreateTimeAsFileName</span><span class="p">()</span><span class="o">+</span><span class="dl">"</span><span class="s2">.md</span><span class="dl">"</span><span class="p">;</span>
+     <span class="kd">const</span> <span class="p">{</span> <span class="nx">stdout</span><span class="p">,</span> <span class="nx">stderr</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">exec</span><span class="p">(</span><span class="dl">'</span><span class="s1">hugo new posts/</span><span class="dl">'</span> <span class="o">+</span><span class="nx">fileName</span><span class="p">,{</span><span class="na">cwd</span><span class="p">:</span> <span class="nx">app</span><span class="p">.</span><span class="nx">fileManager</span><span class="p">.</span><span class="nx">vault</span><span class="p">.</span><span class="nx">adapter</span><span class="p">.</span><span class="nx">basePath</span><span class="p">});</span>
+     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">stdout:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">stdout</span><span class="p">);</span>
+     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">stderr:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">stderr</span><span class="p">);</span>
+     <span class="k">if</span> <span class="p">(</span><span class="nx">stdout</span><span class="p">)</span> <span class="p">{</span>
+         <span class="k">new</span> <span class="nx">Notice</span><span class="p">(</span><span class="dl">"</span><span class="s2">New Blog Created[</span><span class="dl">"</span><span class="o">+</span><span class="nx">fileName</span><span class="o">+</span><span class="dl">"</span><span class="s2">]</span><span class="dl">"</span><span class="p">)</span>
+     <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+         <span class="k">new</span> <span class="nx">Notice</span><span class="p">(</span><span class="dl">"</span><span class="s2">New Blog Create Faild. </span><span class="dl">"</span><span class="o">+</span><span class="nx">stderr</span><span class="p">)</span>
+     <span class="p">}</span>
+<span class="p">}</span>
+
+  
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="k">async</span> <span class="kd">function</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">await</span> <span class="nx">executeCommand</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>在第三方插件中找到 QuickAdd 插件，点击配置按钮进行配置。</p>
+
+<p><img src="https://hushuo.zhangyingwei.com/20220411211619.png" alt="" /></p>
+
+<p>点击 Manage Macros 创建宏</p>
+
+<p><img src="https://hushuo.zhangyingwei.com/20220411211737.png" alt="" /></p>
+
+<p>输入名字点击 Add Macro</p>
+
+<p><img src="https://hushuo.zhangyingwei.com/20220411211831.png" alt="" /></p>
+
+<p>在新建的宏下方点击 Configure 对宏进行配置</p>
+
+<p><img src="https://hushuo.zhangyingwei.com/20220411211925.png" alt="" /></p>
+
+<p>在  User Scripts 后的输入框中选择创建的 js 脚本 NewBlog，点击 Add 添加</p>
+
+<p><img src="https://hushuo.zhangyingwei.com/20220411212021.png" alt="" /></p>
+
+<p>到这里，创建文章的命令就配置完成了</p>
+
+<ol>
+  <li>使用方法</li>
+</ol>
+
+<p>打开 Obsidian 编辑器，通过 <code class="language-plaintext highlighter-rouge">ctrl+p</code> 快捷键换出命令输入框</p>
+
+<p><img src="https://hushuo.zhangyingwei.com/20220411212529.png" alt="" /></p>
+
+<p>在命令输入框中输入 QuickAdd 点击回车</p>
+
+<p><img src="https://hushuo.zhangyingwei.com/20220411212606.png" alt="" /></p>
+
+<p>弹出创建博客的命令之后再次回车</p>
+
+<p><img src="https://hushuo.zhangyingwei.com/20220411212640.png" alt="" /></p>
+
+<p>一篇文章就创建好了，在 content/posts 中可以找到对应的 md 文件</p>
+
+<p><img src="https://hushuo.zhangyingwei.com/20220411212714.png" alt="" /></p>
+
+<p><img src="https://hushuo.zhangyingwei.com/20220411212835.png" alt="" /></p>
+
+<h4 id="22-静态资源管理">2.2 静态资源管理</h4>
+
+<p>解决了自动化创建文章这座大山之后，还有另外一座更大的叫静态资源管理大山需要克服。</p>
+
+<p>静态资源管理一般分为两种办法：</p>
+
+<ol>
+  <li>随仓库一起托管在 github，通过相对路径进行引用。</li>
+  <li>单独托管在图床，通过外链引用</li>
+</ol>
+
+<p>这里推荐使用办法 2，通过图床进行统一管理，能保证访问速度，方便迁移。</p>
+
+<p>Obsidian 有一款插件叫 <code class="language-plaintext highlighter-rouge">Image auto upload plugin</code> ，可以结合 PicGo 将图片同步传到图床，并将外链插入文章中。不需要我们额外进行静态资源管理。将图片粘贴或者拖拽到需要插入图片的地方即可。</p>
+
+<p>具体的操作办法如下：</p>
+
+<p>1.安装 PicGo 并配置相应的图床，PicGo 支持 SM.MS、腾讯云 COS、Github 图床、七牛图床、Imgur 图床、阿里云 OSS、又拍云图床等众多常用图床。</p>
+
+<p><a href="https://github.com/Molunerfinn/PicGo/releases">⬇️ PigGo 下载地址</a></p>
+
+<p>PicGo 的配置可以自行百度解决。</p>
+
+<ol>
+  <li>安装 <code class="language-plaintext highlighter-rouge">Image auto upload plugin</code> 插件并开启，具体安装方式同参考上文中 QuickAdd 的安装。</li>
+</ol>
+
+<p>完成以上两步操作之后，便可以在文章中通过粘贴或者拖拽的方式添加图片资源。</p>
+
+<h4 id="23-文章提交">2.3 文章提交</h4>
+
+<p>通过以上步骤，基本上写作流程已经比较完美了。如果能够简化提交流程就更加完美了。</p>
+
+<p>巧了，Obsidian 有一个 git 插件可以通过快捷命令的方式将修改内容提交到 github。这个插件的名字叫 <code class="language-plaintext highlighter-rouge">Obsidian Git</code>，具体的安装方式就不再介绍了。着重介绍一下操作方式。</p>
+
+<ol>
+  <li>通过 <code class="language-plaintext highlighter-rouge">ctrl+p</code> 快捷键换出命令窗口</li>
+  <li>输入 <code class="language-plaintext highlighter-rouge">git commit</code> 命令，将本地修改提交</li>
+  <li>再次换出命令窗口并输入 <code class="language-plaintext highlighter-rouge">git push</code> 命令，将修改提交到远程 Github 仓库</li>
+</ol>
+
+<p>稍等一会，等 Github Actions 执行完成之后，便可以在你的博客中看到最新内容了。</p>
+
+<h2 id="3-总结">3. 总结</h2>
+
+<p>整体流程，通过结合 Github Action 以及 Obsidian 的众多优秀插件，实现了在 Obsidian 中不切换其他工具的情况下，完成文章的创建、编写、提交、推送。让写博客真正的以写为主。</p>
+
+<h2 id="4-obsidian-其他插件推荐">4. Obsidian 其他插件推荐</h2>
+<ol>
+  <li>Obsidian Pangu，一个中英文混编格式化插件，可以在英文与中文之间自动添加空格</li>
+  <li>Emoji Tookbar，一个 Emoji 插件，提供 Emoji 选择面板，可以快速添加表情</li>
+</ol>
