@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>产品介绍 on 胡说</title>
+    <link>https://zhangyingwei.github.io/tags/%E4%BA%A7%E5%93%81%E4%BB%8B%E7%BB%8D/</link>
+    <description>Recent content in 产品介绍 on 胡说</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-ch</language>
+    <lastBuildDate>Wed, 03 Jan 2024 13:25:54 +0800</lastBuildDate><atom:link href="https://zhangyingwei.github.io/tags/%E4%BA%A7%E5%93%81%E4%BB%8B%E7%BB%8D/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>专注了吗，一款因微信认证费降价而产生的产品</title>
+      <link>https://zhangyingwei.github.io/posts/2024m1d3h13m25s53/</link>
+      <pubDate>Wed, 03 Jan 2024 13:25:54 +0800</pubDate>
+      
+      <guid>https://zhangyingwei.github.io/posts/2024m1d3h13m25s53/</guid>
+      <description>最近偶然在论坛看到有人说微信认证费用降价，由以前的 300 块降低至 30 块，于是赶紧去做了认证。
+既然已经做了认证，那么名额空着视乎不太好，于是便产生了做一个产品出来挂着的念头。而说到产品，就不得不提研发人员三板斧，导航、记账和代办。
+索性就在这里找个角度切入，从代办的角度切入，从另外的角度做了这款叫 《专注了吗》 的任务跟踪小程序。
+目前小程序已经上架，主页是： https://miniapp.fascloud.org/
+主要功能 小程序主要功能为记录任务的进展情况，例如：
+ 学生党记录每一科的学习进度以及时间花费情况 上班党记录每一个工作的具体进展 宝妈记录宝宝的吃饭情况，拉屎 💩 情况 等等&amp;hellip;  所有适用于分段完成的任务都可以用来记录。
+界面 </description>
+    </item>
+    
+  </channel>
+</rss>
