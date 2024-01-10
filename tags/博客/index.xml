@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>博客 on 胡说</title>
-    <link>https://zhangyingwei.github.io/tags/%E5%8D%9A%E5%AE%A2/</link>
+    <link>https://blog.zhangyingwei.com/tags/%E5%8D%9A%E5%AE%A2/</link>
     <description>Recent content in 博客 on 胡说</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-ch</language>
-    <lastBuildDate>Mon, 11 Apr 2022 19:42:28 +0800</lastBuildDate><atom:link href="https://zhangyingwei.github.io/tags/%E5%8D%9A%E5%AE%A2/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 11 Apr 2022 19:42:28 +0800</lastBuildDate><atom:link href="https://blog.zhangyingwei.com/tags/%E5%8D%9A%E5%AE%A2/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hugo 博客写作最佳实践</title>
-      <link>https://zhangyingwei.github.io/posts/2022m4d11h19m42s28/</link>
+      <link>https://blog.zhangyingwei.com/posts/2022m4d11h19m42s28/</link>
       <pubDate>Mon, 11 Apr 2022 19:42:28 +0800</pubDate>
       
-      <guid>https://zhangyingwei.github.io/posts/2022m4d11h19m42s28/</guid>
+      <guid>https://blog.zhangyingwei.com/posts/2022m4d11h19m42s28/</guid>
       <description>如今，如果你仅仅为了更好的分享或者记录东西，想做一个博客；静态博客几乎是最好的选择。不需要太多的技术含量，网上有大把的教程，不需要花钱买服务器，甚至不需要花钱买域名。
 这篇文章是在使用 hugo 将博客搭建起来的基础上，摸索出来的一套写作流程。可有最大程度上简化除了写作之外的流程。
 🏖️前提 这篇文章的前提是你已经通过 hugo 和 github 搭建起来一个可以访问的 Github Pages 主页。如果尚未完成这个步骤，建议通过其他教程先做到这一步。

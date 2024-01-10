@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>经验分享 on 胡说</title>
-    <link>https://zhangyingwei.github.io/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/</link>
+    <link>https://blog.zhangyingwei.com/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/</link>
     <description>Recent content in 经验分享 on 胡说</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-ch</language>
-    <lastBuildDate>Tue, 12 Apr 2022 13:13:22 +0800</lastBuildDate><atom:link href="https://zhangyingwei.github.io/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Apr 2022 13:13:22 +0800</lastBuildDate><atom:link href="https://blog.zhangyingwei.com/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Obsidian &#43; Hugo 最佳配置推荐</title>
-      <link>https://zhangyingwei.github.io/posts/2022m4d12h13m13s22/</link>
+      <link>https://blog.zhangyingwei.com/posts/2022m4d12h13m13s22/</link>
       <pubDate>Tue, 12 Apr 2022 13:13:22 +0800</pubDate>
       
-      <guid>https://zhangyingwei.github.io/posts/2022m4d12h13m13s22/</guid>
+      <guid>https://blog.zhangyingwei.com/posts/2022m4d12h13m13s22/</guid>
       <description>静态博客的出现，革了后端的命，极大的简化了搭建环节。但是与此同时，在写作方式上，更加依赖第三方编辑器，能否找到一个合适的编辑器成了大多数人能否坚持使用下去的源动力。本文基于 Hugo 静态博客推荐个人认为最优的编辑器 Obsidian。
 Obsidian 是一款非常优秀的双链笔记编辑器。其最主要亮点功能是通过双链构建知识网络。具有完备的编辑器、强大的命令工具以及众多优秀的插件。
 关于 Obsidian 的相关配置方案可以参考上一篇文章《 Hugo 博客写作最佳实践 》，在文章中，介绍了如何通过 QuickAdd 插件快速创建一篇博文，以及如何快速编写发布文章，其中还包括如何进行静态资源同步上传图床以及外链回写的实现。
@@ -30,10 +30,10 @@ Obsidian 编辑器本身作为一个颜值在线的编辑器，已经具备了�
     
     <item>
       <title>Hugo 博客写作最佳实践</title>
-      <link>https://zhangyingwei.github.io/posts/2022m4d11h19m42s28/</link>
+      <link>https://blog.zhangyingwei.com/posts/2022m4d11h19m42s28/</link>
       <pubDate>Mon, 11 Apr 2022 19:42:28 +0800</pubDate>
       
-      <guid>https://zhangyingwei.github.io/posts/2022m4d11h19m42s28/</guid>
+      <guid>https://blog.zhangyingwei.com/posts/2022m4d11h19m42s28/</guid>
       <description>如今，如果你仅仅为了更好的分享或者记录东西，想做一个博客；静态博客几乎是最好的选择。不需要太多的技术含量，网上有大把的教程，不需要花钱买服务器，甚至不需要花钱买域名。
 这篇文章是在使用 hugo 将博客搭建起来的基础上，摸索出来的一套写作流程。可有最大程度上简化除了写作之外的流程。
 🏖️前提 这篇文章的前提是你已经通过 hugo 和 github 搭建起来一个可以访问的 Github Pages 主页。如果尚未完成这个步骤，建议通过其他教程先做到这一步。

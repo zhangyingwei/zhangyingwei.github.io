@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>产品开发 on 胡说</title>
-    <link>https://zhangyingwei.github.io/categories/%E4%BA%A7%E5%93%81%E5%BC%80%E5%8F%91/</link>
+    <link>https://blog.zhangyingwei.com/categories/%E4%BA%A7%E5%93%81%E5%BC%80%E5%8F%91/</link>
     <description>Recent content in 产品开发 on 胡说</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-ch</language>
-    <lastBuildDate>Wed, 03 Jan 2024 13:25:54 +0800</lastBuildDate><atom:link href="https://zhangyingwei.github.io/categories/%E4%BA%A7%E5%93%81%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 03 Jan 2024 13:25:54 +0800</lastBuildDate><atom:link href="https://blog.zhangyingwei.com/categories/%E4%BA%A7%E5%93%81%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>专注了吗，一款因微信认证费降价而产生的产品</title>
-      <link>https://zhangyingwei.github.io/posts/2024m1d3h13m25s53/</link>
+      <link>https://blog.zhangyingwei.com/posts/2024m1d3h13m25s53/</link>
       <pubDate>Wed, 03 Jan 2024 13:25:54 +0800</pubDate>
       
-      <guid>https://zhangyingwei.github.io/posts/2024m1d3h13m25s53/</guid>
+      <guid>https://blog.zhangyingwei.com/posts/2024m1d3h13m25s53/</guid>
       <description>最近偶然在论坛看到有人说微信认证费用降价，由以前的 300 块降低至 30 块，于是赶紧去做了认证。
 既然已经做了认证，那么名额空着视乎不太好，于是便产生了做一个产品出来挂着的念头。而说到产品，就不得不提研发人员三板斧，导航、记账和代办。
 索性就在这里找个角度切入，从代办的角度切入，从另外的角度做了这款叫 《专注了吗》 的任务跟踪小程序。
@@ -24,10 +24,10 @@
     
     <item>
       <title>QuickDashboard 产品更新 [V0.0.9.0]</title>
-      <link>https://zhangyingwei.github.io/posts/2022m5d24h15m23s26/</link>
+      <link>https://blog.zhangyingwei.com/posts/2022m5d24h15m23s26/</link>
       <pubDate>Wed, 01 Jun 2022 15:23:27 +0800</pubDate>
       
-      <guid>https://zhangyingwei.github.io/posts/2022m5d24h15m23s26/</guid>
+      <guid>https://blog.zhangyingwei.com/posts/2022m5d24h15m23s26/</guid>
       <description>这个项目到目前为止没做过什么推广，只在 V 站和其他一两个常逛的论坛发了一下，因此也没有太多人知道。 Chrome 和 Edge 两个商店加起来大概有一百五十个左右的用户。所以很大程度还是属于一个自娱自乐的项目。
 近期需要经常关注 B 站 几个账号的粉丝数量，因此设计并上线了一个监控看板的功能。
 监控看板主要为了监控数字类的数据内容，比如上边提到的 B 站某个账号的粉丝等。
@@ -39,10 +39,10 @@
     
     <item>
       <title>QuickDashboard 产品介绍</title>
-      <link>https://zhangyingwei.github.io/posts/2022m5d16h20m22s20/</link>
+      <link>https://blog.zhangyingwei.com/posts/2022m5d16h20m22s20/</link>
       <pubDate>Mon, 16 May 2022 20:22:21 +0800</pubDate>
       
-      <guid>https://zhangyingwei.github.io/posts/2022m5d16h20m22s20/</guid>
+      <guid>https://blog.zhangyingwei.com/posts/2022m5d16h20m22s20/</guid>
       <description>我的新作品 QuickDashboard，是一款 Chrome 浏览器插件。得益于 Chromium 内核的成功，理论上只要是基于 Chromium 内核的浏览器都可以兼容。
    下载地址：      七牛云 下载   Chrome 商店 下载    QuickDashboard 是一款新标签页插件，所谓新标签页插件就是插件安装之后会接管 Chrome 浏览器新建标签页行为，取代默认的空白标签页，打开插件作为浏览器的新标签页。
 这个插件，一共提供了四个大的功能项。
