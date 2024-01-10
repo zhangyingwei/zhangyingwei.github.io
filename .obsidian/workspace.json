@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "content/posts/2024m1d3h13m25s53.md",
+                "file": "obs_scripts/主面板.md",
                 "mode": "preview",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "content/posts/2024m1d3h13m25s53.md",
+                "file": "obs_scripts/主面板.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -134,6 +134,7 @@
   },
   "active": "0e56f8d36aeca3e5",
   "lastOpenFiles": [
+    "content/posts/2024m1d3h13m25s53.md",
     "_site/themes/PaperMod/layouts/partials/templates/twitter_cards.html",
     "_site/themes/PaperMod/layouts/partials/templates/schema_json.html",
     "_site/themes/PaperMod/layouts/partials/templates/opengraph.html",
@@ -144,7 +145,6 @@
     "_site/themes/PaperMod/assets/css/extended/blank.css",
     "_site/themes/PaperMod/assets/css/core/zmedia.css",
     "_site/themes/PaperMod/assets/css/core/theme-vars.css",
-    "_site/themes/PaperMod/assets/css/core/reset.css",
     "_site/themes/PaperMod/images/tn.png",
     "_site/themes/PaperMod/images/screenshot.png",
     "_site/themes/PaperMod/README.md",
@@ -152,7 +152,6 @@
     "_site/public/images/image-20220410212822738.png",
     "_site/obs_scripts/主面板.md",
     "obs_scripts/主面板.md",
-    "content/posts/2024m1d3h13m25s53.md",
     "content/posts/2023m10d23h20m28s40.md",
     "content/posts/2022m5d24h15m23s26.md",
     "content/posts/2022m10d28h10m10s31.md",

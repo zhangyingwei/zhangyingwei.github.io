@@ -108,7 +108,7 @@ params:
     keys: [博客,blog, 张英伟,zhangyignwei, java,大数据,计算机]
 
   baiduAnalytics:
-    url: https://hm.baidu.com/hm.js?d49ee6f85b43e02f356ca3b9d04d1e7f
+    url: https://hm.baidu.com/hm.js?ba380df4e327c711daf3b841b4089ce4
     
 menu:
   main:
