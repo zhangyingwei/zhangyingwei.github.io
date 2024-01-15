@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "content/posts/盘点那些年我做过的东西.md",
+                "file": "content/posts/2024m1d15h10m37s29.md",
                 "mode": "preview",
                 "source": false
               }
@@ -82,7 +82,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "e16ccf180aa9c785",
@@ -147,10 +147,11 @@
   },
   "active": "2a31b3046a3d4cc8",
   "lastOpenFiles": [
-    "content/posts/盘点那些年我做过的东西.md",
-    "obs_scripts/主面板.md",
-    "content/posts/待定....md",
     "content/posts/2024m1d3h13m25s53.md",
+    "content/posts/2024m1d15h10m37s29.md",
+    "obs_scripts/主面板.md",
+    "content/posts/2023m10d23h20m28s40.md",
+    "content/posts/待定....md",
     "_site/themes/PaperMod/layouts/partials/templates/twitter_cards.html",
     "_site/themes/PaperMod/layouts/partials/templates/schema_json.html",
     "_site/themes/PaperMod/layouts/partials/templates/opengraph.html",
@@ -167,7 +168,6 @@
     "_site/static/images/image-20220410212822738.png",
     "_site/public/images/image-20220410212822738.png",
     "_site/obs_scripts/主面板.md",
-    "content/posts/2023m10d23h20m28s40.md",
     "content/posts/2022m5d24h15m23s26.md",
     "content/posts/2022m10d28h10m10s31.md",
     "content/posts/2022m5d16h20m22s20.md",
