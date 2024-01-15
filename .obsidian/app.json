@@ -8,5 +8,6 @@
   "newLinkFormat": "relative",
   "alwaysUpdateLinks": true,
   "strictLineBreaks": true,
-  "defaultViewMode": "preview"
+  "defaultViewMode": "preview",
+  "showLineNumber": true
 }

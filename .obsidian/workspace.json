@@ -13,13 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "content/posts/盘点那些年我做过的东西.md",
+                "mode": "preview",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "2a31b3046a3d4cc8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "obs_scripts/主面板.md",
                 "mode": "preview",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -69,7 +82,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "e16ccf180aa9c785",
@@ -132,8 +146,11 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "0e56f8d36aeca3e5",
+  "active": "2a31b3046a3d4cc8",
   "lastOpenFiles": [
+    "content/posts/盘点那些年我做过的东西.md",
+    "obs_scripts/主面板.md",
+    "content/posts/待定....md",
     "content/posts/2024m1d3h13m25s53.md",
     "_site/themes/PaperMod/layouts/partials/templates/twitter_cards.html",
     "_site/themes/PaperMod/layouts/partials/templates/schema_json.html",
@@ -151,7 +168,6 @@
     "_site/static/images/image-20220410212822738.png",
     "_site/public/images/image-20220410212822738.png",
     "_site/obs_scripts/主面板.md",
-    "obs_scripts/主面板.md",
     "content/posts/2023m10d23h20m28s40.md",
     "content/posts/2022m5d24h15m23s26.md",
     "content/posts/2022m10d28h10m10s31.md",
