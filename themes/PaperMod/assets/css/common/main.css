@@ -113,3 +113,7 @@ pre:hover .copy-code {
 .shadow-b {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
+.dark .shadow-b {
+    box-shadow: 0 0 10px rgb(41 41 41) !important;
+}
