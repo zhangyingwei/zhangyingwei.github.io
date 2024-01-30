@@ -57,15 +57,16 @@ html {
 
 
 .post-content blockquote {
-  background-color: #e8e8e8 !important;
-  border-top-right-radius: 4px !important;
-  border-bottom-right-radius: 4px !important;
+  background-color: #d9e5fbab!important;
+  /* border-top-right-radius: 4px !important;
+  border-bottom-right-radius: 4px !important; */
+  border-radius: 4px !important;
 }
 
 .dark .post-content blockquote {
-  background-color: #3b3b3b !important;
-  border-top-right-radius: 4px !important;
-  border-bottom-right-radius: 4px !important;
+  background-color: #000000d1!important;
+  /* border-top-right-radius: 4px !important;
+  border-bottom-right-radius: 4px !important; */
 }
 
 .post-content code {
@@ -75,4 +76,31 @@ html {
 
 .post-content li {
   margin-left: 20px !important;
+}
+
+thead {
+  background-color: #b4d6ff!important;
+}
+
+tbody {
+  background-color: #e8f1ff !important;
+}
+
+.post-content table th, .post-content table:not(.highlighttable,.highlight table,.gist .highlight) td {
+  min-width: 80px;
+  padding: 12px 8px;
+  line-height: 1.5;
+  border-bottom: 1px solid rgb(0 0 0 / 0.041);
+}
+
+.post-content table td:not(td:last-child),.post-content table th:not(th:last-child) {
+  border-right: 1px solid rgba(0, 0, 0, 0.041);
+}
+
+.dark thead {
+  background-color: #000000d1!important;
+}
+
+.dark tbody {
+  background-color: #333333d1!important;
 }

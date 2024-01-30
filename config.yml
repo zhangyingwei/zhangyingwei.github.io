@@ -131,3 +131,8 @@ menu:
       name: 归档
       url: /archives/
       weight: 3
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true

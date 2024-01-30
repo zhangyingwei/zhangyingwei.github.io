@@ -58,14 +58,14 @@ html {
 
 .post-content blockquote {
   background-color: #e8e8e8 !important;
-  border-top-right-radius: 4px !important;
-  border-bottom-right-radius: 4px !important;
+  /* border-top-right-radius: 4px !important;
+  border-bottom-right-radius: 4px !important; */
 }
 
 .dark .post-content blockquote {
   background-color: #3b3b3b !important;
-  border-top-right-radius: 4px !important;
-  border-bottom-right-radius: 4px !important;
+  /* border-top-right-radius: 4px !important;
+  border-bottom-right-radius: 4px !important; */
 }
 
 .post-content code {

@@ -4,23 +4,23 @@
     "type": "split",
     "children": [
       {
-        "id": "b3752172b873d8ea",
+        "id": "e8faf9d7ed137435",
         "type": "tabs",
         "children": [
           {
-            "id": "0e56f8d36aeca3e5",
+            "id": "5d20479a47874dcb",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "content/posts/2024m1d15h10m37s29.md",
-                "mode": "preview",
+                "file": "content/posts/2024m1d30h10m7s52.md",
+                "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "2a31b3046a3d4cc8",
+            "id": "44ec5f0bebc0fd25",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -82,7 +82,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 238.5
+    "width": 238.5,
+    "collapsed": true
   },
   "right": {
     "id": "e16ccf180aa9c785",
@@ -145,12 +146,15 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "2a31b3046a3d4cc8",
+  "active": "44ec5f0bebc0fd25",
   "lastOpenFiles": [
-    "content/posts/2024m1d25h13m45s53.md",
+    "static/录屏2024-01-30 10.07.16.mov",
     "obs_scripts/主面板.md",
-    "content/posts/2024m1d15h10m42s57.md",
+    "content/posts/2024m1d30h11m8s41.md",
+    "content/posts/2024m1d30h10m7s52.md",
+    "content/posts/2024m1d25h13m45s53.md",
     "content/posts/2024m1d15h10m37s29.md",
+    "content/posts/2024m1d15h10m42s57.md",
     "content/posts/2024m1d3h13m25s53.md",
     "content/posts/2023m10d23h20m28s40.md",
     "_site/themes/PaperMod/layouts/partials/templates/twitter_cards.html",
@@ -162,7 +166,6 @@
     "_site/themes/PaperMod/assets/css/extended/fonts.css",
     "_site/themes/PaperMod/assets/css/extended/blank.css",
     "_site/themes/PaperMod/assets/css/core/zmedia.css",
-    "_site/themes/PaperMod/assets/css/core/theme-vars.css",
     "_site/themes/PaperMod/images/tn.png",
     "_site/themes/PaperMod/images/screenshot.png",
     "_site/themes/PaperMod/README.md",
