@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>标签 on 胡说</title>
+    <link>https://blog.zhangyingwei.com/tags/%E6%A0%87%E7%AD%BE/</link>
+    <description>Recent content in 标签 on 胡说</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-ch</language>
+    <lastBuildDate>Tue, 30 Jan 2024 11:08:42 +0800</lastBuildDate><atom:link href="https://blog.zhangyingwei.com/tags/%E6%A0%87%E7%AD%BE/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>这里是新建博客的标题</title>
+      <link>https://blog.zhangyingwei.com/posts/2024m1d30h11m8s41/</link>
+      <pubDate>Tue, 30 Jan 2024 11:08:42 +0800</pubDate>
+      
+      <guid>https://blog.zhangyingwei.com/posts/2024m1d30h11m8s41/</guid>
+      <description>这里是新建博客的内容
+我准备贴一张截图
+到这里编辑功能基本演示完毕，我准备发布了</description>
+    </item>
+    
+  </channel>
+</rss>

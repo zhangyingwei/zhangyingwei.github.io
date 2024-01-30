@@ -6,7 +6,24 @@
     <description>Recent content in Obsidian on 胡说</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-ch</language>
-    <lastBuildDate>Tue, 12 Apr 2022 13:13:22 +0800</lastBuildDate><atom:link href="https://blog.zhangyingwei.com/tags/obsidian/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 30 Jan 2024 10:07:52 +0800</lastBuildDate><atom:link href="https://blog.zhangyingwei.com/tags/obsidian/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>把 Obsidian 变为 Hugo 博客的集成管理平台</title>
+      <link>https://blog.zhangyingwei.com/posts/2024m1d30h10m7s52/</link>
+      <pubDate>Tue, 30 Jan 2024 10:07:52 +0800</pubDate>
+      
+      <guid>https://blog.zhangyingwei.com/posts/2024m1d30h10m7s52/</guid>
+      <description>今天早上无聊闲逛，看到有不少人是从我的 Obsidian + Hugo 系列，开始了解原来 Obsidian 和 Hugo 还可以这么搭配的。
+但是不少人反馈，根据我的 Hugo 博客写作最佳实践 和 Obsidian + Hugo 最佳配置推荐 这两篇文章操作起来感觉确实方便了，但是方便的不多。整个流程没有非常流畅。甚至感觉有些流程设计的过于繁琐。
+不否认，确实是这种感觉，问题在我。
+实际上这是我设计的一整套流程，但这两篇博客只讲了关键的一部分，还有一些细枝末节没有讲出来。
+所以我临时决定再增加一篇文章说明，把整套流程讲清楚。为了担心表达能力欠佳，我还录了一些视频辅助大家理解。
+中心思想 整个流程设计的中心思想就是：解决繁琐的操作流程，把操作自动化+高度集中，解放思想，精力都用在写作上。
+管理中心 在 Obsidian 的诸多插件的加持下，最终实现所有管理功能集成在一个管理中心，效果如下：
+上图中的内容共分为几部分：
+ 统计图，这里只根据发布情况做了发布占比统计 操作按钮+笔记：共集成了三个操作按钮，点击新建博客按钮可以根据模板自动创建一篇空白文章；点击发布博客按钮可以把博客内容自动推送到github，从而触发 github action 自动部署流程 草稿箱：使用 dataview 插件，把草稿内容列举出来，归集为草稿箱，直接点击对应草稿便可以开始编辑内容 已发布：把所有已经发布的内容列举出来，方便查看  视频演示</description>
+    </item>
+    
     <item>
       <title>Obsidian &#43; Hugo 最佳配置推荐</title>
       <link>https://blog.zhangyingwei.com/posts/2022m4d12h13m13s22/</link>

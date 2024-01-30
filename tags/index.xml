@@ -6,40 +6,67 @@
     <description>Recent content in Tags on 胡说</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-ch</language>
-    <lastBuildDate>Tue, 16 Jan 2024 10:42:58 +0800</lastBuildDate><atom:link href="https://blog.zhangyingwei.com/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>SQL注入</title>
-      <link>https://blog.zhangyingwei.com/tags/sql%E6%B3%A8%E5%85%A5/</link>
-      <pubDate>Tue, 16 Jan 2024 10:42:58 +0800</pubDate>
-      
-      <guid>https://blog.zhangyingwei.com/tags/sql%E6%B3%A8%E5%85%A5/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>waf</title>
-      <link>https://blog.zhangyingwei.com/tags/waf/</link>
-      <pubDate>Tue, 16 Jan 2024 10:42:58 +0800</pubDate>
-      
-      <guid>https://blog.zhangyingwei.com/tags/waf/</guid>
-      <description></description>
-    </item>
-    
+    <lastBuildDate>Tue, 30 Jan 2024 11:08:42 +0800</lastBuildDate><atom:link href="https://blog.zhangyingwei.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>安全</title>
       <link>https://blog.zhangyingwei.com/tags/%E5%AE%89%E5%85%A8/</link>
-      <pubDate>Tue, 16 Jan 2024 10:42:58 +0800</pubDate>
+      <pubDate>Tue, 30 Jan 2024 11:08:42 +0800</pubDate>
       
       <guid>https://blog.zhangyingwei.com/tags/%E5%AE%89%E5%85%A8/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>标签</title>
+      <link>https://blog.zhangyingwei.com/tags/%E6%A0%87%E7%AD%BE/</link>
+      <pubDate>Tue, 30 Jan 2024 11:08:42 +0800</pubDate>
+      
+      <guid>https://blog.zhangyingwei.com/tags/%E6%A0%87%E7%AD%BE/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hugo</title>
+      <link>https://blog.zhangyingwei.com/tags/hugo/</link>
+      <pubDate>Tue, 30 Jan 2024 10:07:52 +0800</pubDate>
+      
+      <guid>https://blog.zhangyingwei.com/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Obsidian</title>
+      <link>https://blog.zhangyingwei.com/tags/obsidian/</link>
+      <pubDate>Tue, 30 Jan 2024 10:07:52 +0800</pubDate>
+      
+      <guid>https://blog.zhangyingwei.com/tags/obsidian/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>waf</title>
+      <link>https://blog.zhangyingwei.com/tags/waf/</link>
+      <pubDate>Thu, 25 Jan 2024 13:45:53 +0800</pubDate>
+      
+      <guid>https://blog.zhangyingwei.com/tags/waf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>网络安全</title>
       <link>https://blog.zhangyingwei.com/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/</link>
-      <pubDate>Tue, 16 Jan 2024 10:42:58 +0800</pubDate>
+      <pubDate>Thu, 25 Jan 2024 13:45:53 +0800</pubDate>
       
       <guid>https://blog.zhangyingwei.com/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SQL注入</title>
+      <link>https://blog.zhangyingwei.com/tags/sql%E6%B3%A8%E5%85%A5/</link>
+      <pubDate>Tue, 16 Jan 2024 10:42:58 +0800</pubDate>
+      
+      <guid>https://blog.zhangyingwei.com/tags/sql%E6%B3%A8%E5%85%A5/</guid>
       <description></description>
     </item>
     
@@ -103,24 +130,6 @@
       <pubDate>Wed, 01 Jun 2022 15:23:27 +0800</pubDate>
       
       <guid>https://blog.zhangyingwei.com/tags/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>hugo</title>
-      <link>https://blog.zhangyingwei.com/tags/hugo/</link>
-      <pubDate>Tue, 12 Apr 2022 13:13:22 +0800</pubDate>
-      
-      <guid>https://blog.zhangyingwei.com/tags/hugo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Obsidian</title>
-      <link>https://blog.zhangyingwei.com/tags/obsidian/</link>
-      <pubDate>Tue, 12 Apr 2022 13:13:22 +0800</pubDate>
-      
-      <guid>https://blog.zhangyingwei.com/tags/obsidian/</guid>
       <description></description>
     </item>
     

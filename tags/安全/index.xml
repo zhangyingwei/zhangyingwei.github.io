@@ -6,7 +6,38 @@
     <description>Recent content in 安全 on 胡说</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-ch</language>
-    <lastBuildDate>Tue, 16 Jan 2024 10:42:58 +0800</lastBuildDate><atom:link href="https://blog.zhangyingwei.com/tags/%E5%AE%89%E5%85%A8/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 30 Jan 2024 11:08:42 +0800</lastBuildDate><atom:link href="https://blog.zhangyingwei.com/tags/%E5%AE%89%E5%85%A8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>这里是新建博客的标题</title>
+      <link>https://blog.zhangyingwei.com/posts/2024m1d30h11m8s41/</link>
+      <pubDate>Tue, 30 Jan 2024 11:08:42 +0800</pubDate>
+      
+      <guid>https://blog.zhangyingwei.com/posts/2024m1d30h11m8s41/</guid>
+      <description>这里是新建博客的内容
+我准备贴一张截图
+到这里编辑功能基本演示完毕，我准备发布了</description>
+    </item>
+    
+    <item>
+      <title>如果我们想实现一个 WAF</title>
+      <link>https://blog.zhangyingwei.com/posts/2024m1d25h13m45s53/</link>
+      <pubDate>Thu, 25 Jan 2024 13:45:53 +0800</pubDate>
+      
+      <guid>https://blog.zhangyingwei.com/posts/2024m1d25h13m45s53/</guid>
+      <description>如果我们想实现一个简易的 WAF，我们实际上需要干什么？
+🐭 什么是 WAF WAF 全称 Web Application Firewall，是一种工作在应用层的防火墙，主要用于对应用层中的 HTTP 流量进行监测、过滤和阻止。主要适用于 Web 应用中存在的已知的安全漏洞，例如：SQL 注入、CSRF 跨站请求伪造攻击、XSS 跨站脚本攻击等。
+其主要防护原理是基于规则匹配，通过预制的识别规则，对 HTTP 协议中提取出来的信息进行匹配，如果可以匹配，则该请求被认为是攻击行为。WAF 将会对其执行相关的操作（告警、阻断、记录日志）。
+综上所诉，WAF 的基本原理如下：
+那么回到问题，什么是 WAF 呢？
+ WAF 是一个工作在应用层，主要针对 HTTP 流量进行解析、检测的装置；其检测功能主要基于规则引擎，通过预制规则，对流量中的相关信息进行匹配，能够针对流量中的 SQL 注入、CSRF、XSS 等 Web 攻击行为进行识别与防护，防护手段主要有告警、阻断、记录日志。
+ 🐮 WAF 通常部署在哪里 WAF 的部署模式通常有： 反向代理、透明代理、透明桥、流量镜像等方式。
+反向代理 客户与 WAF 进行交互，WAF 将客户的请求直接转发至后端，后方的 Web Server 与WAF进行交互，不会直接暴漏给客户。
+这样的架构可以有效的影藏后边的具体服务，防止直接针对 Web Server 的攻击。
+透明代理 客户访问的对象为 Web Server，WAF 在链路中间对于客户来说是透明无感知的。
+这样的架构对网络拓扑来说入侵性比较小，不需要单独为 WAF 划分 IP 资源。
+流量镜像 WAF 直接对接的对象是路由器，通过路由器的流量镜像功能，把客户到 Web Server 的流量镜像复制一份到WAF</description>
+    </item>
+    
     <item>
       <title>防止 SQL 注入：WAF 就足够了吗？</title>
       <link>https://blog.zhangyingwei.com/posts/2024m1d15h10m42s57/</link>
