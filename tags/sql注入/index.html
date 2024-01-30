@@ -1,7 +1,15 @@
 <!doctype html><html lang=en dir=" auto">
 <head><meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="IE=edge">
+<meta charset=utf-8>
+<meta name=Share-Source-Verification content="https://blog.zhangyingwei.com/">
+<meta http-equiv=cache-control content="no-transform">
+<meta http-equiv=cache-control content="no-siteapp">
+<meta name=renderer content="webkit">
+<meta name=apple-mobile-web-app-capable content="yes">
 <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta property="og:title" content="SQL注入">
+<meta property="og:image" content="/images/favicon64.ico">
 <meta name=msvalidate.01 content="1B50C3A24BF817BB86D82C8429075AE4">
 <meta name=robots content="index, follow">
 <title>SQL注入 | 胡说</title>
@@ -81,7 +89,9 @@ WAF 如何防御 SQL 注入 简单来说，WAF 在 SQL 注入类防护中，主�
 什么情况下 WAF 会失效 在许多情况下，WAF 可能无法防止 SQL 注入：
 未知的攻击模式和特征：WAF 擅长检测已知的攻击模式和特征，面对更复杂或未知的攻击方法则力有不逮。 封装技术：攻击者可以对载荷做针对性处理；使用嵌套编码，或者将恶意请求的部分放在 WAF 检查的字节之外；面对这种封装过后的载荷，WAF不具备识别能力。 配置错误：WAF的识别和防护功能，依赖防护规则的配置，如果规则配置错误，它可能无法提供足够防护能力来保护和抵御更复杂或不常见的 SQL 注入攻击。 更新和调整：随着 WEB 开发技术的更新迭代，有些更新可能会使之前的防护规则失效；如果 WAF 没有定期更新升级相应的规则，将无法提供相应的防护能力。 非网络流量数据：WAF 只能处理来自网络流量的问题，如果问题来自应用程序内部的代码或数据源而不经过网络力量，则 WAF 无法处理 0Day 漏洞：WAF 无法防止 0Day 漏洞利用 JSON 语法：WAF 可能无法识别 SQL 注入载荷中的恶意 JSON 语法内容，从而可以使用此类攻击者绕过 WAF 保护 示例 Claroty 研究人员能够通过在 SQL 注入攻击中使用 JSON 语法绕过 Amazon Web Services（AWS）内置的 WAF。通过将简单的 JSON 语法前置到 SQL 请求的开头，他们可以使用 SQLi 漏洞在云上泄露敏感信息。同样的 JSON in SQL 攻击也对 Cloudflare、F5、Imperva 和 Palo Alto Networks 的 WAF 有效 Reddit 用户对 WAF 测试了几个 SQL 注入负载，发现 WAF 基于某些关键字阻止了一些请求，同时仍然允许其他可疑查询。例如，/?...</p>
 </section>
-<a class=entry-link aria-label="post link to 防止 SQL 注入：WAF 就足够了吗？" href=https://blog.zhangyingwei.com/posts/2024m1d15h10m42s57/></a>
+<a class=entry-link aria-label="post link to 防止 SQL 注入：WAF 就足够了吗？" href=https://blog.zhangyingwei.com/posts/2024m1d15h10m42s57/ name="防止 SQL 注入：WAF 就足够了吗？">
+<span style=display:inline-block;width:0;height:0;opacity:0>防止 SQL 注入：WAF 就足够了吗？</span>
+</a>
 </article>
 </div>
 </main>
