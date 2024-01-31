@@ -29,6 +29,25 @@ Buttons 插件安装完成之后，在首页添加如下代码：
     </item>
     
     <item>
+      <title>如果我们想实现一个 WAF之 -- 什么是 WAF</title>
+      <link>https://blog.zhangyingwei.com/posts/2024m1d25h13m45s53/</link>
+      <pubDate>Thu, 25 Jan 2024 13:45:53 +0800</pubDate>
+      
+      <guid>https://blog.zhangyingwei.com/posts/2024m1d25h13m45s53/</guid>
+      <description>如果我们想实现一个简易的 WAF，我们实际上需要干什么？我们需要先了解什么是 WAF。
+🐭 什么是 WAF WAF 全称 Web Application Firewall，是一种工作在应用层（7 层）的防火墙，主要用于对应用层中的 HTTP 流量进行监测、过滤和阻止。主要适用于 Web 应用中存在的已知的安全漏洞，例如：SQL 注入、CSRF 跨站请求伪造攻击、XSS 跨站脚本攻击等。
+其主要防护原理是基于规则匹配，通过预制的识别规则，对 HTTP 协议中提取出来的信息进行匹配，如果可以匹配，则该请求被认为是攻击行为。WAF 将会对其执行相关的操作（告警、阻断、记录日志）。
+综上所诉，WAF 的基本原理如下：
+那么回到问题，什么是 WAF 呢？
+ WAF 是一个工作在应用层，主要针对 HTTP 流量进行解析、检测的装置；其检测功能主要基于规则引擎，通过预制规则，对流量中的相关信息进行匹配，能够针对流量中的 SQL 注入、CSRF、XSS 等 Web 攻击行为进行识别与防护，防护手段主要有告警、阻断、记录日志。
+ 🐮 WAF 通常部署在哪里 从形态上来讲， WAF 主要分为软件型 WAF 和硬件型 WAF
+软件型 WAF 主要以嵌入的形式进行部署，一般部署在 Web 服务器中，常见的例如 nginx waf、apache waf、openresty waf 等。
+硬件型 WAF 主要通过软件绑定硬件的方式，其部署方式多种多样，以下内容中的 WAF 默认指代硬件 WAF。
+WAF 的部署模式通常有： 反向代理、透明代理、透明桥、流量镜像等方式。
+反向代理 客户与 WAF 进行交互，WAF 将客户的请求直接转发至后端，后方的 Web Server 与 WAF 进行交互，不会直接暴漏给客户。</description>
+    </item>
+    
+    <item>
       <title>盘点那些年我做过的东西</title>
       <link>https://blog.zhangyingwei.com/posts/2024m1d15h10m37s29/</link>
       <pubDate>Mon, 15 Jan 2024 10:37:29 +0800</pubDate>
