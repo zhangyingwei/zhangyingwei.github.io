@@ -13,13 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "content/posts/2024m1d31h10m33s20.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "6c42e4f1ae7fc84c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "obs_scripts/主面板.md",
                 "mode": "preview",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -133,15 +146,15 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "836854a57730062d",
+  "active": "6c42e4f1ae7fc84c",
   "lastOpenFiles": [
+    "content/posts/2024m1d31h10m33s20.md",
     "content/posts/2024m1d30h10m7s52.md",
     "obs_scripts/主面板.md",
     "content/posts/2024m1d25h13m45s53.md",
     "content/posts/2024m1d15h10m42s57.md",
     "content/posts/2022m4d12h13m13s22.md",
     "content/posts/2022m4d11h19m42s28.md",
-    "content/posts/2024m1d31h10m33s20.md",
     "content/posts/2024m1d30h11m8s41.md",
     "static/录屏2024-01-30 10.07.16.mov",
     "content/posts/2024m1d15h10m37s29.md",
