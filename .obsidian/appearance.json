@@ -6,5 +6,6 @@
   ],
   "theme": "system",
   "accentColor": "",
-  "translucency": true
+  "translucency": true,
+  "cssTheme": "GitHub Theme"
 }
