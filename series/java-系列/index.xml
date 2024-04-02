@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Java 系列 on 胡说</title>
+    <link>https://blog.zhangyingwei.com/series/java-%E7%B3%BB%E5%88%97/</link>
+    <description>Recent content in Java 系列 on 胡说</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-ch</language>
+    <lastBuildDate>Fri, 02 Feb 2024 10:04:42 +0800</lastBuildDate><atom:link href="https://blog.zhangyingwei.com/series/java-%E7%B3%BB%E5%88%97/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SpringBoot 中实现订单过期自动取消</title>
+      <link>https://blog.zhangyingwei.com/posts/2024m4d2h10m4s42/</link>
+      <pubDate>Fri, 02 Feb 2024 10:04:42 +0800</pubDate>
+      
+      <guid>https://blog.zhangyingwei.com/posts/2024m4d2h10m4s42/</guid>
+      <description>在电商等需要在线支付的应用中，通常需要设置订单自动取消的功能。本文将介绍几种在 Spring Boot 中实现订单 30 分钟自动取消的方案，包括定时任务、延迟队列和 Redis 过期事件。
+方案一：定时任务 定时任务是一种简单且常用的实现订单自动取消的方案。在 Spring Boot 中，可以使用注解@Scheduled来定义定时任务，任务会按照指定的时间间隔执行。在这个方案中，我们可以定义一个定时任务，每隔 30 分钟检查一次未支付的订单，如果订单生成时间超过 30 分钟，则自动取消该订单。
+代码示例：
+import org.springframework.scheduling.annotation.EnableScheduling; import org.springframework.scheduling.annotation.Scheduled; import org.springframework.stereotype.Component; @EnableScheduling @Component public class OrderCancelSchedule { @Autowired private OrderService orderService; @Scheduled(cron = &amp;#34;0 0/1 * * *?&amp;#34;) public void cancelUnpaidOrders() { List&amp;lt;Order&amp;gt; unpaidOrders = orderService.getUnpaidOrders(); unpaidOrders.forEach(order -&amp;gt; { if (order.getCreationTime().plusMinutes(30).isBefore(LocalDateTime.now())) { orderService.cancelOrder(order.getId()); } }); } } 在上面的代码中，我们定义了一个名为OrderCancelSchedule的组件，并使用@EnableScheduling注解启用定时任务功能。在组件中，我们定义了一个名为cancelUnpaidOrders的方法，并使用@Scheduled注解来指定该方法作为定时任务执行。cron表达式&amp;quot;0 0/1 * * *?&amp;quot;表示任务每隔 1 分钟执行一次。
+方案二：延迟队列 延迟队列是一种将任务延迟执行的机制，入队的元素在一定的延迟时间之后才能出队。在这个方案中，我们可以将订单的 ID 放入延迟队列中，并设置延迟时间为 30 分钟。当延迟时间到期时，从队列中取出订单 ID，并执行取消订单的操作。</description>
+    </item>
+    
+  </channel>
+</rss>

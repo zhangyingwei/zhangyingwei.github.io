@@ -98,6 +98,25 @@
 <div class="article-item-wrapper fg-color">
 <article class="post-entry item-padding">
 <div class=post-date>
+📅 February 2, 2024
+</div>
+<header class=entry-header>
+<h2>SpringBoot 中实现订单过期自动取消
+</h2>
+</header>
+<section class=entry-content>
+<p>在电商等需要在线支付的应用中，通常需要设置订单自动取消的功能。本文将介绍几种在 Spring Boot 中实现订单 30 分钟自动取消的方案，包括定时任务、延迟队列和 Redis 过期事件。
+方案一：定时任务 定时任务是一种简单且常用的实现订单自动取消的方案。在 Spring Boot 中，可以使用注解@Scheduled来定义定时任务，任务会按照指定的时间间隔执行。在这个方案中，我们可以定义一个定时任务，每隔 30 分钟检查一次未支付的订单，如果订单生成时间超过 30 分钟，则自动取消该订单。
+代码示例：
+import org.springframework.scheduling.annotation.EnableScheduling; import org.springframework.scheduling.annotation.Scheduled; import org.springframework.stereotype.Component; @EnableScheduling @Component public class OrderCancelSchedule { @Autowired private OrderService orderService; @Scheduled(cron = "0 0/1 * * *?") public void cancelUnpaidOrders() { List&lt;Order> unpaidOrders = orderService.getUnpaidOrders(); unpaidOrders.forEach(order -> { if (order.getCreationTime().plusMinutes(30).isBefore(LocalDateTime.now())) { orderService.cancelOrder(order.getId()); } }); } } 在上面的代码中，我们定义了一个名为OrderCancelSchedule的组件，并使用@EnableScheduling注解启用定时任务功能。在组件中，我们定义了一个名为cancelUnpaidOrders的方法，并使用@Scheduled注解来指定该方法作为定时任务执行。cron表达式"0 0/1 * * *?"表示任务每隔 1 分钟执行一次。
+方案二：延迟队列 延迟队列是一种将任务延迟执行的机制，入队的元素在一定的延迟时间之后才能出队。在这个方案中，我们可以将订单的 ID 放入延迟队列中，并设置延迟时间为 30 分钟。当延迟时间到期时，从队列中取出订单 ID，并执行取消订单的操作。...</p>
+</section>
+<a class=entry-link aria-label="post link to SpringBoot 中实现订单过期自动取消" href=https://blog.zhangyingwei.com/posts/2024m4d2h10m4s42/ name="SpringBoot 中实现订单过期自动取消">
+<span style=display:inline-block;width:0;height:0;opacity:0>SpringBoot 中实现订单过期自动取消</span>
+</a>
+</article>
+<article class="post-entry item-padding">
+<div class=post-date>
 📅 January 30, 2024
 </div>
 <header class=entry-header>
