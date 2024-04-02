@@ -8,16 +8,16 @@
 <meta name=renderer content="webkit">
 <meta name=apple-mobile-web-app-capable content="yes">
 <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
-<meta property="og:title" content="Java 系列">
+<meta property="og:title" content="大数据">
 <meta property="og:image" content="/images/favicon64.ico">
 <meta name=msvalidate.01 content="1B50C3A24BF817BB86D82C8429075AE4">
 <meta name=bytedance-verification-code content="rjX6knbDoNxpR4Asxe2M">
 <meta name=robots content="index, follow">
-<title>Java 系列 | 胡说</title>
+<title>大数据 | 胡说</title>
 <meta name=keywords content>
 <meta name=description content="胡说，一个寂寞的、即将被时代潮流冲刷在沙滩上的 IT 从业者的自言自语">
 <meta name=author content="zhangyw">
-<link rel=canonical href=https://blog.zhangyingwei.com/series/java-%E7%B3%BB%E5%88%97/>
+<link rel=canonical href=https://blog.zhangyingwei.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/>
 <link crossorigin=anonymous href=/assets/css/stylesheet.min.e0bfefd63aeac8db59d0f1598e84658d4df48187b521a7e4ea2e635cf32e3956.css integrity="sha256-4L/v1jrqyNtZ0PFZjoRljU30gYe1Iafk6i5jXPMuOVY=" rel="preload stylesheet" as=style>
 <link rel=icon href=https://blog.zhangyingwei.com/images/favicon64.ico>
 <link rel=icon type=image/png sizes=16x16 href=https://blog.zhangyingwei.com/images/favicon16.ico>
@@ -26,16 +26,16 @@
 <link rel=mask-icon href=https://blog.zhangyingwei.com/safari-pinned-tab.svg>
 <meta name=theme-color content="#2e2e33">
 <meta name=msapplication-TileColor content="#2e2e33">
-<link rel=alternate type=application/rss+xml href=https://blog.zhangyingwei.com/series/java-%E7%B3%BB%E5%88%97/index.xml>
+<link rel=alternate type=application/rss+xml href=https://blog.zhangyingwei.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/index.xml>
 <noscript>
 <style>#theme-toggle,.top-link{display:none}</style>
 <style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--hljs-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style>
 </noscript>
 <script>var _hmt=_hmt||[];(function(){var a=document.createElement("script"),b;a.src="https://hm.baidu.com/hm.js?ba380df4e327c711daf3b841b4089ce4",b=document.getElementsByTagName("script")[0],b.parentNode.insertBefore(a,b)})()</script>
-<script async src=https://umami.zhangyingwei.com/script.js data-website-id=cb41ccbd-6ee9-4587-9c03-d872f2d10472></script><meta property="og:title" content="Java 系列">
+<script async src=https://umami.zhangyingwei.com/script.js data-website-id=cb41ccbd-6ee9-4587-9c03-d872f2d10472></script><meta property="og:title" content="大数据">
 <meta property="og:description" content="胡说，一个寂寞的、即将被时代潮流冲刷在沙滩上的 IT 从业者的自言自语">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://blog.zhangyingwei.com/series/java-%E7%B3%BB%E5%88%97/"><meta property="og:site_name" content="胡说">
+<meta property="og:url" content="https://blog.zhangyingwei.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"><meta property="og:site_name" content="胡说">
 </head>
 <body class="font-activate bg-color mt-20 list" id="
     top">
@@ -70,28 +70,9 @@
 </header><div style=height:20px></div>
 <main class="main font-activate bg-color">
 <header class=page-header>
-<h1>Java 系列 ✨</h1>
+<h1>大数据 ✨</h1>
 </header>
 <div class="article-item-wrapper fg-color">
-<article class="post-entry tag-entry item-padding">
-<div class=post-date>
-📅 February 2, 2024
-</div>
-<header class=entry-header>
-<h2>SpringBoot 中实现订单过期自动取消
-</h2>
-</header>
-<section class=entry-content>
-<p>在电商等需要在线支付的应用中，通常需要设置订单自动取消的功能。本文将介绍几种在 Spring Boot 中实现订单 30 分钟自动取消的方案，包括定时任务、延迟队列和 Redis 过期事件。
-方案一：定时任务 定时任务是一种简单且常用的实现订单自动取消的方案。在 Spring Boot 中，可以使用注解@Scheduled来定义定时任务，任务会按照指定的时间间隔执行。在这个方案中，我们可以定义一个定时任务，每隔 30 分钟检查一次未支付的订单，如果订单生成时间超过 30 分钟，则自动取消该订单。
-代码示例：
-import org.springframework.scheduling.annotation.EnableScheduling; import org.springframework.scheduling.annotation.Scheduled; import org.springframework.stereotype.Component; @EnableScheduling @Component public class OrderCancelSchedule { @Autowired private OrderService orderService; @Scheduled(cron = "0 0/1 * * *?") public void cancelUnpaidOrders() { List&lt;Order> unpaidOrders = orderService.getUnpaidOrders(); unpaidOrders.forEach(order -> { if (order.getCreationTime().plusMinutes(30).isBefore(LocalDateTime.now())) { orderService.cancelOrder(order.getId()); } }); } } 在上面的代码中，我们定义了一个名为OrderCancelSchedule的组件，并使用@EnableScheduling注解启用定时任务功能。在组件中，我们定义了一个名为cancelUnpaidOrders的方法，并使用@Scheduled注解来指定该方法作为定时任务执行。cron表达式"0 0/1 * * *?"表示任务每隔 1 分钟执行一次。
-方案二：延迟队列 延迟队列是一种将任务延迟执行的机制，入队的元素在一定的延迟时间之后才能出队。在这个方案中，我们可以将订单的 ID 放入延迟队列中，并设置延迟时间为 30 分钟。当延迟时间到期时，从队列中取出订单 ID，并执行取消订单的操作。...</p>
-</section>
-<a class=entry-link aria-label="post link to SpringBoot 中实现订单过期自动取消" href=https://blog.zhangyingwei.com/posts/2024m4d2h10m4s42/ name="SpringBoot 中实现订单过期自动取消">
-<span style=display:inline-block;width:0;height:0;opacity:0>SpringBoot 中实现订单过期自动取消</span>
-</a>
-</article>
 <article class="post-entry tag-entry item-padding">
 <div class=post-date>
 📅 January 2, 2024

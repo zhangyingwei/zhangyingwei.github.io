@@ -216,6 +216,25 @@ cockroach2 (开源 java 爬虫框架) 有一段时间，对爬虫特别痴迷，
 </article>
 <article class="post-entry item-padding">
 <div class=post-date>
+📅 January 2, 2024
+</div>
+<header class=entry-header>
+<h2>探索 Kafka 消息丢失的问题和解决方案
+</h2>
+</header>
+<section class=entry-content>
+<p>在构建基于 Kafka 的消息处理系统中，消息丢失是一个需要深入研究的重要问题。强大的系统不仅依赖于其功能，而且依赖于其可靠性。因此，理解消息丢失的原因，并采取必要的措施确保消息的一致性和完整性，是构建高效可靠消息系统的重要组成部分。本文将详细分析 Kafka 消息丢失的主要原因，并提供一系列策略来解决这个问题。
+消息丢失的原因 生产者端问题： 在 Kafka 系统中，生产者负责发送消息。然而，由于网络故障或其他未知问题，生产者可能无法成功发送消息到 Kafka 服务器。 Kafka 服务端问题： Kafka 服务器可能会因为硬件故障、磁盘满或其他异常情况导致消息丢失。 消费者端问题： 消费者负责处理接收到的消息。但是，消费者在处理消息时可能会出现错误或崩溃，导致消息未被正确处理。 解决方案与措施 生产者端相关方案与措施 发送消息处理回调方法 由于消息的常规发送采用的异步方式，所以通常会忽略掉回调处理，为了保证消息的发送质量，一定需要对回调信息进行处理或者改为同步发送。
+producer.send(new ProducerRecord&lt;>(topic, messageKey, messageStr), new CallBack({...}); 设置有效的重试策略以及 acks 配置 我们可以在生产者端设置一个有效的重试策略，保证消息成功发送。例如，我们可以使用指数退避算法进行重试。这种算法会在每次重试失败后等待更长的时间，从而减轻服务器的压力，并增加消息成功发送的概率。
+通过设置 Producer acks 机制，我们可以确保生产者收到 Kafka 服务器的确认，知晓消息是否被成功提交。
+acks=0： 生产者在发送消息后不会等待任何确认，直接将消息视为发送成功。这种设置下，可能会出现消息丢失的情况，因为生产者不会等待服务器的任何确认即认为消息发送成功。 acks=1： 生产者在发送消息后会等待 Leader Broker 的确认，确认后即视为消息发送成功。这种设置下，消息的可靠性得到一定程度的保证，但仍有可能发生 Leader Broker 宕机导致消息丢失的情况。 acks=all： 生产者在发送消息后会等待 Leader Broker 和所有副本的确认，确认后才视为消息发送成功。这种设置下，消息的可靠性和一致性得到最高级别的保证，但同时也会增加网络延迟和资源消耗。 import org.apache.kafka.clients.producer.*; import org.apache.kafka.common.serialization.StringSerializer; import java.util.Properties; public class KafkaProducerExample { private static final String TOPIC_NAME = "my-topic"; private static final String BOOTSTRAP_SERVERS = "localhost:9092"; public static void main(String[] args) { Properties props = new Properties(); props....</p>
+</section>
+<a class=entry-link aria-label="post link to 探索 Kafka 消息丢失的问题和解决方案" href=https://blog.zhangyingwei.com/posts/2024m4d2h10m23s15/ name="探索 Kafka 消息丢失的问题和解决方案">
+<span style=display:inline-block;width:0;height:0;opacity:0>探索 Kafka 消息丢失的问题和解决方案</span>
+</a>
+</article>
+<article class="post-entry item-padding">
+<div class=post-date>
 📅 June 1, 2022
 </div>
 <header class=entry-header>
@@ -285,32 +304,12 @@ homepage 允许 Obsidian 在打开之后显示默认笔记页面作为仪表面�
 <span style=display:inline-block;width:0;height:0;opacity:0>Obsidian + Hugo 最佳配置推荐</span>
 </a>
 </article>
-<article class="post-entry item-padding">
-<div class=post-date>
-📅 April 11, 2022
 </div>
-<header class=entry-header>
-<h2>Hugo 博客写作最佳实践
-</h2>
-</header>
-<section class=entry-content>
-<p>如今，如果你仅仅为了更好的分享或者记录东西，想做一个博客；静态博客几乎是最好的选择。不需要太多的技术含量，网上有大把的教程，不需要花钱买服务器，甚至不需要花钱买域名。
-这篇文章是在使用 hugo 将博客搭建起来的基础上，摸索出来的一套写作流程。可有最大程度上简化除了写作之外的流程。
-🏖️前提 这篇文章的前提是你已经通过 hugo 和 github 搭建起来一个可以访问的 Github Pages 主页。如果尚未完成这个步骤，建议通过其他教程先做到这一步。
-🤣当前痛点 在当前的流程中，假如你需要新建一篇文章并发布，大体流程如下：
-打开命令行工具，切换到博客目录下，执行 hugo new posts/newarticle.md 创建一个新页面 构思编写文章，如果中途需要贴图片，需要先将图片拷贝到指定静态资源目录下或者上传到图床并复制外链到剪贴板，然后在文章中通过图片引入语法添加图片。 文章写完之后，再次打开命令行工具，切换到博客目录下，执行 hugo -D 编译静态网站文件。 通过 git 命令行或者图形话工具，将更新上传至 Github 仓库中。完成！ 以上便是发布一篇文章的基础工作，其中最麻烦便是图片资源的管理以及来回切换工具操作。
-☝️如何解决 1. 自动编译 首要解决的问题是如何才能不需要每次手动编译之后再上传。这也是最好解决的部分。我们可以搭配 Github Actions 使仓库在更新的时候自动编译部署。
-Github Actions 是 Github 提供的一套持续集成服务。
-操作流程：
-在仓库的根目录新建 .github/workfolws 目录 在 .gitub/workflows 目录中新建流程配置文件 main.yml 在 main.yml 中配置每当监听到仓库提交更新，就触发编译，并将编译后的静态网页部署在 gh-pages 分支。 文件目录如下：
-配置内容如下：
-name: blog deploy pipline on: push: tags: - '*' branches: [ main ] env: REGISTRY: ghcr....</p>
-</section>
-<a class=entry-link aria-label="post link to Hugo 博客写作最佳实践" href=https://blog.zhangyingwei.com/posts/2022m4d11h19m42s28/ name="Hugo 博客写作最佳实践">
-<span style=display:inline-block;width:0;height:0;opacity:0>Hugo 博客写作最佳实践</span>
-</a>
-</article>
-</div>
+<footer class=page-footer>
+<nav class=pagination>
+<a class=next href=https://blog.zhangyingwei.com/posts/page/2/>Next Page »</a>
+</nav>
+</footer>
 </main>
 <footer class=footer>
 <span>&copy; 2024 <a href=https://blog.zhangyingwei.com/>胡说</a></span>

@@ -20,5 +20,18 @@ import org.springframework.scheduling.annotation.EnableScheduling; import org.sp
 方案二：延迟队列 延迟队列是一种将任务延迟执行的机制，入队的元素在一定的延迟时间之后才能出队。在这个方案中，我们可以将订单的 ID 放入延迟队列中，并设置延迟时间为 30 分钟。当延迟时间到期时，从队列中取出订单 ID，并执行取消订单的操作。</description>
     </item>
     
+    <item>
+      <title>探索 Kafka 消息丢失的问题和解决方案</title>
+      <link>https://blog.zhangyingwei.com/posts/2024m4d2h10m23s15/</link>
+      <pubDate>Tue, 02 Jan 2024 10:23:15 +0800</pubDate>
+      
+      <guid>https://blog.zhangyingwei.com/posts/2024m4d2h10m23s15/</guid>
+      <description>在构建基于 Kafka 的消息处理系统中，消息丢失是一个需要深入研究的重要问题。强大的系统不仅依赖于其功能，而且依赖于其可靠性。因此，理解消息丢失的原因，并采取必要的措施确保消息的一致性和完整性，是构建高效可靠消息系统的重要组成部分。本文将详细分析 Kafka 消息丢失的主要原因，并提供一系列策略来解决这个问题。
+消息丢失的原因  生产者端问题： 在 Kafka 系统中，生产者负责发送消息。然而，由于网络故障或其他未知问题，生产者可能无法成功发送消息到 Kafka 服务器。 Kafka 服务端问题： Kafka 服务器可能会因为硬件故障、磁盘满或其他异常情况导致消息丢失。 消费者端问题： 消费者负责处理接收到的消息。但是，消费者在处理消息时可能会出现错误或崩溃，导致消息未被正确处理。  解决方案与措施 生产者端相关方案与措施  发送消息处理回调方法  由于消息的常规发送采用的异步方式，所以通常会忽略掉回调处理，为了保证消息的发送质量，一定需要对回调信息进行处理或者改为同步发送。
+producer.send(new ProducerRecord&amp;lt;&amp;gt;(topic, messageKey, messageStr), new CallBack({...}); 设置有效的重试策略以及 acks 配置  我们可以在生产者端设置一个有效的重试策略，保证消息成功发送。例如，我们可以使用指数退避算法进行重试。这种算法会在每次重试失败后等待更长的时间，从而减轻服务器的压力，并增加消息成功发送的概率。
+通过设置 Producer acks 机制，我们可以确保生产者收到 Kafka 服务器的确认，知晓消息是否被成功提交。
+ acks=0： 生产者在发送消息后不会等待任何确认，直接将消息视为发送成功。这种设置下，可能会出现消息丢失的情况，因为生产者不会等待服务器的任何确认即认为消息发送成功。 acks=1： 生产者在发送消息后会等待 Leader Broker 的确认，确认后即视为消息发送成功。这种设置下，消息的可靠性得到一定程度的保证，但仍有可能发生 Leader Broker 宕机导致消息丢失的情况。 acks=all： 生产者在发送消息后会等待 Leader Broker 和所有副本的确认，确认后才视为消息发送成功。这种设置下，消息的可靠性和一致性得到最高级别的保证，但同时也会增加网络延迟和资源消耗。  import org.apache.kafka.clients.producer.*; import org.apache.kafka.common.serialization.StringSerializer; import java.util.Properties; public class KafkaProducerExample { private static final String TOPIC_NAME = &amp;#34;my-topic&amp;#34;; private static final String BOOTSTRAP_SERVERS = &amp;#34;localhost:9092&amp;#34;; public static void main(String[] args) { Properties props = new Properties(); props.</description>
+    </item>
+    
   </channel>
 </rss>
