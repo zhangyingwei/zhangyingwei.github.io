@@ -22,13 +22,13 @@
             }
           },
           {
-            "id": "9d8a98fda94cd24c",
+            "id": "ebd8026d3b67d8d4",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "content/posts/2024m4d2h10m4s42.md",
-                "mode": "preview",
+                "file": "content/posts/2024m4d2h10m23s15.md",
+                "mode": "source",
                 "source": false
               }
             }
@@ -126,13 +126,21 @@
               "type": "copilot-chat-view",
               "state": {}
             }
+          },
+          {
+            "id": "16fa23d3d8e1c290",
+            "type": "leaf",
+            "state": {
+              "type": "quiet-outline",
+              "state": {}
+            }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 344.5,
-    "collapsed": true
+    "width": 285.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -149,8 +157,9 @@
   },
   "active": "6c42e4f1ae7fc84c",
   "lastOpenFiles": [
-    "content/posts/2024m4d2h10m4s42.md",
+    "content/posts/2024m4d2h10m23s15.md",
     "obs_scripts/主面板.md",
+    "content/posts/2024m4d2h10m4s42.md",
     "content/posts/2024m1d31h10m33s20.md",
     "content/posts/2024m1d30h10m7s52.md",
     "content/posts/2024m1d25h13m45s53.md",
