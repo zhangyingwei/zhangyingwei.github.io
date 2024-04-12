@@ -22,7 +22,7 @@ producer.send(new ProducerRecord<>(topic, messageKey, messageStr), new CallB
  acks=0： 生产者在发送消息后不会等待任何确认，直接将消息视为发送成功。这种设置下，可能会出现消息丢失的情况，因为生产者不会等待服务器的任何确认即认为消息发送成功。 acks=1： 生产者在发送消息后会等待 Leader Broker 的确认，确认后即视为消息发送成功。这种设置下，消息的可靠性得到一定程度的保证，但仍有可能发生 Leader Broker 宕机导致消息丢失的情况。 acks=all： 生产者在发送消息后会等待 Leader Broker 和所有副本的确认，确认后才视为消息发送成功。这种设置下，消息的可靠性和一致性得到最高级别的保证，但同时也会增加网络延迟和资源消耗。  import org.apache.kafka.clients.producer.*; import org.apache.kafka.common.serialization.StringSerializer; import java.util.Properties; public class KafkaProducerExample { private static final String TOPIC_NAME = &#34;my-topic&#34;; private static final String BOOTSTRAP_SERVERS = &#34;localhost:9092&#34;; public static void main(String[] args) { Properties props = new Properties(); props.">
 <meta name=author content="zhangyw">
 <link rel=canonical href=https://blog.zhangyingwei.com/posts/2024m4d2h10m23s15/>
-<link crossorigin=anonymous href=/assets/css/stylesheet.min.fb9d38fabc6544d092031ab09c80234032dd43cfefcea1f0a56a78dfb2bd1b5d.css integrity="sha256-+504+rxlRNCSAxqwnIAjQDLdQ8/vzqHwpWp437K9G10=" rel="preload stylesheet" as=style>
+<link crossorigin=anonymous href=/assets/css/stylesheet.min.64f3692c16cf6e6d25580c5ffff1fefc9804abc450b958d1b31de5d6a14c5b8e.css integrity="sha256-ZPNpLBbPbm0lWAxf//H+/JgEq8RQuVjRsx3l1qFMW44=" rel="preload stylesheet" as=style>
 <script defer crossorigin=anonymous src=/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI=" onload=hljs.initHighlightingOnLoad()></script>
 <link rel=icon href=https://blog.zhangyingwei.com/images/favicon64.ico>
 <link rel=icon type=image/png sizes=16x16 href=https://blog.zhangyingwei.com/images/favicon16.ico>
