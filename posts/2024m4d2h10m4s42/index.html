@@ -22,7 +22,7 @@ import org.springframework.scheduling.annotation.EnableScheduling; import org.sp
 方案二：延迟队列 延迟队列是一种将任务延迟执行的机制，入队的元素在一定的延迟时间之后才能出队。在这个方案中，我们可以将订单的 ID 放入延迟队列中，并设置延迟时间为 30 分钟。当延迟时间到期时，从队列中取出订单 ID，并执行取消订单的操作。">
 <meta name=author content="zhangyw">
 <link rel=canonical href=https://blog.zhangyingwei.com/posts/2024m4d2h10m4s42/>
-<link crossorigin=anonymous href=/assets/css/stylesheet.min.e0bfefd63aeac8db59d0f1598e84658d4df48187b521a7e4ea2e635cf32e3956.css integrity="sha256-4L/v1jrqyNtZ0PFZjoRljU30gYe1Iafk6i5jXPMuOVY=" rel="preload stylesheet" as=style>
+<link crossorigin=anonymous href=/assets/css/stylesheet.min.820bf1f0cca759f49ae54160675f30a5842741ea3b0b63d40556fb2b91da87e0.css integrity="sha256-ggvx8MynWfSa5UFgZ18wpYQnQeo7C2PUBVb7K5Hah+A=" rel="preload stylesheet" as=style>
 <script defer crossorigin=anonymous src=/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI=" onload=hljs.initHighlightingOnLoad()></script>
 <link rel=icon href=https://blog.zhangyingwei.com/images/favicon64.ico>
 <link rel=icon type=image/png sizes=16x16 href=https://blog.zhangyingwei.com/images/favicon16.ico>
@@ -34,7 +34,8 @@ import org.springframework.scheduling.annotation.EnableScheduling; import org.sp
 <noscript>
 <style>#theme-toggle,.top-link{display:none}</style>
 <style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--hljs-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style>
-</noscript>
+</noscript><link href=https://hushuo.zhangyingwei.com/NotoSerifSC.css rel=stylesheet>
+<link href=https://hushuo.zhangyingwei.com/JetBrainsMono.css rel=stylesheet>
 <script>var _hmt=_hmt||[];(function(){var a=document.createElement("script"),b;a.src="https://hm.baidu.com/hm.js?ba380df4e327c711daf3b841b4089ce4",b=document.getElementsByTagName("script")[0],b.parentNode.insertBefore(a,b)})()</script>
 <script async src=https://umami.zhangyingwei.com/script.js data-website-id=cb41ccbd-6ee9-4587-9c03-d872f2d10472></script><meta property="og:title" content="SpringBoot 中实现订单过期自动取消">
 <meta property="og:description" content="在电商等需要在线支付的应用中，通常需要设置订单自动取消的功能。本文将介绍几种在 Spring Boot 中实现订单 30 分钟自动取消的方案，包括定时任务、延迟队列和 Redis 过期事件。
