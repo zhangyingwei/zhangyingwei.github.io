@@ -68,6 +68,27 @@ html {
   border-bottom-right-radius: 4px !important; */
 }
 
+blockquote {
+  background: #f9f9f9 !important;
+  border-left: 10px solid #ccc !important;
+  margin: 1.5em 10px !important;
+  padding: .5em 10px !important;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+blockquote:before {
+  color: #ccc !important;
+  content: open-quote;
+  font-size: 4em;
+  line-height: .1em;
+  margin-right: .25em;
+  vertical-align: -.4em;
+}
+
+blockquote p {
+  display:inline;
+}
+
 .post-content code {
   display: inline-block !important;
   line-height: 100% !important;
