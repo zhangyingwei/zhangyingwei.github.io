@@ -140,7 +140,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 285.5
+    "width": 285.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -155,7 +156,7 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "6c42e4f1ae7fc84c",
+  "active": "16fa23d3d8e1c290",
   "lastOpenFiles": [
     "content/posts/2024m4d2h10m23s15.md",
     "obs_scripts/主面板.md",
