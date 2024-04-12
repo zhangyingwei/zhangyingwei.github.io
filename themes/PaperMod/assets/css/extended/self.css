@@ -128,3 +128,8 @@ tbody {
 .dark tbody {
   background-color: #333333d1!important;
 }
+
+
+.page-footer {
+  padding: 20px 0 !important;
+}

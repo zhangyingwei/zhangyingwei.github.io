@@ -97,3 +97,7 @@ blockquote p {
 .post-content li {
   margin-left: 20px !important;
 }
+
+.page-footer {
+  padding: 20px 0 !important;
+}
