@@ -9,8 +9,8 @@
 }
 
 .post-title {
-    margin-bottom: 2px;
-    font-size: 40px;
+    margin-bottom: 10px;
+    font-size: 32px;
 }
 
 .post-description {
@@ -50,29 +50,29 @@
 }
 
 .post-content h1 {
-    margin: 40px auto 28px;
+    margin: 32px auto 28px;
     font-size: 40px;
 }
 
 .post-content h2 {
     margin: 28px auto 20px;
-    font-size: 36px;
-}
-
-.post-content h3 {
     font-size: 30px;
 }
 
-.post-content h4 {
+.post-content h3 {
     font-size: 26px;
 }
 
+.post-content h4 {
+    font-size: 24px;
+}
+
 .post-content h5 {
-    font-size: 20px;
+    font-size: 22px;
 }
 
 .post-content h6 {
-    font-size: 12px;
+    font-size: 20px;
 }
 
 .post-content a,
