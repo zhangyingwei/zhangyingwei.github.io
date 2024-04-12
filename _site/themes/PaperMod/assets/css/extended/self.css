@@ -21,7 +21,7 @@ code {
   line-height: 2em !important;
   letter-spacing: 0.05em;
   font-weight: 200 !important;
-  border: 1px dashed #cfcfcf;
+  border: 1px solid #cfcfcf;
 }
 
 .gt-comment-content {

@@ -15,6 +15,7 @@
     --content: rgb(31, 31, 31);
     --hljs-bg: rgb(28, 29, 33);
     --code-bg: rgb(245, 245, 245);
+    --inline-code-bg: rgb(231, 242, 250);
     --border: rgb(238, 238, 238);
 }
 

@@ -39,7 +39,7 @@
 
 .post-content {
     color: var(--content);
-    font-size: 20px;
+    font-size: 19px;
 }
 
 .post-content h3,
@@ -218,9 +218,12 @@
 .post-content code {
     margin: auto 4px;
     padding: 4px 6px;
-    font-size: 0.78em;
+    font-size: 0.7em !important;
+    vertical-align: middle !important;
+    font-weight: bold !important;
     line-height: 1.5;
-    background: var(--code-bg);
+    background: var(--inline-code-bg);
+    color: #3b3f43;
     border-radius: 2px;
 }
 

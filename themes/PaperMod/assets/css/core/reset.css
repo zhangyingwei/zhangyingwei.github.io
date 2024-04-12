@@ -118,7 +118,7 @@ img {
 
 ::-webkit-scrollbar-track {
     /* background: 0 0; */
-    background: var(--theme);
+    /* background: var(--theme); */
 }
 
 .list:not(.dark)::-webkit-scrollbar-track {
