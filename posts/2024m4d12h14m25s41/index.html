@@ -1,0 +1,249 @@
+<!doctype html><html lang=en dir=" auto">
+<head><meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta charset=utf-8>
+<meta name=Share-Source-Verification content="https://blog.zhangyingwei.com/">
+<meta http-equiv=cache-control content="no-transform">
+<meta http-equiv=cache-control content="no-siteapp">
+<meta name=renderer content="webkit">
+<meta name=apple-mobile-web-app-capable content="yes">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta property="og:title" content="数据处理中的责任链模式">
+<meta property="og:image" content="/images/favicon64.ico">
+<meta name=msvalidate.01 content="1B50C3A24BF817BB86D82C8429075AE4">
+<meta name=bytedance-verification-code content="rjX6knbDoNxpR4Asxe2M">
+<meta name=robots content="index, follow">
+<title>数据处理中的责任链模式 | 胡说</title>
+<meta name=keywords content="胡说,静态博客,张英伟,张英伟的个人博客,Java,SpringBoot,Obsidian,数据处理,设计模式,责任链模式">
+<meta name=description content="在我的工作中，数据处理占据了比较大的权重。在数据处理的过程中，有一项比较繁琐的工作，就是对日志中的每个字段进行单独校验和处理，校验的内容分别有一下几类：
+ 字段数量校验 字段为空判断 字段内容校验 特殊字段校验、信息补充 增加标签字段  在这类场景中，最常规的方法就是编写冗长的 if-else 代码段进行按部就班的校验，这显然不是最佳方案。
+责任链模式可以有效地解决上述繁琐的工作。通过将不同的校验和处理逻辑分配给不同的处理者，形成一条责任链，数据依次通过各个处理者进行处理。这样做的好处是：
+ 避免编写大量的重复 if-else 代码 将每个校验逻辑进行隔离，区分责任边界 逻辑清晰，代码简洁  以下是一个简单的责任链模式代码示例：
+public class ChainHandler { private List<Handler> handlers; public ChainHandler() { this.handlers = new ArrayList<>(); } public void addHandler(Handler handler) { handlers.add(handler); } public boolean handle(LogEntry logEntry) { for (Handler handler : handlers) { handler.handle(logEntry); if (!handler.isComplete()) { return false; // 如果处理程序未完成，则整个处理链失败  } } return true; // 如果所有处理程序均完成，则整个处理链成功  } } // 定义责任链接口 public interface Handler { boolean isComplete(); void handle(LogEntry logEntry); } // 字段数量校验 public class FieldCountHandler implements Handler { @Override public boolean isComplete() { // 检查字段数量是否满足要求  return true; } @Override public void handle(LogEntry logEntry) { // 进行字段数量的校验和处理  } } 在上述代码中，ChainHandler 类管理责任链中的处理者。FieldCountHandler 和 FieldContentHandler 分别是处理字段数量和字段内容的处理者实现。">
+<meta name=author content="zhangyw">
+<link rel=canonical href=https://blog.zhangyingwei.com/posts/2024m4d12h14m25s41/>
+<link crossorigin=anonymous href=/assets/css/stylesheet.min.aaa22db3cdacc948a29b96b6ee3741f2327c102d2eb99e63e7d362aeeec4718f.css integrity="sha256-qqIts82syUiim5a27jdB8jJ8EC0uuZ5j59Niru7EcY8=" rel="preload stylesheet" as=style>
+<script defer crossorigin=anonymous src=/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI=" onload=hljs.initHighlightingOnLoad()></script>
+<link rel=icon href=https://blog.zhangyingwei.com/images/favicon64.ico>
+<link rel=icon type=image/png sizes=16x16 href=https://blog.zhangyingwei.com/images/favicon16.ico>
+<link rel=icon type=image/png sizes=32x32 href=https://blog.zhangyingwei.com/images/favicon32.ico>
+<link rel=apple-touch-icon href=https://blog.zhangyingwei.com/apple-touch-icon.png>
+<link rel=mask-icon href=https://blog.zhangyingwei.com/safari-pinned-tab.svg>
+<meta name=theme-color content="#2e2e33">
+<meta name=msapplication-TileColor content="#2e2e33">
+<noscript>
+<style>#theme-toggle,.top-link{display:none}</style>
+<style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--hljs-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style>
+</noscript><link href=https://hushuo.zhangyingwei.com/NotoSerifSC.css rel=stylesheet>
+<link href=https://hushuo.zhangyingwei.com/JetBrainsMono.css rel=stylesheet>
+<script>var _hmt=_hmt||[];(function(){var a=document.createElement("script"),b;a.src="https://hm.baidu.com/hm.js?ba380df4e327c711daf3b841b4089ce4",b=document.getElementsByTagName("script")[0],b.parentNode.insertBefore(a,b)})()</script>
+<script async src=https://umami.zhangyingwei.com/script.js data-website-id=cb41ccbd-6ee9-4587-9c03-d872f2d10472></script><meta property="og:title" content="数据处理中的责任链模式">
+<meta property="og:description" content="在我的工作中，数据处理占据了比较大的权重。在数据处理的过程中，有一项比较繁琐的工作，就是对日志中的每个字段进行单独校验和处理，校验的内容分别有一下几类：
+ 字段数量校验 字段为空判断 字段内容校验 特殊字段校验、信息补充 增加标签字段  在这类场景中，最常规的方法就是编写冗长的 if-else 代码段进行按部就班的校验，这显然不是最佳方案。
+责任链模式可以有效地解决上述繁琐的工作。通过将不同的校验和处理逻辑分配给不同的处理者，形成一条责任链，数据依次通过各个处理者进行处理。这样做的好处是：
+ 避免编写大量的重复 if-else 代码 将每个校验逻辑进行隔离，区分责任边界 逻辑清晰，代码简洁  以下是一个简单的责任链模式代码示例：
+public class ChainHandler { private List<Handler> handlers; public ChainHandler() { this.handlers = new ArrayList<>(); } public void addHandler(Handler handler) { handlers.add(handler); } public boolean handle(LogEntry logEntry) { for (Handler handler : handlers) { handler.handle(logEntry); if (!handler.isComplete()) { return false; // 如果处理程序未完成，则整个处理链失败  } } return true; // 如果所有处理程序均完成，则整个处理链成功  } } // 定义责任链接口 public interface Handler { boolean isComplete(); void handle(LogEntry logEntry); } // 字段数量校验 public class FieldCountHandler implements Handler { @Override public boolean isComplete() { // 检查字段数量是否满足要求  return true; } @Override public void handle(LogEntry logEntry) { // 进行字段数量的校验和处理  } } 在上述代码中，ChainHandler 类管理责任链中的处理者。FieldCountHandler 和 FieldContentHandler 分别是处理字段数量和字段内容的处理者实现。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.zhangyingwei.com/posts/2024m4d12h14m25s41/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2024-04-12T14:25:41+08:00">
+<meta property="article:modified_time" content="2024-04-12T14:25:41+08:00"><meta property="og:site_name" content="胡说">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://blog.zhangyingwei.com/posts/"},{"@type":"ListItem","position":2,"name":"数据处理中的责任链模式","item":"https://blog.zhangyingwei.com/posts/2024m4d12h14m25s41/"}]}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"数据处理中的责任链模式","name":"数据处理中的责任链模式","description":"在我的工作中，数据处理占据了比较大的权重。在数据处理的过程中，有一项比较繁琐的工作，就是对日志中的每个字段进行单独校验和处理，校验的内容分别有一下几类：\n 字段数量校验 字段为空判断 字段内容校验 特殊字段校验、信息补充 增加标签字段  在这类场景中，最常规的方法就是编写冗长的 if-else 代码段进行按部就班的校验，这显然不是最佳方案。\n责任链模式可以有效地解决上述繁琐的工作。通过将不同的校验和处理逻辑分配给不同的处理者，形成一条责任链，数据依次通过各个处理者进行处理。这样做的好处是：\n 避免编写大量的重复 if-else 代码 将每个校验逻辑进行隔离，区分责任边界 逻辑清晰，代码简洁  以下是一个简单的责任链模式代码示例：\npublic class ChainHandler { private List\u0026lt;Handler\u0026gt; handlers; public ChainHandler() { this.handlers = new ArrayList\u0026lt;\u0026gt;(); } public void addHandler(Handler handler) { handlers.add(handler); } public boolean handle(LogEntry logEntry) { for (Handler handler : handlers) { handler.handle(logEntry); if (!handler.isComplete()) { return false; // 如果处理程序未完成，则整个处理链失败  } } return true; // 如果所有处理程序均完成，则整个处理链成功  } } // 定义责任链接口 public interface Handler { boolean isComplete(); void handle(LogEntry logEntry); } // 字段数量校验 public class FieldCountHandler implements Handler { @Override public boolean isComplete() { // 检查字段数量是否满足要求  return true; } @Override public void handle(LogEntry logEntry) { // 进行字段数量的校验和处理  } } 在上述代码中，ChainHandler 类管理责任链中的处理者。FieldCountHandler 和 FieldContentHandler 分别是处理字段数量和字段内容的处理者实现。","keywords":["胡说","静态博客","张英伟","张英伟的个人博客","Java","SpringBoot","Obsidian","数据处理","设计模式","责任链模式"],"articleBody":"在我的工作中，数据处理占据了比较大的权重。在数据处理的过程中，有一项比较繁琐的工作，就是对日志中的每个字段进行单独校验和处理，校验的内容分别有一下几类：\n 字段数量校验 字段为空判断 字段内容校验 特殊字段校验、信息补充 增加标签字段  在这类场景中，最常规的方法就是编写冗长的 if-else 代码段进行按部就班的校验，这显然不是最佳方案。\n责任链模式可以有效地解决上述繁琐的工作。通过将不同的校验和处理逻辑分配给不同的处理者，形成一条责任链，数据依次通过各个处理者进行处理。这样做的好处是：\n 避免编写大量的重复 if-else 代码 将每个校验逻辑进行隔离，区分责任边界 逻辑清晰，代码简洁  以下是一个简单的责任链模式代码示例：\npublic class ChainHandler { private ListHandler handlers; public ChainHandler() { this.handlers = new ArrayList(); } public void addHandler(Handler handler) { handlers.add(handler); } public boolean handle(LogEntry logEntry) { for (Handler handler : handlers) { handler.handle(logEntry); if (!handler.isComplete()) { return false; // 如果处理程序未完成，则整个处理链失败  } } return true; // 如果所有处理程序均完成，则整个处理链成功  } } // 定义责任链接口 public interface Handler { boolean isComplete(); void handle(LogEntry logEntry); } // 字段数量校验 public class FieldCountHandler implements Handler { @Override public boolean isComplete() { // 检查字段数量是否满足要求  return true; } @Override public void handle(LogEntry logEntry) { // 进行字段数量的校验和处理  } } 在上述代码中，ChainHandler 类管理责任链中的处理者。FieldCountHandler 和 FieldContentHandler 分别是处理字段数量和字段内容的处理者实现。\n通过这种方式，我们只需要编写最基础的 handler 即可完成大量的校验。各个 handler 之间互相隔离，最终的伪代码如下：\npublic class LogEntry { // 假设这是日志条目的类定义，包含各个字段  ... 内容省略 } public class Main { public static void main(String[] args) { ListLogEntry logEntrys = getLogEntries(); // 创建处理程序对象并添加到处理链中  ChainHandler chainHandler = new ChainHandler(); // 构造责任链  chainHandler.addHandler(new FieldCountHandler()); // 字段数量校验  chainHandler.addHandler(new PortFormatHandler()); // 端口校验  chainHandler.addHandler(new IPFormatHandler()); // IP 校验  chainHandler.addHandler(new GeoLocationHandler()); // IP 地理位置信息填充  chainHandler.addHandler(new FieldMappingHandler()); // 字段映射  // 遍历日志条目列表并执行处理 \tfor (LogEntry logEntry : logEntrys) { boolean success = chainHandler.handle(logEntry); // 根据处理结果输出相应信息 \tif (success) { System.out.println(\"日志校验成功\"); } else { System.out.println(\"日志校验失败\"); } } } } // 举例1，其他样例请自行填充 public class PortFormatHandler implements Handler { @Override public boolean isComplete() { // 检查字段1是否符合端口格式  // 假设端口格式合法的条件是字段1为数字且在0到65535之间  return true; } @Override public void handle(LogEntry logEntry) { // 进行字段1端口格式的校验和处理  } } 以上代码执行流程如图：\ngraph LR FieldCountHandler -- PortFormatHandler PortFormatHandler -- IPFormatHandler IPFormatHandler -- GeoLocationHandler GeoLocationHandler-- FieldMappingHandler 以上便是责任链模式在数据处理过程中一些简单的应用，当然在实际工作中可能还会遇到一些其他的挑战，比如：\n 在责任链中需要传递上下文信息 责任链之间需要有依赖关系 提高责任链的执行效率  以上等等都是当前举例的责任链所不具备的功能，总之，所谓的设计模式都是为业务服务的，是一些经过前人总结出来的固定套路，但是随着业务需求的变化，套路也需要学会进化。\n","wordCount":"244","inLanguage":"en","datePublished":"2024-04-12T14:25:41+08:00","dateModified":"2024-04-12T14:25:41+08:00","author":{"@type":"Person","name":"zhangyw"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.zhangyingwei.com/posts/2024m4d12h14m25s41/"},"publisher":{"@type":"Organization","name":"胡说","logo":{"@type":"ImageObject","url":"https://blog.zhangyingwei.com/images/favicon64.ico"}}}</script>
+</head>
+<body class="font-activate bg-color mt-20" id="
+    top">
+<script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add('dark'):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove('dark'):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add('dark')</script>
+<header class="header font-activate sticky-element shadow-b">
+<nav class=nav>
+<div class=logo>
+<a href=https://blog.zhangyingwei.com/ accesskey=h title="胡说 (Alt + H)">胡说</a>
+<span class=logo-switches>
+<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+</span>
+</div>
+<ul id=menu>
+<li>
+<a href=https://blog.zhangyingwei.com/series/ title=系列文章>
+<span>系列文章</span>
+</a>
+</li>
+<li>
+<a href=https://blog.zhangyingwei.com/archives/ title=归档>
+<span>归档</span>
+</a>
+</li>
+<li>
+<a href=https://blog.zhangyingwei.com/tags/ title=标签>
+<span>标签</span>
+</a>
+</li>
+</ul>
+</nav>
+</header><div style=height:20px></div>
+<main class="main font-activate bg-color">
+<article class="post-single item-padding">
+<header class=post-header>
+<h1 class=post-title>
+数据处理中的责任链模式
+</h1>
+<div class=post-info>2024/04/12
+<ul id=series>
+🅰️
+<li> <a href=https://blog.zhangyingwei.com/%20topics/java-%E7%B3%BB%E5%88%97>Java 系列</a> </li>
+</ul>
+<ul id=categories>
+✨
+<li><a href=https://blog.zhangyingwei.com/%20categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB>经验分享</a> </li>
+</ul>
+</div>
+</header>
+<div class=post-content><p>在我的工作中，数据处理占据了比较大的权重。在数据处理的过程中，有一项比较繁琐的工作，就是对日志中的每个字段进行单独校验和处理，校验的内容分别有一下几类：</p>
+<ul>
+<li>字段数量校验</li>
+<li>字段为空判断</li>
+<li>字段内容校验</li>
+<li>特殊字段校验、信息补充</li>
+<li>增加标签字段</li>
+</ul>
+<p>在这类场景中，最常规的方法就是编写冗长的 <code>if-else</code> 代码段进行按部就班的校验，这显然不是最佳方案。</p>
+<p>责任链模式可以有效地解决上述繁琐的工作。通过将不同的校验和处理逻辑分配给不同的处理者，形成一条责任链，数据依次通过各个处理者进行处理。这样做的好处是：</p>
+<ol>
+<li>避免编写大量的重复 <code>if-else</code> 代码</li>
+<li>将每个校验逻辑进行隔离，区分责任边界</li>
+<li>逻辑清晰，代码简洁</li>
+</ol>
+<p>以下是一个简单的责任链模式代码示例：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ChainHandler</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>private</span> List<span style=color:#f92672>&lt;</span>Handler<span style=color:#f92672>&gt;</span> handlers<span style=color:#f92672>;</span>
+
+    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>ChainHandler</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+        <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>handlers</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;();</span>
+    <span style=color:#f92672>}</span>
+
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>addHandler</span><span style=color:#f92672>(</span>Handler handler<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        handlers<span style=color:#f92672>.</span><span style=color:#a6e22e>add</span><span style=color:#f92672>(</span>handler<span style=color:#f92672>);</span>
+    <span style=color:#f92672>}</span>
+
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>boolean</span> <span style=color:#a6e22e>handle</span><span style=color:#f92672>(</span>LogEntry logEntry<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span>Handler handler <span style=color:#f92672>:</span> handlers<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            handler<span style=color:#f92672>.</span><span style=color:#a6e22e>handle</span><span style=color:#f92672>(</span>logEntry<span style=color:#f92672>);</span>
+            <span style=color:#66d9ef>if</span> <span style=color:#f92672>(!</span>handler<span style=color:#f92672>.</span><span style=color:#a6e22e>isComplete</span><span style=color:#f92672>())</span> <span style=color:#f92672>{</span>
+                <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span><span style=color:#f92672>;</span> <span style=color:#75715e>// 如果处理程序未完成，则整个处理链失败
+</span><span style=color:#75715e></span>            <span style=color:#f92672>}</span>
+        <span style=color:#f92672>}</span>
+        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>true</span><span style=color:#f92672>;</span> <span style=color:#75715e>// 如果所有处理程序均完成，则整个处理链成功
+</span><span style=color:#75715e></span>    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+
+<span style=color:#75715e>// 定义责任链接口
+</span><span style=color:#75715e></span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>interface</span> <span style=color:#a6e22e>Handler</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>boolean</span> <span style=color:#a6e22e>isComplete</span><span style=color:#f92672>();</span>
+    <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>handle</span><span style=color:#f92672>(</span>LogEntry logEntry<span style=color:#f92672>);</span>
+<span style=color:#f92672>}</span>
+
+<span style=color:#75715e>// 字段数量校验
+</span><span style=color:#75715e></span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>FieldCountHandler</span> <span style=color:#66d9ef>implements</span> Handler <span style=color:#f92672>{</span>
+    <span style=color:#a6e22e>@Override</span>
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>boolean</span> <span style=color:#a6e22e>isComplete</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+        <span style=color:#75715e>// 检查字段数量是否满足要求
+</span><span style=color:#75715e></span>        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>true</span><span style=color:#f92672>;</span> 
+    <span style=color:#f92672>}</span>
+
+    <span style=color:#a6e22e>@Override</span>
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>handle</span><span style=color:#f92672>(</span>LogEntry logEntry<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        <span style=color:#75715e>// 进行字段数量的校验和处理
+</span><span style=color:#75715e></span>    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><p>在上述代码中，<code>ChainHandler</code> 类管理责任链中的处理者。<code>FieldCountHandler</code> 和 <code>FieldContentHandler</code> 分别是处理字段数量和字段内容的处理者实现。</p>
+<p>通过这种方式，我们只需要编写最基础的 handler 即可完成大量的校验。各个 handler 之间互相隔离，最终的伪代码如下：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>LogEntry</span> <span style=color:#f92672>{</span>
+    <span style=color:#75715e>// 假设这是日志条目的类定义，包含各个字段
+</span><span style=color:#75715e></span>    <span style=color:#f92672>...</span> 内容省略
+<span style=color:#f92672>}</span>
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Main</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String<span style=color:#f92672>[]</span> args<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        List<span style=color:#f92672>&lt;</span>LogEntry<span style=color:#f92672>&gt;</span> logEntrys <span style=color:#f92672>=</span> getLogEntries<span style=color:#f92672>();</span>
+		
+        <span style=color:#75715e>// 创建处理程序对象并添加到处理链中
+</span><span style=color:#75715e></span>        ChainHandler chainHandler <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> ChainHandler<span style=color:#f92672>();</span> <span style=color:#75715e>// 构造责任链
+</span><span style=color:#75715e></span>        chainHandler<span style=color:#f92672>.</span><span style=color:#a6e22e>addHandler</span><span style=color:#f92672>(</span><span style=color:#66d9ef>new</span> FieldCountHandler<span style=color:#f92672>());</span> <span style=color:#75715e>// 字段数量校验
+</span><span style=color:#75715e></span>        chainHandler<span style=color:#f92672>.</span><span style=color:#a6e22e>addHandler</span><span style=color:#f92672>(</span><span style=color:#66d9ef>new</span> PortFormatHandler<span style=color:#f92672>());</span> <span style=color:#75715e>// 端口校验
+</span><span style=color:#75715e></span>        chainHandler<span style=color:#f92672>.</span><span style=color:#a6e22e>addHandler</span><span style=color:#f92672>(</span><span style=color:#66d9ef>new</span> IPFormatHandler<span style=color:#f92672>());</span> <span style=color:#75715e>// IP 校验
+</span><span style=color:#75715e></span>        chainHandler<span style=color:#f92672>.</span><span style=color:#a6e22e>addHandler</span><span style=color:#f92672>(</span><span style=color:#66d9ef>new</span> GeoLocationHandler<span style=color:#f92672>());</span> <span style=color:#75715e>// IP 地理位置信息填充
+</span><span style=color:#75715e></span>        chainHandler<span style=color:#f92672>.</span><span style=color:#a6e22e>addHandler</span><span style=color:#f92672>(</span><span style=color:#66d9ef>new</span> FieldMappingHandler<span style=color:#f92672>());</span> <span style=color:#75715e>// 字段映射
+</span><span style=color:#75715e></span>        
+		<span style=color:#75715e>// 遍历日志条目列表并执行处理 
+</span><span style=color:#75715e></span>		<span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span>LogEntry logEntry <span style=color:#f92672>:</span> logEntrys<span style=color:#f92672>)</span> <span style=color:#f92672>{</span> 
+			<span style=color:#66d9ef>boolean</span> success <span style=color:#f92672>=</span> chainHandler<span style=color:#f92672>.</span><span style=color:#a6e22e>handle</span><span style=color:#f92672>(</span>logEntry<span style=color:#f92672>);</span> 
+			<span style=color:#75715e>// 根据处理结果输出相应信息 
+</span><span style=color:#75715e></span>			<span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>success<span style=color:#f92672>)</span> <span style=color:#f92672>{</span> 
+				System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;日志校验成功&#34;</span><span style=color:#f92672>);</span> 
+			<span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#f92672>{</span> 
+				System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;日志校验失败&#34;</span><span style=color:#f92672>);</span> 
+			<span style=color:#f92672>}</span> 
+		<span style=color:#f92672>}</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+
+<span style=color:#75715e>// 举例1，其他样例请自行填充
+</span><span style=color:#75715e></span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>PortFormatHandler</span> <span style=color:#66d9ef>implements</span> Handler <span style=color:#f92672>{</span>
+    <span style=color:#a6e22e>@Override</span>
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>boolean</span> <span style=color:#a6e22e>isComplete</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+        <span style=color:#75715e>// 检查字段1是否符合端口格式
+</span><span style=color:#75715e></span>        <span style=color:#75715e>// 假设端口格式合法的条件是字段1为数字且在0到65535之间
+</span><span style=color:#75715e></span>        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>true</span><span style=color:#f92672>;</span> 
+    <span style=color:#f92672>}</span>
+    <span style=color:#a6e22e>@Override</span>
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>handle</span><span style=color:#f92672>(</span>LogEntry logEntry<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        <span style=color:#75715e>// 进行字段1端口格式的校验和处理
+</span><span style=color:#75715e></span>    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><p>以上代码执行流程如图：</p>
+<pre tabindex=0><code class=language-mermaid data-lang=mermaid>graph LR
+    FieldCountHandler --&gt; PortFormatHandler
+    PortFormatHandler --&gt; IPFormatHandler
+	IPFormatHandler --&gt; GeoLocationHandler
+	GeoLocationHandler--&gt; FieldMappingHandler
+</code></pre><p>以上便是责任链模式在数据处理过程中一些简单的应用，当然在实际工作中可能还会遇到一些其他的挑战，比如：</p>
+<ol>
+<li>在责任链中需要传递上下文信息</li>
+<li>责任链之间需要有依赖关系</li>
+<li>提高责任链的执行效率</li>
+</ol>
+<p>以上等等都是当前举例的责任链所不具备的功能，总之，所谓的设计模式都是为业务服务的，是一些经过前人总结出来的固定套路，但是随着业务需求的变化，套路也需要学会进化。</p>
+</div>
+<link href=https://comment.fascloud.org/dist/Artalk.css rel=stylesheet>
+<style>.dark .atk-main-editor{background-color:#37383e!important;border:1px solid #555660!important}.dark .artalk{color:#bdbdbe!important}.dark .atk-main-editor>.atk-textarea-wrap>.atk-textarea{background-color:#37383e!important;color:#bdbdbe!important}.dark .atk-editor-plug-emoticons>.atk-grp-switcher{background:#37383e!important;border-top:1px solid #555660!important;border-bottom:1px solid #555660!important}.dark .atk-editor-plug-emoticons>.atk-grp-switcher>span:hover,.dark .atk-editor-plug-emoticons>.atk-grp-switcher>span.active{background:#262629!important}.dark .atk-main-editor>.atk-plug-panel-wrap{border-top:1px solid #555660!important}.dark .atk-comment>.atk-main>.atk-header .badge,.atk-comment>.atk-main>.atk-header .atk-ua,.atk-comment>.atk-main>.atk-header .atk-pinned-badge,.atk-comment>.atk-main>.atk-header .atk-region-badge,.atk-comment>.atk-main>.atk-header .atk-badge{color:#bdc6d9!important;background:#000!important}.dark .atk-main-editor>.atk-textarea-wrap>.atk-send-reply{background:rgb(134 134 134/75%)!important}.comment-split-line{text-align:center;font-size:14px;border-bottom:1px solid #eaecef;margin:50px 0;height:0}.comment-split-line::after{content:"评论";background-color:#ececec;border-radius:10px;padding:0 10px;position:relative;top:-10px;color:#6a737d}.dark .comment-split-line::after{background-color:#37383e;color:#bdc6d9}.dark .comment-split-line{border-bottom:1px solid #555660}</style>
+<script src=https://comment.fascloud.org/dist/Artalk.js></script>
+<div class=comment-split-line></div>
+<div id=Comments></div>
+<script>Artalk.init({el:'#Comments',pageKey:'',pageTitle:'',server:'https://comment.fascloud.org/',site:'blog-hushuo'})</script>
+</article>
+<script type=module>  
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs'; 
+    mermaid.initialize({ startOnLoad: true });  
+</script>
+<script>Array.from(document.getElementsByClassName("language-mermaid")).forEach(a=>{a.parentElement.outerHTML=`<div class="mermaid">${a.innerHTML}</div>`})</script>
+<style>.mermaid svg{display:block;margin:auto}</style>
+</main>
+<footer class=footer>
+<span>&copy; 2024 <a href=https://blog.zhangyingwei.com/>胡说</a></span>
+<span>
+Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a>
+</span>
+<span>
+订阅
+<a href=/index.xml rel=noopener target=_blank>RSS</a>
+</span>
+</footer>
+<a href=# aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a>
+<script></script>
+<script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
+<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
+<script>document.querySelectorAll('pre > code').forEach(b=>{const c=b.parentNode.parentNode;b.classList.add('font-activate');const a=document.createElement('button');a.classList.add('copy-code'),a.innerText='copy';function d(){a.innerText='copied!',setTimeout(()=>{a.innerText='copy'},2e3)}a.addEventListener('click',e=>{if('clipboard'in navigator){navigator.clipboard.writeText(b.textContent),d();return}const a=document.createRange();a.selectNodeContents(b);const c=window.getSelection();c.removeAllRanges(),c.addRange(a);try{document.execCommand('copy'),d()}catch(a){}c.removeRange(a)}),c.classList.contains("highlight")?c.appendChild(a):c.parentNode.firstChild==c||(b.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?b.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(a):b.parentNode.appendChild(a))})</script></body>
+</html>

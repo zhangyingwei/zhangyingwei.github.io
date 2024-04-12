@@ -6,7 +6,20 @@
     <description>Recent content in 大数据 on 胡说</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-ch</language>
-    <lastBuildDate>Tue, 02 Jan 2024 10:23:15 +0800</lastBuildDate><atom:link href="https://blog.zhangyingwei.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 Apr 2024 14:25:41 +0800</lastBuildDate><atom:link href="https://blog.zhangyingwei.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>数据处理中的责任链模式</title>
+      <link>https://blog.zhangyingwei.com/posts/2024m4d12h14m25s41/</link>
+      <pubDate>Fri, 12 Apr 2024 14:25:41 +0800</pubDate>
+      
+      <guid>https://blog.zhangyingwei.com/posts/2024m4d12h14m25s41/</guid>
+      <description>在我的工作中，数据处理占据了比较大的权重。在数据处理的过程中，有一项比较繁琐的工作，就是对日志中的每个字段进行单独校验和处理，校验的内容分别有一下几类：
+ 字段数量校验 字段为空判断 字段内容校验 特殊字段校验、信息补充 增加标签字段  在这类场景中，最常规的方法就是编写冗长的 if-else 代码段进行按部就班的校验，这显然不是最佳方案。
+责任链模式可以有效地解决上述繁琐的工作。通过将不同的校验和处理逻辑分配给不同的处理者，形成一条责任链，数据依次通过各个处理者进行处理。这样做的好处是：
+ 避免编写大量的重复 if-else 代码 将每个校验逻辑进行隔离，区分责任边界 逻辑清晰，代码简洁  以下是一个简单的责任链模式代码示例：
+public class ChainHandler { private List&amp;lt;Handler&amp;gt; handlers; public ChainHandler() { this.handlers = new ArrayList&amp;lt;&amp;gt;(); } public void addHandler(Handler handler) { handlers.add(handler); } public boolean handle(LogEntry logEntry) { for (Handler handler : handlers) { handler.handle(logEntry); if (!handler.isComplete()) { return false; // 如果处理程序未完成，则整个处理链失败  } } return true; // 如果所有处理程序均完成，则整个处理链成功  } } // 定义责任链接口 public interface Handler { boolean isComplete(); void handle(LogEntry logEntry); } // 字段数量校验 public class FieldCountHandler implements Handler { @Override public boolean isComplete() { // 检查字段数量是否满足要求  return true; } @Override public void handle(LogEntry logEntry) { // 进行字段数量的校验和处理  } } 在上述代码中，ChainHandler 类管理责任链中的处理者。FieldCountHandler 和 FieldContentHandler 分别是处理字段数量和字段内容的处理者实现。</description>
+    </item>
+    
     <item>
       <title>探索 Kafka 消息丢失的问题和解决方案</title>
       <link>https://blog.zhangyingwei.com/posts/2024m4d2h10m23s15/</link>
