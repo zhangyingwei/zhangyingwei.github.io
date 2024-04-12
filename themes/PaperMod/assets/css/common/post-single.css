@@ -121,12 +121,15 @@
 }
 
 .post-content li {
-    padding-bottom: 10px;
+    padding-bottom: 0px;
 }
 
-.post-content ol,
-.post-content li {
-    margin-top: 5px;
+.post-content ol:first-child,.post-content li:first-child {
+    margin-top: 0px;
+}
+
+.post-content ol,.post-content li {
+    padding-top: 5px;
 }
 
 .post-content li p {

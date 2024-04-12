@@ -20,18 +20,6 @@
               },
               "pinned": true
             }
-          },
-          {
-            "id": "ebd8026d3b67d8d4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "content/posts/2024m4d2h10m23s15.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
         ]
       }
@@ -156,9 +144,11 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "16fa23d3d8e1c290",
+  "active": "6c42e4f1ae7fc84c",
   "lastOpenFiles": [
     "content/posts/2024m4d2h10m23s15.md",
+    "content/posts/2024m4d12h14m25s41.md",
+    "themes/PaperMod/layouts/partials/mermaid.html",
     "obs_scripts/主面板.md",
     "content/posts/2024m4d2h10m4s42.md",
     "content/posts/2024m1d31h10m33s20.md",
@@ -180,7 +170,6 @@
     "_site/themes/PaperMod/assets/css/extended/self.css",
     "_site/themes/PaperMod/assets/css/extended/fonts.css",
     "_site/themes/PaperMod/assets/css/extended/blank.css",
-    "_site/themes/PaperMod/assets/css/core/zmedia.css",
     "_site/themes/PaperMod/images/tn.png",
     "_site/themes/PaperMod/images/screenshot.png",
     "_site/themes/PaperMod/README.md",
