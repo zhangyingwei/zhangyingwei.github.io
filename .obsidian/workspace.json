@@ -20,6 +20,18 @@
               },
               "pinned": true
             }
+          },
+          {
+            "id": "3c93668928bf91a4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "content/posts/2024m4d25h10m17s3.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ]
       }
@@ -128,8 +140,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 285.5,
-    "collapsed": true
+    "width": 273.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -146,8 +157,9 @@
   },
   "active": "6c42e4f1ae7fc84c",
   "lastOpenFiles": [
-    "content/posts/2024m4d12h14m25s41.md",
+    "content/posts/2024m4d25h10m17s3.md",
     "obs_scripts/主面板.md",
+    "content/posts/2024m4d12h14m25s41.md",
     "content/posts/2024m4d2h10m23s15.md",
     "themes/PaperMod/layouts/partials/mermaid.html",
     "content/posts/2024m4d2h10m4s42.md",

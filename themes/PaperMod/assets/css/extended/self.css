@@ -140,3 +140,28 @@ tbody {
 .page-footer {
   padding: 20px 0 !important;
 }
+
+table {
+  border-collapse: collapse !important;
+  width: 100%; /* 设置表格宽度为100% */
+}
+
+th, td {
+  border: 1px solid rgb(178, 198, 211) !important; /* 添加单元格的边框 */
+  padding: 8px !important;
+  text-align: left !important;
+  width: 100% !important;
+  font-size: 16px !important;
+}
+
+.dark th, .dark td {
+  border: 1px solid rgb(82, 88, 93) !important;
+}
+
+th:first-child, td:first-child {
+  border-left: 0 !important;
+}
+
+th:last-child, td:last-child {
+  border-right: 0 !important;
+}
