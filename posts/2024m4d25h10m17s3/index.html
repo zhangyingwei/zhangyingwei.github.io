@@ -1,0 +1,356 @@
+<!doctype html><html lang=en dir=" auto">
+<head><meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta charset=utf-8>
+<meta name=Share-Source-Verification content="https://blog.zhangyingwei.com/">
+<meta http-equiv=cache-control content="no-transform">
+<meta http-equiv=cache-control content="no-siteapp">
+<meta name=renderer content="webkit">
+<meta name=apple-mobile-web-app-capable content="yes">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta property="og:title" content="Java 程序优化之-如何更好的利用CPU">
+<meta property="og:image" content="/images/favicon64.ico">
+<meta name=msvalidate.01 content="1B50C3A24BF817BB86D82C8429075AE4">
+<meta name=bytedance-verification-code content="rjX6knbDoNxpR4Asxe2M">
+<meta name=robots content="index, follow">
+<title>Java 程序优化之-如何更好的利用CPU | 胡说</title>
+<meta name=keywords content="胡说,静态博客,张英伟,张英伟的个人博客,Java">
+<meta name=description content="昨天，有人跟我聊起项目中对程序的优化，有一个特别有意思的话题《如何榨干一台机器的CPU》
+现在的市面上，多核CPU是主流，有了多核的加持，可以更加有效的发挥硬件的能力，基于Java程序，我们究竟该如何更加有效的应用多核的能力？我个人经验来讲，主要考虑一下几个方面：
+ 并行执行任务 减少共享数据的写操作 采用合适的方式处理竞争资源 减少数据拷贝次数 合适的GC  接下来详细说明。
+1. 并行执行任务 合理利用多线程执行任务，可以有效的发挥CPU的多核性能。由于超线程技术的存在，实际上CPU可以并行执行的线程数量通常是物理核心数量的2倍。
+我们都知道，在计算机中，进程是操作系统资源（内存、显卡、磁盘）分配的最小单位。线程是CPU执行调度的最小单位。
+因此，实现并行计算的方式大体上有三种：多进程、多线程、多进程+多线程。具体采用哪种方式，就需要实际情况实际分析了。整体指导方针是：如果多线程可以解决，就不要尝试引入多进程。因为每个进程之间是独立的，多进程任务难免会涉及到进程之间通信，而进程之间的协调与通信通常会比较复杂。容易为程序引入额外的复杂度，得不偿失。
+2. 减少共享数据的写操作 深入到线程中，每个线程都有自己的内存空间，在这个内存中，线程可以随意进行读写。因此多线程任务中，提高效率的优化手段之一就是：
+尽量避免多个线程共同操作共享资源，如果条件允许，尽量采用以空间换时间的方式，将数据复制多份保存在每个线程单独的内存空间中。
+如果必须存在共享内存的操作，我们的措施通常是，尽量减少共享数据的写操作，在共享内存中，多个线程的读操作是不存在资源的竞争的。一旦涉及到写共享内存，通常会使用 volatile 关键字保证内存数据对多个线程的可见性，这种情况下就不可避免的要涉及到插入内存屏障指令，用来保证处理器对指令的执行顺序不会打乱。相比不存在内存屏障的操作，性能会有所下降。
+因此，需要尽量减少多个线程对共享内存的写操作。具体的方案是：
+ 通过业务逻辑控制，在程序设计之初，排除掉共享数据的方案 在每个线程内部创建单独的对象，互不影响 使用 ThreadLocal 生成线程的本地对象副本  3. 采用合适的方式处理竞争资源 多线程任务中，涉及到资源竞争的部分，通常都需要采用对应的措施来保证资源的一致性。常见的解决方案有两种：
+ 对资源加线程锁 采用乐观策略实现无锁操作（CAS）  线程锁的使用：
+使用线程锁来保证资源的一致性是由来已久的一种非常简单便捷的方法。这种操作可以粗暴的控制多个线程对资源的访问，所以在处理多线程资源竞争关系的时候，我们通常会优先想到加锁的方式。
+为了提高执行性能，通常会采用轻量级锁来代替重量级锁，在 Java 1.5 中 synchronize 是一个重量级锁，是相对低效率的；相比之下使用 Lock 对象的性能更高一些。但是这种情况到了 Java 1.6 发生了很大的变化，由于官方对 synchronize 引入了适应自旋、锁消除、轻量级锁、偏向锁等优化手段， synchronize 与 Lock 在性能上不存在什么差距。所以如果你使用高于 Java 1.6 的版本，请放心大胆的使用 synchronize 。
+无锁操作（CAS）：
+对于传统的加锁操作，我们通常认为是悲观策略。相对于悲观策略，我们还有一个乐观策略可以选择。乐观策略认为不会存在资源不一致的情况，假如出现了，就再试一次。
+实际上在 Java 中，一些锁的实现也利用了 CAS，体现在 Java 中的应用如下：
+   应用领域 示例     java.">
+<meta name=author content="zhangyw">
+<link rel=canonical href=https://blog.zhangyingwei.com/posts/2024m4d25h10m17s3/>
+<link crossorigin=anonymous href=/assets/css/stylesheet.min.bc60c2f68b02775df2edf558a5a457b0443b9889e71e4790d3df325f09e525ab.css integrity="sha256-vGDC9osCd13y7fVYpaRXsEQ7mInnHkeQ098yXwnlJas=" rel="preload stylesheet" as=style>
+<script defer crossorigin=anonymous src=/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI=" onload=hljs.initHighlightingOnLoad()></script>
+<link rel=icon href=https://blog.zhangyingwei.com/images/favicon64.ico>
+<link rel=icon type=image/png sizes=16x16 href=https://blog.zhangyingwei.com/images/favicon16.ico>
+<link rel=icon type=image/png sizes=32x32 href=https://blog.zhangyingwei.com/images/favicon32.ico>
+<link rel=apple-touch-icon href=https://blog.zhangyingwei.com/apple-touch-icon.png>
+<link rel=mask-icon href=https://blog.zhangyingwei.com/safari-pinned-tab.svg>
+<meta name=theme-color content="#2e2e33">
+<meta name=msapplication-TileColor content="#2e2e33">
+<noscript>
+<style>#theme-toggle,.top-link{display:none}</style>
+<style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--hljs-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style>
+</noscript><link href=https://hushuo.zhangyingwei.com/NotoSerifSC.css rel=stylesheet>
+<link href=https://hushuo.zhangyingwei.com/JetBrainsMono.css rel=stylesheet>
+<script>var _hmt=_hmt||[];(function(){var a=document.createElement("script"),b;a.src="https://hm.baidu.com/hm.js?ba380df4e327c711daf3b841b4089ce4",b=document.getElementsByTagName("script")[0],b.parentNode.insertBefore(a,b)})()</script>
+<script async src=https://umami.zhangyingwei.com/script.js data-website-id=cb41ccbd-6ee9-4587-9c03-d872f2d10472></script><meta property="og:title" content="Java 程序优化之-如何更好的利用CPU">
+<meta property="og:description" content="昨天，有人跟我聊起项目中对程序的优化，有一个特别有意思的话题《如何榨干一台机器的CPU》
+现在的市面上，多核CPU是主流，有了多核的加持，可以更加有效的发挥硬件的能力，基于Java程序，我们究竟该如何更加有效的应用多核的能力？我个人经验来讲，主要考虑一下几个方面：
+ 并行执行任务 减少共享数据的写操作 采用合适的方式处理竞争资源 减少数据拷贝次数 合适的GC  接下来详细说明。
+1. 并行执行任务 合理利用多线程执行任务，可以有效的发挥CPU的多核性能。由于超线程技术的存在，实际上CPU可以并行执行的线程数量通常是物理核心数量的2倍。
+我们都知道，在计算机中，进程是操作系统资源（内存、显卡、磁盘）分配的最小单位。线程是CPU执行调度的最小单位。
+因此，实现并行计算的方式大体上有三种：多进程、多线程、多进程+多线程。具体采用哪种方式，就需要实际情况实际分析了。整体指导方针是：如果多线程可以解决，就不要尝试引入多进程。因为每个进程之间是独立的，多进程任务难免会涉及到进程之间通信，而进程之间的协调与通信通常会比较复杂。容易为程序引入额外的复杂度，得不偿失。
+2. 减少共享数据的写操作 深入到线程中，每个线程都有自己的内存空间，在这个内存中，线程可以随意进行读写。因此多线程任务中，提高效率的优化手段之一就是：
+尽量避免多个线程共同操作共享资源，如果条件允许，尽量采用以空间换时间的方式，将数据复制多份保存在每个线程单独的内存空间中。
+如果必须存在共享内存的操作，我们的措施通常是，尽量减少共享数据的写操作，在共享内存中，多个线程的读操作是不存在资源的竞争的。一旦涉及到写共享内存，通常会使用 volatile 关键字保证内存数据对多个线程的可见性，这种情况下就不可避免的要涉及到插入内存屏障指令，用来保证处理器对指令的执行顺序不会打乱。相比不存在内存屏障的操作，性能会有所下降。
+因此，需要尽量减少多个线程对共享内存的写操作。具体的方案是：
+ 通过业务逻辑控制，在程序设计之初，排除掉共享数据的方案 在每个线程内部创建单独的对象，互不影响 使用 ThreadLocal 生成线程的本地对象副本  3. 采用合适的方式处理竞争资源 多线程任务中，涉及到资源竞争的部分，通常都需要采用对应的措施来保证资源的一致性。常见的解决方案有两种：
+ 对资源加线程锁 采用乐观策略实现无锁操作（CAS）  线程锁的使用：
+使用线程锁来保证资源的一致性是由来已久的一种非常简单便捷的方法。这种操作可以粗暴的控制多个线程对资源的访问，所以在处理多线程资源竞争关系的时候，我们通常会优先想到加锁的方式。
+为了提高执行性能，通常会采用轻量级锁来代替重量级锁，在 Java 1.5 中 synchronize 是一个重量级锁，是相对低效率的；相比之下使用 Lock 对象的性能更高一些。但是这种情况到了 Java 1.6 发生了很大的变化，由于官方对 synchronize 引入了适应自旋、锁消除、轻量级锁、偏向锁等优化手段， synchronize 与 Lock 在性能上不存在什么差距。所以如果你使用高于 Java 1.6 的版本，请放心大胆的使用 synchronize 。
+无锁操作（CAS）：
+对于传统的加锁操作，我们通常认为是悲观策略。相对于悲观策略，我们还有一个乐观策略可以选择。乐观策略认为不会存在资源不一致的情况，假如出现了，就再试一次。
+实际上在 Java 中，一些锁的实现也利用了 CAS，体现在 Java 中的应用如下：
+   应用领域 示例     java.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.zhangyingwei.com/posts/2024m4d25h10m17s3/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2024-04-25T10:17:04+08:00">
+<meta property="article:modified_time" content="2024-04-25T10:17:04+08:00"><meta property="og:site_name" content="胡说">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://blog.zhangyingwei.com/posts/"},{"@type":"ListItem","position":2,"name":"Java 程序优化之-如何更好的利用CPU","item":"https://blog.zhangyingwei.com/posts/2024m4d25h10m17s3/"}]}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Java 程序优化之-如何更好的利用CPU","name":"Java 程序优化之-如何更好的利用CPU","description":"昨天，有人跟我聊起项目中对程序的优化，有一个特别有意思的话题《如何榨干一台机器的CPU》\n现在的市面上，多核CPU是主流，有了多核的加持，可以更加有效的发挥硬件的能力，基于Java程序，我们究竟该如何更加有效的应用多核的能力？我个人经验来讲，主要考虑一下几个方面：\n 并行执行任务 减少共享数据的写操作 采用合适的方式处理竞争资源 减少数据拷贝次数 合适的GC  接下来详细说明。\n1. 并行执行任务 合理利用多线程执行任务，可以有效的发挥CPU的多核性能。由于超线程技术的存在，实际上CPU可以并行执行的线程数量通常是物理核心数量的2倍。\n我们都知道，在计算机中，进程是操作系统资源（内存、显卡、磁盘）分配的最小单位。线程是CPU执行调度的最小单位。\n因此，实现并行计算的方式大体上有三种：多进程、多线程、多进程+多线程。具体采用哪种方式，就需要实际情况实际分析了。整体指导方针是：如果多线程可以解决，就不要尝试引入多进程。因为每个进程之间是独立的，多进程任务难免会涉及到进程之间通信，而进程之间的协调与通信通常会比较复杂。容易为程序引入额外的复杂度，得不偿失。\n2. 减少共享数据的写操作 深入到线程中，每个线程都有自己的内存空间，在这个内存中，线程可以随意进行读写。因此多线程任务中，提高效率的优化手段之一就是：\n尽量避免多个线程共同操作共享资源，如果条件允许，尽量采用以空间换时间的方式，将数据复制多份保存在每个线程单独的内存空间中。\n如果必须存在共享内存的操作，我们的措施通常是，尽量减少共享数据的写操作，在共享内存中，多个线程的读操作是不存在资源的竞争的。一旦涉及到写共享内存，通常会使用 volatile 关键字保证内存数据对多个线程的可见性，这种情况下就不可避免的要涉及到插入内存屏障指令，用来保证处理器对指令的执行顺序不会打乱。相比不存在内存屏障的操作，性能会有所下降。\n因此，需要尽量减少多个线程对共享内存的写操作。具体的方案是：\n 通过业务逻辑控制，在程序设计之初，排除掉共享数据的方案 在每个线程内部创建单独的对象，互不影响 使用 ThreadLocal 生成线程的本地对象副本  3. 采用合适的方式处理竞争资源 多线程任务中，涉及到资源竞争的部分，通常都需要采用对应的措施来保证资源的一致性。常见的解决方案有两种：\n 对资源加线程锁 采用乐观策略实现无锁操作（CAS）  线程锁的使用：\n使用线程锁来保证资源的一致性是由来已久的一种非常简单便捷的方法。这种操作可以粗暴的控制多个线程对资源的访问，所以在处理多线程资源竞争关系的时候，我们通常会优先想到加锁的方式。\n为了提高执行性能，通常会采用轻量级锁来代替重量级锁，在 Java 1.5 中 synchronize 是一个重量级锁，是相对低效率的；相比之下使用 Lock 对象的性能更高一些。但是这种情况到了 Java 1.6 发生了很大的变化，由于官方对 synchronize 引入了适应自旋、锁消除、轻量级锁、偏向锁等优化手段， synchronize 与 Lock 在性能上不存在什么差距。所以如果你使用高于 Java 1.6 的版本，请放心大胆的使用 synchronize 。\n无锁操作（CAS）：\n对于传统的加锁操作，我们通常认为是悲观策略。相对于悲观策略，我们还有一个乐观策略可以选择。乐观策略认为不会存在资源不一致的情况，假如出现了，就再试一次。\n实际上在 Java 中，一些锁的实现也利用了 CAS，体现在 Java 中的应用如下：\n   应用领域 示例     java.","keywords":["胡说","静态博客","张英伟","张英伟的个人博客","Java"],"articleBody":"昨天，有人跟我聊起项目中对程序的优化，有一个特别有意思的话题《如何榨干一台机器的CPU》\n现在的市面上，多核CPU是主流，有了多核的加持，可以更加有效的发挥硬件的能力，基于Java程序，我们究竟该如何更加有效的应用多核的能力？我个人经验来讲，主要考虑一下几个方面：\n 并行执行任务 减少共享数据的写操作 采用合适的方式处理竞争资源 减少数据拷贝次数 合适的GC  接下来详细说明。\n1. 并行执行任务 合理利用多线程执行任务，可以有效的发挥CPU的多核性能。由于超线程技术的存在，实际上CPU可以并行执行的线程数量通常是物理核心数量的2倍。\n我们都知道，在计算机中，进程是操作系统资源（内存、显卡、磁盘）分配的最小单位。线程是CPU执行调度的最小单位。\n因此，实现并行计算的方式大体上有三种：多进程、多线程、多进程+多线程。具体采用哪种方式，就需要实际情况实际分析了。整体指导方针是：如果多线程可以解决，就不要尝试引入多进程。因为每个进程之间是独立的，多进程任务难免会涉及到进程之间通信，而进程之间的协调与通信通常会比较复杂。容易为程序引入额外的复杂度，得不偿失。\n2. 减少共享数据的写操作 深入到线程中，每个线程都有自己的内存空间，在这个内存中，线程可以随意进行读写。因此多线程任务中，提高效率的优化手段之一就是：\n尽量避免多个线程共同操作共享资源，如果条件允许，尽量采用以空间换时间的方式，将数据复制多份保存在每个线程单独的内存空间中。\n如果必须存在共享内存的操作，我们的措施通常是，尽量减少共享数据的写操作，在共享内存中，多个线程的读操作是不存在资源的竞争的。一旦涉及到写共享内存，通常会使用 volatile 关键字保证内存数据对多个线程的可见性，这种情况下就不可避免的要涉及到插入内存屏障指令，用来保证处理器对指令的执行顺序不会打乱。相比不存在内存屏障的操作，性能会有所下降。\n因此，需要尽量减少多个线程对共享内存的写操作。具体的方案是：\n 通过业务逻辑控制，在程序设计之初，排除掉共享数据的方案 在每个线程内部创建单独的对象，互不影响 使用 ThreadLocal 生成线程的本地对象副本  3. 采用合适的方式处理竞争资源 多线程任务中，涉及到资源竞争的部分，通常都需要采用对应的措施来保证资源的一致性。常见的解决方案有两种：\n 对资源加线程锁 采用乐观策略实现无锁操作（CAS）  线程锁的使用：\n使用线程锁来保证资源的一致性是由来已久的一种非常简单便捷的方法。这种操作可以粗暴的控制多个线程对资源的访问，所以在处理多线程资源竞争关系的时候，我们通常会优先想到加锁的方式。\n为了提高执行性能，通常会采用轻量级锁来代替重量级锁，在 Java 1.5 中 synchronize 是一个重量级锁，是相对低效率的；相比之下使用 Lock 对象的性能更高一些。但是这种情况到了 Java 1.6 发生了很大的变化，由于官方对 synchronize 引入了适应自旋、锁消除、轻量级锁、偏向锁等优化手段， synchronize 与 Lock 在性能上不存在什么差距。所以如果你使用高于 Java 1.6 的版本，请放心大胆的使用 synchronize 。\n无锁操作（CAS）：\n对于传统的加锁操作，我们通常认为是悲观策略。相对于悲观策略，我们还有一个乐观策略可以选择。乐观策略认为不会存在资源不一致的情况，假如出现了，就再试一次。\n实际上在 Java 中，一些锁的实现也利用了 CAS，体现在 Java 中的应用如下：\n   应用领域 示例     java.util.concurrent.atomic 包 AtomicInteger\nAtomicLong\nAtomicBoolean\nAtomicReference\nAtomicStampedReference\n等   java.util.concurrent 包 ConcurrentHashMap\nConcurrentLinkedQueue\nConcurrentLinkedDeque\n等   java.util.concurrent.locks 包 ReentrantLock\nReentrantReadWriteLock\n等   Java内存模型 volatile关键字的应用\nsynchronized关键字的实现\n等    4. 减少数据拷贝次数 这里的数据拷贝，更多指的是虚拟机或者操作系统层面的数据拷贝。我们都知道，在程序的运行过程中，通常会涉及到 IO 操作，不管是磁盘 IO 、内存IO、网络IO、标准IO等。所以基于IO的优化，通常也是一个非常有效的方向。\n具体的优化手段有：\n 尽量避免磁盘IO，磁盘IO受限于磁盘的读写速度，相对较慢，尽量避免 批量处理数组，尽量使用 System.arraycopy() 这样的批量接口，而不是通过遍历的方式自行操作 启用大页内存，操作系统默认页大小是 4K，如果你的 heap 是4G，就需要执行1024*1024次分配操作。 所以最好根据实际情况调整页大小。具体的调整方式需要从 JVM 和 操作系统两方面着手。JVM中可以通过-XX:+UseLargePages进行配置，操作系统中修改比较麻烦，不在赘述，请自行解决。   5. 合适的GC 所谓合适的 GC 主要体现在两方面\n 针对不同的场景选择合适的 GC 策略 针对 GC 配置合适的优化参数  GC的选择\n   GC 类型 特点 适用场景 指定方式     Serial GC 单线程执行，Stop-the-World 暂停整个应用程序的执行来执行垃圾收集。适用于小型应用或客户端应用。 小型应用程序或客户端应用，对于资源受限的环境。 -XX:+UseSerialGC   Parallel GC 多线程执行，使用多个线程同时执行垃圾收集。Stop-the-World 暂停较短。适用于需要更高吞吐量的应用程序。 高吞吐量的服务器应用程序，如 Web 服务器或后端应用程序。 -XX:+UseParallelGC   CMS (Concurrent Mark-Sweep) GC 采用并发方式执行大部分垃圾收集工作，减少 Stop-the-World 时间。但会引入额外的 CPU 和内存开销。适用于需要更低的停顿时间的应用程序。 需要更低停顿时间的应用程序，如对延迟敏感的 Web 应用或交互式应用。 -XX:+UseConcMarkSweepGC   G1 (Garbage-First) GC 将堆分成多个区域，通过优先收集垃圾数量最多的区域来最大程度地减少停顿时间。适用于大堆，需要更可控和稳定的停顿时间的应用程序。 大型应用程序，需要更稳定和可预测的 GC 行为，如需要更可控的停顿时间，同时不愿意牺牲太多吞吐量的应用程序。 -XX:+UseG1GC    GC 的优化参数\n   参数 作用 使用前提 使用场景     -XX:MaxGCPauseMillis= 设置期望的最大垃圾收集停顿时间（毫秒），用于调整收集器的目标停顿时间。 使用并行垃圾收集器（Parallel GC 或 G1 GC）时生效。 需要控制垃圾收集停顿时间的应用程序。   -XX:G1HeapRegionSize= 设置 G1 堆区域的大小，影响 G1 收集器的工作表现。 使用 G1 垃圾收集器时生效。 需要调整 G1 收集器的性能和行为的应用程序。   -XX:ParallelGCThreads= 设置并行垃圾收集器的线程数量，用于调整并行收集的线程数。 使用并行垃圾收集器（Parallel GC 或 Parallel Old GC）时生效。 需要调整并行垃圾收集器线程数的应用程序。   -XX:ConcGCThreads= 设置 CMS 垃圾收集器的并发线程数，影响 CMS 收集器的并发能力。 使用 CMS 垃圾收集器时生效。 需要调整 CMS 垃圾收集器并发线程数的应用程序。   -XX:G1NewSizePercent= 设置新生代空间占整个堆空间的百分比，影响 G1 收集器的新生代大小。 使用 G1 垃圾收集器时生效。 需要调整 G1 收集器新生代大小的应用程序。   -XX:G1MaxNewSizePercent= 设置最大新生代空间占整个堆空间的百分比，影响 G1 收集器的新生代最大大小。 使用 G1 垃圾收集器时生效。 需要调整 G1 收集器新生代最大大小的应用程序。   -XX:InitiatingHeapOccupancyPercent= 设置 G1 收集器开始执行混合收集的堆占用百分比。 使用 G1 垃圾收集器时生效。 需要调整 G1 收集器开始执行混合收集的堆占用百分比的应用程序。   -XX:CMSInitiatingOccupancyFraction= 设置 CMS 收集器开始执行垃圾收集的堆占用百分比。 使用 CMS 垃圾收集器时生效。 需要调整 CMS 收集器开始执行垃圾收集的堆占用百分比的应用程序。   -XX:MaxTenuringThreshold= 设置对象晋升到老年代的年龄阈值，影响对象在新生代和老年代之间的迁移行为。 通常在需要调整对象晋升行为时使用，如调整新生代对象晋升到老年代的年龄阈值。 需要调整对象晋升行为的应用程序，如减少对象晋升到老年代的频率以减少老年代垃圾收集的负载。   -XX:+PrintGCDetails 打印 GC 详细信息，包括 GC 类型、停顿时间、堆空间使用情况等。 无特定前提。 监控和调试 GC 行为的应用程序。    配置样例：高吞吐GC配置\n对于高吞吐量，在年轻态可以使用 Parallel Scavenge，年老态可以使用 Parallel Old 垃圾收集器。\n 使用-XX：+UseParallelOldGC 开启 可以将-XX：ParallelGCThreads 根据 CPU 的个数进行调整。可以是 CPU 数的1/2或者5/8  配置样例：低延迟 GC 配置\n对于低延迟的应用，在年轻态可以使用 ParNew，年老态可以使用 CMS 垃圾收集器。\n 可以使用-XX：+UseConcMarkSweepGC 和-XX：+UseParNewGC 打开。 可以将-XX：ParallelGCThreads 根据 CPU 的个数进行调整。可以是 CPU 数的1/2或者5/8 可以调整-XX：MaxTenuringThreshold (晋升年老代年龄)调高，默认是15.这样可以减少年老代 GC 的压力 可以-XX：TargetSurvivorRatio，调整 Survivor 的占用比率。默认50%.调高可以提供 Survivor 区的利用率 可以调整-XX：SurvivorRatio，调整 Eden 和 Survivor 的比重。默认是8.这个比重越小，Survivor 越大，对象可以在年轻态呆更多时间。  ","wordCount":"307","inLanguage":"en","datePublished":"2024-04-25T10:17:04+08:00","dateModified":"2024-04-25T10:17:04+08:00","author":{"@type":"Person","name":"zhangyw"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.zhangyingwei.com/posts/2024m4d25h10m17s3/"},"publisher":{"@type":"Organization","name":"胡说","logo":{"@type":"ImageObject","url":"https://blog.zhangyingwei.com/images/favicon64.ico"}}}</script>
+</head>
+<body class="font-activate bg-color mt-20" id="
+    top">
+<script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add('dark'):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove('dark'):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add('dark')</script>
+<header class="header font-activate sticky-element shadow-b">
+<nav class=nav>
+<div class=logo>
+<a href=https://blog.zhangyingwei.com/ accesskey=h title="胡说 (Alt + H)">胡说</a>
+<span class=logo-switches>
+<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+</span>
+</div>
+<ul id=menu>
+<li>
+<a href=https://blog.zhangyingwei.com/series/ title=系列文章>
+<span>系列文章</span>
+</a>
+</li>
+<li>
+<a href=https://blog.zhangyingwei.com/archives/ title=归档>
+<span>归档</span>
+</a>
+</li>
+<li>
+<a href=https://blog.zhangyingwei.com/tags/ title=标签>
+<span>标签</span>
+</a>
+</li>
+</ul>
+</nav>
+</header><div style=height:20px></div>
+<main class="main font-activate bg-color">
+<article class="post-single item-padding">
+<header class=post-header>
+<h1 class=post-title>
+Java 程序优化之-如何更好的利用CPU
+</h1>
+<div class=post-info>2024/04/25
+<ul id=series>
+🅰️
+<li> <a href=https://blog.zhangyingwei.com/%20topics/java-%E7%B3%BB%E5%88%97>Java 系列</a> </li>
+</ul>
+<ul id=categories>
+✨
+<li><a href=https://blog.zhangyingwei.com/%20categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB>经验分享</a> </li>
+</ul>
+</div>
+</header>
+<div class=post-content><p>昨天，有人跟我聊起项目中对程序的优化，有一个特别有意思的话题《如何榨干一台机器的CPU》</p>
+<p>现在的市面上，多核CPU是主流，有了多核的加持，可以更加有效的发挥硬件的能力，基于Java程序，我们究竟该如何更加有效的应用多核的能力？我个人经验来讲，主要考虑一下几个方面：</p>
+<ul>
+<li>并行执行任务</li>
+<li>减少共享数据的写操作</li>
+<li>采用合适的方式处理竞争资源</li>
+<li>减少数据拷贝次数</li>
+<li>合适的GC</li>
+</ul>
+<p>接下来详细说明。</p>
+<h3 id=1-并行执行任务>1. 并行执行任务<a hidden class=anchor aria-hidden=true href=#1-并行执行任务>#</a></h3>
+<p>合理利用多线程执行任务，可以有效的发挥CPU的多核性能。由于超线程技术的存在，实际上CPU可以并行执行的线程数量通常是物理核心数量的2倍。</p>
+<p>我们都知道，在计算机中，进程是操作系统资源（内存、显卡、磁盘）分配的最小单位。线程是CPU执行调度的最小单位。</p>
+<p>因此，实现并行计算的方式大体上有三种：多进程、多线程、多进程+多线程。具体采用哪种方式，就需要实际情况实际分析了。整体指导方针是：如果多线程可以解决，就不要尝试引入多进程。因为每个进程之间是独立的，多进程任务难免会涉及到进程之间通信，而进程之间的协调与通信通常会比较复杂。容易为程序引入额外的复杂度，得不偿失。</p>
+<h3 id=2-减少共享数据的写操作>2. 减少共享数据的写操作<a hidden class=anchor aria-hidden=true href=#2-减少共享数据的写操作>#</a></h3>
+<p>深入到线程中，每个线程都有自己的内存空间，在这个内存中，线程可以随意进行读写。因此多线程任务中，提高效率的优化手段之一就是：</p>
+<p>尽量避免多个线程共同操作共享资源，如果条件允许，尽量采用以空间换时间的方式，将数据复制多份保存在每个线程单独的内存空间中。</p>
+<p>如果必须存在共享内存的操作，我们的措施通常是，尽量减少共享数据的写操作，在共享内存中，多个线程的读操作是不存在资源的竞争的。一旦涉及到写共享内存，通常会使用 volatile 关键字保证内存数据对多个线程的可见性，这种情况下就不可避免的要涉及到插入内存屏障指令，用来保证处理器对指令的执行顺序不会打乱。相比不存在内存屏障的操作，性能会有所下降。</p>
+<p>因此，需要尽量减少多个线程对共享内存的写操作。具体的方案是：</p>
+<ul>
+<li>通过业务逻辑控制，在程序设计之初，排除掉共享数据的方案</li>
+<li>在每个线程内部创建单独的对象，互不影响</li>
+<li>使用 ThreadLocal 生成线程的本地对象副本</li>
+</ul>
+<h3 id=3-采用合适的方式处理竞争资源>3. 采用合适的方式处理竞争资源<a hidden class=anchor aria-hidden=true href=#3-采用合适的方式处理竞争资源>#</a></h3>
+<p>多线程任务中，涉及到资源竞争的部分，通常都需要采用对应的措施来保证资源的一致性。常见的解决方案有两种：</p>
+<ul>
+<li>对资源加线程锁</li>
+<li>采用乐观策略实现无锁操作（CAS）</li>
+</ul>
+<p><strong>线程锁的使用：</strong></p>
+<p>使用线程锁来保证资源的一致性是由来已久的一种非常简单便捷的方法。这种操作可以粗暴的控制多个线程对资源的访问，所以在处理多线程资源竞争关系的时候，我们通常会优先想到加锁的方式。</p>
+<p>为了提高执行性能，通常会采用轻量级锁来代替重量级锁，在 Java 1.5 中 synchronize 是一个重量级锁，是相对低效率的；相比之下使用 Lock 对象的性能更高一些。但是这种情况到了 Java 1.6 发生了很大的变化，由于官方对 synchronize 引入了适应自旋、锁消除、轻量级锁、偏向锁等优化手段， synchronize 与 Lock 在性能上不存在什么差距。所以如果你使用高于 Java 1.6 的版本，请放心大胆的使用 synchronize 。</p>
+<p><strong>无锁操作（CAS）：</strong></p>
+<p>对于传统的加锁操作，我们通常认为是悲观策略。相对于悲观策略，我们还有一个乐观策略可以选择。乐观策略认为不会存在资源不一致的情况，假如出现了，就再试一次。</p>
+<p>实际上在 Java 中，一些锁的实现也利用了 CAS，体现在 Java 中的应用如下：</p>
+<table>
+<thead>
+<tr>
+<th>应用领域</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>java.util.concurrent.atomic 包</td>
+<td>AtomicInteger<br>AtomicLong<br>AtomicBoolean<br>AtomicReference<br>AtomicStampedReference<br>等</td>
+</tr>
+<tr>
+<td>java.util.concurrent 包</td>
+<td>ConcurrentHashMap<br>ConcurrentLinkedQueue<br>ConcurrentLinkedDeque<br>等</td>
+</tr>
+<tr>
+<td>java.util.concurrent.locks 包</td>
+<td>ReentrantLock<br>ReentrantReadWriteLock<br>等</td>
+</tr>
+<tr>
+<td>Java内存模型</td>
+<td>volatile关键字的应用<br>synchronized关键字的实现<br>等</td>
+</tr>
+</tbody>
+</table>
+<h3 id=4-减少数据拷贝次数>4. 减少数据拷贝次数<a hidden class=anchor aria-hidden=true href=#4-减少数据拷贝次数>#</a></h3>
+<p>这里的数据拷贝，更多指的是虚拟机或者操作系统层面的数据拷贝。我们都知道，在程序的运行过程中，通常会涉及到 IO 操作，不管是磁盘 IO 、内存IO、网络IO、标准IO等。所以基于IO的优化，通常也是一个非常有效的方向。</p>
+<p>具体的优化手段有：</p>
+<ul>
+<li><strong>尽量避免磁盘IO</strong>，磁盘IO受限于磁盘的读写速度，相对较慢，尽量避免</li>
+<li><strong>批量处理数组</strong>，尽量使用 System.arraycopy() 这样的批量接口，而不是通过遍历的方式自行操作</li>
+<li><strong>启用大页内存</strong>，操作系统默认页大小是 4K，如果你的 heap 是4G，就需要执行1024*1024次分配操作。 所以最好根据实际情况调整页大小。具体的调整方式需要从 JVM 和 操作系统两方面着手。JVM中可以通过<code>-XX:+UseLargePages</code>进行配置，操作系统中修改比较麻烦，不在赘述，请自行解决。</li>
+<li></li>
+</ul>
+<h3 id=5-合适的gc>5. 合适的GC<a hidden class=anchor aria-hidden=true href=#5-合适的gc>#</a></h3>
+<p>所谓合适的 GC 主要体现在两方面</p>
+<ul>
+<li>针对不同的场景选择合适的 GC 策略</li>
+<li>针对 GC 配置合适的优化参数</li>
+</ul>
+<p><strong>GC的选择</strong></p>
+<table>
+<thead>
+<tr>
+<th>GC 类型</th>
+<th>特点</th>
+<th>适用场景</th>
+<th>指定方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Serial GC</td>
+<td>单线程执行，Stop-the-World 暂停整个应用程序的执行来执行垃圾收集。适用于小型应用或客户端应用。</td>
+<td>小型应用程序或客户端应用，对于资源受限的环境。</td>
+<td>-XX:+UseSerialGC</td>
+</tr>
+<tr>
+<td>Parallel GC</td>
+<td>多线程执行，使用多个线程同时执行垃圾收集。Stop-the-World 暂停较短。适用于需要更高吞吐量的应用程序。</td>
+<td>高吞吐量的服务器应用程序，如 Web 服务器或后端应用程序。</td>
+<td>-XX:+UseParallelGC</td>
+</tr>
+<tr>
+<td>CMS (Concurrent Mark-Sweep) GC</td>
+<td>采用并发方式执行大部分垃圾收集工作，减少 Stop-the-World 时间。但会引入额外的 CPU 和内存开销。适用于需要更低的停顿时间的应用程序。</td>
+<td>需要更低停顿时间的应用程序，如对延迟敏感的 Web 应用或交互式应用。</td>
+<td>-XX:+UseConcMarkSweepGC</td>
+</tr>
+<tr>
+<td>G1 (Garbage-First) GC</td>
+<td>将堆分成多个区域，通过优先收集垃圾数量最多的区域来最大程度地减少停顿时间。适用于大堆，需要更可控和稳定的停顿时间的应用程序。</td>
+<td>大型应用程序，需要更稳定和可预测的 GC 行为，如需要更可控的停顿时间，同时不愿意牺牲太多吞吐量的应用程序。</td>
+<td>-XX:+UseG1GC</td>
+</tr>
+</tbody>
+</table>
+<p><strong>GC 的优化参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>作用</th>
+<th>使用前提</th>
+<th>使用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-XX:MaxGCPauseMillis=&lt;value></td>
+<td>设置期望的最大垃圾收集停顿时间（毫秒），用于调整收集器的目标停顿时间。</td>
+<td>使用并行垃圾收集器（Parallel GC 或 G1 GC）时生效。</td>
+<td>需要控制垃圾收集停顿时间的应用程序。</td>
+</tr>
+<tr>
+<td>-XX:G1HeapRegionSize=&lt;value></td>
+<td>设置 G1 堆区域的大小，影响 G1 收集器的工作表现。</td>
+<td>使用 G1 垃圾收集器时生效。</td>
+<td>需要调整 G1 收集器的性能和行为的应用程序。</td>
+</tr>
+<tr>
+<td>-XX:ParallelGCThreads=&lt;value></td>
+<td>设置并行垃圾收集器的线程数量，用于调整并行收集的线程数。</td>
+<td>使用并行垃圾收集器（Parallel GC 或 Parallel Old GC）时生效。</td>
+<td>需要调整并行垃圾收集器线程数的应用程序。</td>
+</tr>
+<tr>
+<td>-XX:ConcGCThreads=&lt;value></td>
+<td>设置 CMS 垃圾收集器的并发线程数，影响 CMS 收集器的并发能力。</td>
+<td>使用 CMS 垃圾收集器时生效。</td>
+<td>需要调整 CMS 垃圾收集器并发线程数的应用程序。</td>
+</tr>
+<tr>
+<td>-XX:G1NewSizePercent=&lt;value></td>
+<td>设置新生代空间占整个堆空间的百分比，影响 G1 收集器的新生代大小。</td>
+<td>使用 G1 垃圾收集器时生效。</td>
+<td>需要调整 G1 收集器新生代大小的应用程序。</td>
+</tr>
+<tr>
+<td>-XX:G1MaxNewSizePercent=<value></td>
+<td>设置最大新生代空间占整个堆空间的百分比，影响 G1 收集器的新生代最大大小。</td>
+<td>使用 G1 垃圾收集器时生效。</td>
+<td>需要调整 G1 收集器新生代最大大小的应用程序。</td>
+</tr>
+<tr>
+<td>-XX:InitiatingHeapOccupancyPercent=&lt;value></td>
+<td>设置 G1 收集器开始执行混合收集的堆占用百分比。</td>
+<td>使用 G1 垃圾收集器时生效。</td>
+<td>需要调整 G1 收集器开始执行混合收集的堆占用百分比的应用程序。</td>
+</tr>
+<tr>
+<td>-XX:CMSInitiatingOccupancyFraction=&lt;value></td>
+<td>设置 CMS 收集器开始执行垃圾收集的堆占用百分比。</td>
+<td>使用 CMS 垃圾收集器时生效。</td>
+<td>需要调整 CMS 收集器开始执行垃圾收集的堆占用百分比的应用程序。</td>
+</tr>
+<tr>
+<td>-XX:MaxTenuringThreshold=&lt;value></td>
+<td>设置对象晋升到老年代的年龄阈值，影响对象在新生代和老年代之间的迁移行为。</td>
+<td>通常在需要调整对象晋升行为时使用，如调整新生代对象晋升到老年代的年龄阈值。</td>
+<td>需要调整对象晋升行为的应用程序，如减少对象晋升到老年代的频率以减少老年代垃圾收集的负载。</td>
+</tr>
+<tr>
+<td>-XX:+PrintGCDetails</td>
+<td>打印 GC 详细信息，包括 GC 类型、停顿时间、堆空间使用情况等。</td>
+<td>无特定前提。</td>
+<td>监控和调试 GC 行为的应用程序。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>配置样例：高吞吐GC配置</strong></p>
+<p>对于高吞吐量，在年轻态可以使用 Parallel Scavenge，年老态可以使用 Parallel Old 垃圾收集器。</p>
+<ul>
+<li>使用-XX：+UseParallelOldGC 开启</li>
+<li>可以将-XX：ParallelGCThreads 根据 CPU 的个数进行调整。可以是 CPU 数的1/2或者5/8</li>
+</ul>
+<p><strong>配置样例：低延迟 GC 配置</strong></p>
+<p>对于低延迟的应用，在年轻态可以使用 ParNew，年老态可以使用 CMS 垃圾收集器。</p>
+<ul>
+<li>可以使用-XX：+UseConcMarkSweepGC 和-XX：+UseParNewGC 打开。</li>
+<li>可以将-XX：ParallelGCThreads 根据 CPU 的个数进行调整。可以是 CPU 数的1/2或者5/8</li>
+<li>可以调整-XX：MaxTenuringThreshold (晋升年老代年龄)调高，默认是15.这样可以减少年老代 GC 的压力</li>
+<li>可以-XX：TargetSurvivorRatio，调整 Survivor 的占用比率。默认50%.调高可以提供 Survivor 区的利用率</li>
+<li>可以调整-XX：SurvivorRatio，调整 Eden 和 Survivor 的比重。默认是8.这个比重越小，Survivor 越大，对象可以在年轻态呆更多时间。</li>
+</ul>
+</div>
+<link href=https://comment.fascloud.org/dist/Artalk.css rel=stylesheet>
+<style>.dark .atk-main-editor{background-color:#37383e!important;border:1px solid #555660!important}.dark .artalk{color:#bdbdbe!important}.dark .atk-main-editor>.atk-textarea-wrap>.atk-textarea{background-color:#37383e!important;color:#bdbdbe!important}.dark .atk-editor-plug-emoticons>.atk-grp-switcher{background:#37383e!important;border-top:1px solid #555660!important;border-bottom:1px solid #555660!important}.dark .atk-editor-plug-emoticons>.atk-grp-switcher>span:hover,.dark .atk-editor-plug-emoticons>.atk-grp-switcher>span.active{background:#262629!important}.dark .atk-main-editor>.atk-plug-panel-wrap{border-top:1px solid #555660!important}.dark .atk-comment>.atk-main>.atk-header .badge,.atk-comment>.atk-main>.atk-header .atk-ua,.atk-comment>.atk-main>.atk-header .atk-pinned-badge,.atk-comment>.atk-main>.atk-header .atk-region-badge,.atk-comment>.atk-main>.atk-header .atk-badge{color:#bdc6d9!important;background:#000!important}.dark .atk-main-editor>.atk-textarea-wrap>.atk-send-reply{background:rgb(134 134 134/75%)!important}.comment-split-line{text-align:center;font-size:14px;border-bottom:1px solid #eaecef;margin:50px 0;height:0}.comment-split-line::after{content:"评论";background-color:#ececec;border-radius:10px;padding:0 10px;position:relative;top:-10px;color:#6a737d}.dark .comment-split-line::after{background-color:#37383e;color:#bdc6d9}.dark .comment-split-line{border-bottom:1px solid #555660}</style>
+<script src=https://comment.fascloud.org/dist/Artalk.js></script>
+<div class=comment-split-line></div>
+<div id=Comments></div>
+<script>Artalk.init({el:'#Comments',pageKey:'',pageTitle:'',server:'https://comment.fascloud.org/',site:'blog-hushuo'})</script>
+</article>
+</main>
+<footer class=footer>
+<span>&copy; 2024 <a href=https://blog.zhangyingwei.com/>胡说</a></span>
+<span>
+Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a>
+</span>
+<span>
+订阅
+<a href=/index.xml rel=noopener target=_blank>RSS</a>
+</span>
+</footer>
+<a href=# aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a>
+<script></script>
+<script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
+<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
+<script>document.querySelectorAll('pre > code').forEach(b=>{const c=b.parentNode.parentNode;b.classList.add('font-activate');const a=document.createElement('button');a.classList.add('copy-code'),a.innerText='copy';function d(){a.innerText='copied!',setTimeout(()=>{a.innerText='copy'},2e3)}a.addEventListener('click',e=>{if('clipboard'in navigator){navigator.clipboard.writeText(b.textContent),d();return}const a=document.createRange();a.selectNodeContents(b);const c=window.getSelection();c.removeAllRanges(),c.addRange(a);try{document.execCommand('copy'),d()}catch(a){}c.removeRange(a)}),c.classList.contains("highlight")?c.appendChild(a):c.parentNode.firstChild==c||(b.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?b.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(a):b.parentNode.appendChild(a))})</script></body>
+</html>

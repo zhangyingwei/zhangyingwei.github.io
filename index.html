@@ -19,7 +19,7 @@
 <meta name=description content="胡说，一个寂寞的、即将被时代潮流冲刷在沙滩上的 IT 从业者的自言自语">
 <meta name=author content="zhangyw">
 <link rel=canonical href=https://blog.zhangyingwei.com/>
-<link crossorigin=anonymous href=/assets/css/stylesheet.min.aaa22db3cdacc948a29b96b6ee3741f2327c102d2eb99e63e7d362aeeec4718f.css integrity="sha256-qqIts82syUiim5a27jdB8jJ8EC0uuZ5j59Niru7EcY8=" rel="preload stylesheet" as=style>
+<link crossorigin=anonymous href=/assets/css/stylesheet.min.bc60c2f68b02775df2edf558a5a457b0443b9889e71e4790d3df325f09e525ab.css integrity="sha256-vGDC9osCd13y7fVYpaRXsEQ7mInnHkeQ098yXwnlJas=" rel="preload stylesheet" as=style>
 <link rel=icon href=https://blog.zhangyingwei.com/images/favicon64.ico>
 <link rel=icon type=image/png sizes=16x16 href=https://blog.zhangyingwei.com/images/favicon16.ico>
 <link rel=icon type=image/png sizes=32x32 href=https://blog.zhangyingwei.com/images/favicon32.ico>
@@ -97,6 +97,38 @@
 </span>
 </div>
 <div class="article-item-wrapper fg-color">
+<article class="post-entry item-padding">
+<div class=post-date>
+📅 April 25, 2024
+</div>
+<header class=entry-header>
+<h2>Java 程序优化之-如何更好的利用CPU
+</h2>
+</header>
+<section class=entry-content>
+<p>昨天，有人跟我聊起项目中对程序的优化，有一个特别有意思的话题《如何榨干一台机器的CPU》
+现在的市面上，多核CPU是主流，有了多核的加持，可以更加有效的发挥硬件的能力，基于Java程序，我们究竟该如何更加有效的应用多核的能力？我个人经验来讲，主要考虑一下几个方面：
+并行执行任务 减少共享数据的写操作 采用合适的方式处理竞争资源 减少数据拷贝次数 合适的GC 接下来详细说明。
+1. 并行执行任务 合理利用多线程执行任务，可以有效的发挥CPU的多核性能。由于超线程技术的存在，实际上CPU可以并行执行的线程数量通常是物理核心数量的2倍。
+我们都知道，在计算机中，进程是操作系统资源（内存、显卡、磁盘）分配的最小单位。线程是CPU执行调度的最小单位。
+因此，实现并行计算的方式大体上有三种：多进程、多线程、多进程+多线程。具体采用哪种方式，就需要实际情况实际分析了。整体指导方针是：如果多线程可以解决，就不要尝试引入多进程。因为每个进程之间是独立的，多进程任务难免会涉及到进程之间通信，而进程之间的协调与通信通常会比较复杂。容易为程序引入额外的复杂度，得不偿失。
+2. 减少共享数据的写操作 深入到线程中，每个线程都有自己的内存空间，在这个内存中，线程可以随意进行读写。因此多线程任务中，提高效率的优化手段之一就是：
+尽量避免多个线程共同操作共享资源，如果条件允许，尽量采用以空间换时间的方式，将数据复制多份保存在每个线程单独的内存空间中。
+如果必须存在共享内存的操作，我们的措施通常是，尽量减少共享数据的写操作，在共享内存中，多个线程的读操作是不存在资源的竞争的。一旦涉及到写共享内存，通常会使用 volatile 关键字保证内存数据对多个线程的可见性，这种情况下就不可避免的要涉及到插入内存屏障指令，用来保证处理器对指令的执行顺序不会打乱。相比不存在内存屏障的操作，性能会有所下降。
+因此，需要尽量减少多个线程对共享内存的写操作。具体的方案是：
+通过业务逻辑控制，在程序设计之初，排除掉共享数据的方案 在每个线程内部创建单独的对象，互不影响 使用 ThreadLocal 生成线程的本地对象副本 3. 采用合适的方式处理竞争资源 多线程任务中，涉及到资源竞争的部分，通常都需要采用对应的措施来保证资源的一致性。常见的解决方案有两种：
+对资源加线程锁 采用乐观策略实现无锁操作（CAS） 线程锁的使用：
+使用线程锁来保证资源的一致性是由来已久的一种非常简单便捷的方法。这种操作可以粗暴的控制多个线程对资源的访问，所以在处理多线程资源竞争关系的时候，我们通常会优先想到加锁的方式。
+为了提高执行性能，通常会采用轻量级锁来代替重量级锁，在 Java 1.5 中 synchronize 是一个重量级锁，是相对低效率的；相比之下使用 Lock 对象的性能更高一些。但是这种情况到了 Java 1.6 发生了很大的变化，由于官方对 synchronize 引入了适应自旋、锁消除、轻量级锁、偏向锁等优化手段， synchronize 与 Lock 在性能上不存在什么差距。所以如果你使用高于 Java 1.6 的版本，请放心大胆的使用 synchronize 。
+无锁操作（CAS）：
+对于传统的加锁操作，我们通常认为是悲观策略。相对于悲观策略，我们还有一个乐观策略可以选择。乐观策略认为不会存在资源不一致的情况，假如出现了，就再试一次。
+实际上在 Java 中，一些锁的实现也利用了 CAS，体现在 Java 中的应用如下：
+应用领域 示例 java....</p>
+</section>
+<a class=entry-link aria-label="post link to Java 程序优化之-如何更好的利用CPU" href=https://blog.zhangyingwei.com/posts/2024m4d25h10m17s3/ name="Java 程序优化之-如何更好的利用CPU">
+<span style=display:inline-block;width:0;height:0;opacity:0>Java 程序优化之-如何更好的利用CPU</span>
+</a>
+</article>
 <article class="post-entry item-padding">
 <div class=post-date>
 📅 April 12, 2024
@@ -294,29 +326,6 @@ B 站某个账号的粉丝数量 B 站某个账号的视频数量 Github 账号�
 </section>
 <a class=entry-link aria-label="post link to QuickDashboard 产品更新 [V0.0.9.0]" href=https://blog.zhangyingwei.com/posts/2022m5d24h15m23s26/ name="QuickDashboard 产品更新 [V0.0.9.0]">
 <span style=display:inline-block;width:0;height:0;opacity:0>QuickDashboard 产品更新 [V0.0.9.0]</span>
-</a>
-</article>
-<article class="post-entry item-padding">
-<div class=post-date>
-📅 May 16, 2022
-</div>
-<header class=entry-header>
-<h2>QuickDashboard 产品介绍
-</h2>
-</header>
-<section class=entry-content>
-<p>我的新作品 QuickDashboard，是一款 Chrome 浏览器插件。得益于 Chromium 内核的成功，理论上只要是基于 Chromium 内核的浏览器都可以兼容。
-下载地址： 七牛云 下载 Chrome 商店 下载 QuickDashboard 是一款新标签页插件，所谓新标签页插件就是插件安装之后会接管 Chrome 浏览器新建标签页行为，取代默认的空白标签页，打开插件作为浏览器的新标签页。
-这个插件，一共提供了四个大的功能项。
-以下所有说明均基于目前的最新版本 V0.8.0.0
-1. 时钟 时钟模块提供了翻页时钟和点阵时钟两种展示方式
-翻页时钟 点阵时钟 时钟的颜色可以自定义，详细操作见设置说明
-2. 书签管理 书签管理功能主要基于 Chrome 的书签管理接口，作为 Chrome 书签的增强功能。在 Chrome 自身书签的基础上进行扩展。
-为书签增加了界面 扩展了标签功能，支持为每个书签增加标签，方便分类，每个书签最多可以设置 5 个标签 增加搜索功能，支持模糊搜索；可以通过书签名、书签目录名以及标签名进行搜索 3. 导航页 导航页是一个高频使用的功能， QuickDashboard 提供的导航页具备了目前市面上绝大多数导航页具备的功能：
-快捷搜索功能，提供搜索框，可以快速搜索 可以自定义添加导航网址 导航网址支持分类 在此基础上，还额外创新提供了根据设置进行差异化导航的功能。...</p>
-</section>
-<a class=entry-link aria-label="post link to QuickDashboard 产品介绍" href=https://blog.zhangyingwei.com/posts/2022m5d16h20m22s20/ name="QuickDashboard 产品介绍">
-<span style=display:inline-block;width:0;height:0;opacity:0>QuickDashboard 产品介绍</span>
 </a>
 </article>
 </div>
