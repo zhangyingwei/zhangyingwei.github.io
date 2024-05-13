@@ -6,7 +6,22 @@
     <description>Recent content in Java on 胡说</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-ch</language>
-    <lastBuildDate>Thu, 25 Apr 2024 10:17:04 +0800</lastBuildDate><atom:link href="https://blog.zhangyingwei.com/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 13 May 2024 17:11:53 +0800</lastBuildDate><atom:link href="https://blog.zhangyingwei.com/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>在业务中使用 Kafka 到底能不能保证消息的有序性</title>
+      <link>https://blog.zhangyingwei.com/posts/2024m5d13h17m11s53/</link>
+      <pubDate>Mon, 13 May 2024 17:11:53 +0800</pubDate>
+      
+      <guid>https://blog.zhangyingwei.com/posts/2024m5d13h17m11s53/</guid>
+      <description>金三银四，最近开放简历做了一些面试。在一次面试中，就 Kafka 消息的有序性进行了一番讨论，这里贴一下相关思考。
+ 首先贴结论： 在kafka中，多 partition 的情况下，kafka本身是无法保证消息的有序性的。但是可以通过逻辑控制保证消息的有序性。
+ 为什么无序？ 在Apache Kafka中，一个主题（Topic）可以被分为多个分区（Partitions），这种设计是为了实现水平扩展和提高吞吐量。每个分区都是一个有序的、不可变的消息序列，新的消息不断追加到序列的末尾。
+然而，当一个主题包含多个分区时，Kafka的架构确实决定了它无法全局保证消息的有序性。主要原因如下：
+ 生产者的分区策略：生产者可以根据消息的键（Key）或者自定义的分区策略来决定将消息发送到哪个分区。如果不同的消息使用了不同的键或者被发送到不同的分区，那么这些消息之间的顺序就无法得到保证 分区间的并行性：Kafka允许消费者并行地从多个分区中读取消息。由于不同分区的消息可以被不同的消费者实例同时处理，因此这些消息的到达和处理顺序在全局范围内是无法保证的 分区间的独立性：每个分区都是独立的，它们之间没有直接的顺序关联。生产者可以将消息发送到任意一个分区，而消费者也可以独立地从每个分区中消费消息。这种独立性意味着，即使在一个分区内部消息是有序的，但在不同分区之间的消息顺序是无法控制的  可以有序吗？如何保证？ Kafka 每个分区都是一个有序的、不可变的消息序列，新的消息不断追加到序列的末尾。消费者按照消息在分区中的顺序来消费消息。因此，要保证消息的顺序处理，关键在于确保同一业务逻辑的消息发送到同一个分区。
+可以通过以下方式来处理有序性需求：
+ 单分区主题： 最简单的方法是为每个需要保证顺序的逻辑创建一个单独的Kafka主题，并设置该主题只有一个分区。这样，所有消息都会按照发送顺序被消费。但是，这种方法牺牲了Kafka的水平扩展能力。 使用相同的键： Kafka允许生产者为每条消息指定一个键（Key）。当消息被发送到Kafka时，Kafka会根据消息键的哈希值来决定将消息发送到哪个分区。因此，如果所有需要保证顺序的消息都使用相同的键，那么这些消息就会被发送到同一个分区，从而保证了顺序。 自定义分区策略： 如果默认的哈希分区策略不能满足需求，可以自定义分区策略。通过实现Partitioner接口，可以控制消息发送到哪个分区。例如，可以根据业务逻辑将属于同一顺序逻辑的消息发送到特定的分区。 消费者端顺序处理： 即使生产者保证了消息的顺序，消费者端也需要正确处理以维持顺序。消费者应该确保在处理完一条消息后，再拉取下一条消息，避免并发处理导致顺序混乱  注意事项  当使用多个消费者实例消费同一个分区时，无法保证消息的顺序处理 在保证顺序的同时，也要考虑系统的吞吐量和可用性，避免过度限制Kafka的性能  </description>
+    </item>
+    
     <item>
       <title>Java 程序优化之-如何更好的利用CPU</title>
       <link>https://blog.zhangyingwei.com/posts/2024m4d25h10m17s3/</link>
