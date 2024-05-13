@@ -22,12 +22,12 @@
             }
           },
           {
-            "id": "3c93668928bf91a4",
+            "id": "b35fe735d8c1eba0",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "content/posts/2024m4d25h10m17s3.md",
+                "file": "content/posts/2024m5d13h17m11s53.md",
                 "mode": "source",
                 "source": false
               }
@@ -140,7 +140,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 273.5
+    "width": 273.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -157,8 +158,12 @@
   },
   "active": "6c42e4f1ae7fc84c",
   "lastOpenFiles": [
-    "content/posts/2024m4d25h10m17s3.md",
+    "content/posts/2024m5d13h17m11s53.md",
     "obs_scripts/主面板.md",
+    "content/posts/2024m4d25h10m17s3.md",
+    "obs_scripts/start_server.sh",
+    "obs_scripts/LocalServer.js",
+    "obs_scripts/NewBlog copy.js",
     "content/posts/2024m4d12h14m25s41.md",
     "content/posts/2024m4d2h10m23s15.md",
     "themes/PaperMod/layouts/partials/mermaid.html",
@@ -179,9 +184,6 @@
     "_site/themes/PaperMod/layouts/partials/templates/opengraph.html",
     "_site/themes/PaperMod/layouts/partials/templates/baidu_analytics.html",
     "_site/themes/PaperMod/assets/css/hljs/an-old-hope.min.css",
-    "_site/themes/PaperMod/assets/css/extended/self.css",
-    "_site/themes/PaperMod/assets/css/extended/fonts.css",
-    "_site/themes/PaperMod/assets/css/extended/blank.css",
     "_site/themes/PaperMod/images/tn.png",
     "_site/themes/PaperMod/images/screenshot.png",
     "_site/themes/PaperMod/README.md",

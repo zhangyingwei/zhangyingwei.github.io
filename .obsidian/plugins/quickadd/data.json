@@ -13,6 +13,13 @@
       "type": "Macro",
       "command": true,
       "macroId": "566b8332-8529-4ab6-bcca-1571b8dd382d"
+    },
+    {
+      "id": "e1b33b8e-18b3-415a-80c7-10cb1ee1f102",
+      "name": "打开本地服务",
+      "type": "Macro",
+      "command": true,
+      "macroId": "b9672c66-b571-4ccf-ae13-9f9bf187a60c"
     }
   ],
   "macros": [
@@ -45,6 +52,20 @@
           "type": "Obsidian",
           "id": "8b2a9dfb-b991-4853-92d1-993b5463c149",
           "commandId": "obsidian-git:push2"
+        }
+      ],
+      "runOnStartup": false
+    },
+    {
+      "name": "打开本地服务",
+      "id": "b9672c66-b571-4ccf-ae13-9f9bf187a60c",
+      "commands": [
+        {
+          "name": "LocalServer",
+          "type": "UserScript",
+          "id": "5017d990-1191-46a8-acf5-ea2fd00c354e",
+          "path": "obs_scripts/LocalServer.js",
+          "settings": {}
         }
       ],
       "runOnStartup": false
