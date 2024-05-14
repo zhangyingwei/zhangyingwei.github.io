@@ -6,7 +6,21 @@
     <description>Recent content in SpringBoot on 胡说</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-ch</language>
-    <lastBuildDate>Fri, 02 Feb 2024 10:04:42 +0800</lastBuildDate><atom:link href="https://blog.zhangyingwei.com/tags/springboot/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 14 May 2024 09:58:26 +0800</lastBuildDate><atom:link href="https://blog.zhangyingwei.com/tags/springboot/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>在数据采集中使用对象池的实践</title>
+      <link>https://blog.zhangyingwei.com/posts/2024m5d14h9m58s26/</link>
+      <pubDate>Tue, 14 May 2024 09:58:26 +0800</pubDate>
+      
+      <guid>https://blog.zhangyingwei.com/posts/2024m5d14h9m58s26/</guid>
+      <description>在我的日常工作中，有很大精力投入到数据采集上。我需要从 syslog 采集大量数据，通常的流程是，将每条数据进行校验之后解析为对象进行一系列的处理与分析。这会产生大量对象，在 Java 中，大量对象必然意味着大量堆内存和频繁的 GC。为提高对象利用率，降低 GC 压力，我们基于对象池技术进行了一些优化手段。
+一、为什么需要对象池 在数据采集系统中，每秒钟可能处理成千上万条日志记录，每条记录都需要转换为对象。频繁的对象创建和销毁会导致较高的性能开销，尤其是增加垃圾回收（GC）的频率，从而影响系统的整体性能。对象池通过复用对象减少创建和销毁的次数，提升性能和资源利用率。
+二、对象池的原理 在 Java 中，说到池，我们通常会想到连接池、线程池。实际上，所有的池都是为了解决同一个问题：降低资源重复创建和销毁的频率。
+对象池的工作机制与线程池和连接池相似。对象池通过维护一定数量的对象，当需要使用时从池中取出，使用完毕后再归还池中，避免了频繁的对象创建和销毁，显著减少了 GC 的负担。基本原理如下：
+ 预创建对象：在初始化时，预先创建一组对象或线程，放入池中备用。 获取和归还：需要时从池中取出，使用完毕后归还池中。 复用机制：通过复用已有的对象或线程，避免频繁创建和销毁，提升系统性能。  三、自定义对象池的核心实现 以下是一个自定义对象池在数据采集场景中的实战示例代码：
+import java.util.concurrent.BlockingQueue; import java.util.concurrent.LinkedBlockingQueue; public class ObjectPool&amp;lt;T&amp;gt; { private BlockingQueue&amp;lt;T&amp;gt; pool; private int maxPoolSize; private ObjectFactory&amp;lt;T&amp;gt; factory; public ObjectPool(int maxPoolSize, ObjectFactory&amp;lt;T&amp;gt; factory) { this.maxPoolSize = maxPoolSize; this.factory = factory; this.pool = new LinkedBlockingQueue&amp;lt;&amp;gt;(maxPoolSize); initializePool(); } private void initializePool() { for (int i = 0; i &amp;lt; maxPoolSize; i++) { pool.</description>
+    </item>
+    
     <item>
       <title>SpringBoot 中实现订单过期自动取消</title>
       <link>https://blog.zhangyingwei.com/posts/2024m4d2h10m4s42/</link>

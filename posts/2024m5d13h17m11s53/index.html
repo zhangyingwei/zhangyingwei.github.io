@@ -24,7 +24,7 @@
  单分区主题： 最简单的方法是为每个需要保证顺序的逻辑创建一个单独的Kafka主题，并设置该主题只有一个分区。这样，所有消息都会按照发送顺序被消费。但是，这种方法牺牲了Kafka的水平扩展能力。 使用相同的键： Kafka允许生产者为每条消息指定一个键（Key）。当消息被发送到Kafka时，Kafka会根据消息键的哈希值来决定将消息发送到哪个分区。因此，如果所有需要保证顺序的消息都使用相同的键，那么这些消息就会被发送到同一个分区，从而保证了顺序。 自定义分区策略： 如果默认的哈希分区策略不能满足需求，可以自定义分区策略。通过实现Partitioner接口，可以控制消息发送到哪个分区。例如，可以根据业务逻辑将属于同一顺序逻辑的消息发送到特定的分区。 消费者端顺序处理： 即使生产者保证了消息的顺序，消费者端也需要正确处理以维持顺序。消费者应该确保在处理完一条消息后，再拉取下一条消息，避免并发处理导致顺序混乱  注意事项  当使用多个消费者实例消费同一个分区时，无法保证消息的顺序处理 在保证顺序的同时，也要考虑系统的吞吐量和可用性，避免过度限制Kafka的性能  ">
 <meta name=author content="zhangyw">
 <link rel=canonical href=https://blog.zhangyingwei.com/posts/2024m5d13h17m11s53/>
-<link crossorigin=anonymous href=/assets/css/stylesheet.min.bc60c2f68b02775df2edf558a5a457b0443b9889e71e4790d3df325f09e525ab.css integrity="sha256-vGDC9osCd13y7fVYpaRXsEQ7mInnHkeQ098yXwnlJas=" rel="preload stylesheet" as=style>
+<link crossorigin=anonymous href=/assets/css/stylesheet.min.7167373859bc6a85285ccd1ab606ec82162a99e4a3338401bc786b5cf72ec085.css integrity="sha256-cWc3OFm8aoUoXM0atgbsghYqmeSjM4QBvHhrXPcuwIU=" rel="preload stylesheet" as=style>
 <script defer crossorigin=anonymous src=/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI=" onload=hljs.initHighlightingOnLoad()></script>
 <link rel=icon href=https://blog.zhangyingwei.com/images/favicon64.ico>
 <link rel=icon type=image/png sizes=16x16 href=https://blog.zhangyingwei.com/images/favicon16.ico>

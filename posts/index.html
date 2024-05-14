@@ -18,7 +18,7 @@
 <meta name=description content="Posts - 胡说">
 <meta name=author content="zhangyw">
 <link rel=canonical href=https://blog.zhangyingwei.com/posts/>
-<link crossorigin=anonymous href=/assets/css/stylesheet.min.bc60c2f68b02775df2edf558a5a457b0443b9889e71e4790d3df325f09e525ab.css integrity="sha256-vGDC9osCd13y7fVYpaRXsEQ7mInnHkeQ098yXwnlJas=" rel="preload stylesheet" as=style>
+<link crossorigin=anonymous href=/assets/css/stylesheet.min.7167373859bc6a85285ccd1ab606ec82162a99e4a3338401bc786b5cf72ec085.css integrity="sha256-cWc3OFm8aoUoXM0atgbsghYqmeSjM4QBvHhrXPcuwIU=" rel="preload stylesheet" as=style>
 <link rel=icon href=https://blog.zhangyingwei.com/images/favicon64.ico>
 <link rel=icon type=image/png sizes=16x16 href=https://blog.zhangyingwei.com/images/favicon16.ico>
 <link rel=icon type=image/png sizes=32x32 href=https://blog.zhangyingwei.com/images/favicon32.ico>
@@ -75,6 +75,26 @@
 <h1>Posts ✨</h1>
 </header>
 <div class="article-item-wrapper fg-color">
+<article class="post-entry item-padding">
+<div class=post-date>
+📅 May 14, 2024
+</div>
+<header class=entry-header>
+<h2>在数据采集中使用对象池的实践
+</h2>
+</header>
+<section class=entry-content>
+<p>在我的日常工作中，有很大精力投入到数据采集上。我需要从 syslog 采集大量数据，通常的流程是，将每条数据进行校验之后解析为对象进行一系列的处理与分析。这会产生大量对象，在 Java 中，大量对象必然意味着大量堆内存和频繁的 GC。为提高对象利用率，降低 GC 压力，我们基于对象池技术进行了一些优化手段。
+一、为什么需要对象池 在数据采集系统中，每秒钟可能处理成千上万条日志记录，每条记录都需要转换为对象。频繁的对象创建和销毁会导致较高的性能开销，尤其是增加垃圾回收（GC）的频率，从而影响系统的整体性能。对象池通过复用对象减少创建和销毁的次数，提升性能和资源利用率。
+二、对象池的原理 在 Java 中，说到池，我们通常会想到连接池、线程池。实际上，所有的池都是为了解决同一个问题：降低资源重复创建和销毁的频率。
+对象池的工作机制与线程池和连接池相似。对象池通过维护一定数量的对象，当需要使用时从池中取出，使用完毕后再归还池中，避免了频繁的对象创建和销毁，显著减少了 GC 的负担。基本原理如下：
+预创建对象：在初始化时，预先创建一组对象或线程，放入池中备用。 获取和归还：需要时从池中取出，使用完毕后归还池中。 复用机制：通过复用已有的对象或线程，避免频繁创建和销毁，提升系统性能。 三、自定义对象池的核心实现 以下是一个自定义对象池在数据采集场景中的实战示例代码：
+import java.util.concurrent.BlockingQueue; import java.util.concurrent.LinkedBlockingQueue; public class ObjectPool&lt;T> { private BlockingQueue&lt;T> pool; private int maxPoolSize; private ObjectFactory&lt;T> factory; public ObjectPool(int maxPoolSize, ObjectFactory&lt;T> factory) { this.maxPoolSize = maxPoolSize; this.factory = factory; this.pool = new LinkedBlockingQueue&lt;>(maxPoolSize); initializePool(); } private void initializePool() { for (int i = 0; i &lt; maxPoolSize; i++) { pool....</p>
+</section>
+<a class=entry-link aria-label="post link to 在数据采集中使用对象池的实践" href=https://blog.zhangyingwei.com/posts/2024m5d14h9m58s26/ name=在数据采集中使用对象池的实践>
+<span style=display:inline-block;width:0;height:0;opacity:0>在数据采集中使用对象池的实践</span>
+</a>
+</article>
 <article class="post-entry item-padding">
 <div class=post-date>
 📅 May 13, 2024
@@ -285,25 +305,6 @@ cockroach2 (开源 java 爬虫框架) 有一段时间，对爬虫特别痴迷，
 </section>
 <a class=entry-link aria-label="post link to 专注了吗，一款因微信认证费降价而产生的产品" href=https://blog.zhangyingwei.com/posts/2024m1d3h13m25s53/ name=专注了吗，一款因微信认证费降价而产生的产品>
 <span style=display:inline-block;width:0;height:0;opacity:0>专注了吗，一款因微信认证费降价而产生的产品</span>
-</a>
-</article>
-<article class="post-entry item-padding">
-<div class=post-date>
-📅 January 2, 2024
-</div>
-<header class=entry-header>
-<h2>探索 Kafka 消息丢失的问题和解决方案
-</h2>
-</header>
-<section class=entry-content>
-<p>在构建基于 Kafka 的消息处理系统中，消息丢失是一个需要深入研究的重要问题。强大的系统不仅依赖于其功能，而且依赖于其可靠性。因此，理解消息丢失的原因，并采取必要的措施确保消息的一致性和完整性，是构建高效可靠消息系统的重要组成部分。本文将详细分析 Kafka 消息丢失的主要原因，并提供一系列策略来解决这个问题。
-消息丢失的原因 生产者端问题： 在 Kafka 系统中，生产者负责发送消息。然而，由于网络故障或其他未知问题，生产者可能无法成功发送消息到 Kafka 服务器。 Kafka 服务端问题： Kafka 服务器可能会因为硬件故障、磁盘满或其他异常情况导致消息丢失。 消费者端问题： 消费者负责处理接收到的消息。但是，消费者在处理消息时可能会出现错误或崩溃，导致消息未被正确处理。 解决方案与措施 生产者端相关方案与措施 发送消息处理回调方法 由于消息的常规发送采用的异步方式，所以通常会忽略掉回调处理，为了保证消息的发送质量，一定需要对回调信息进行处理或者改为同步发送。
-producer.send(new ProducerRecord&lt;>(topic, messageKey, messageStr), new CallBack({...}); 设置有效的重试策略以及 acks 配置 我们可以在生产者端设置一个有效的重试策略，保证消息成功发送。例如，我们可以使用指数退避算法进行重试。这种算法会在每次重试失败后等待更长的时间，从而减轻服务器的压力，并增加消息成功发送的概率。
-通过设置 Producer acks 机制，我们可以确保生产者收到 Kafka 服务器的确认，知晓消息是否被成功提交。
-acks=0： 生产者在发送消息后不会等待任何确认，直接将消息视为发送成功。这种设置下，可能会出现消息丢失的情况，因为生产者不会等待服务器的任何确认即认为消息发送成功。 acks=1： 生产者在发送消息后会等待 Leader Broker 的确认，确认后即视为消息发送成功。这种设置下，消息的可靠性得到一定程度的保证，但仍有可能发生 Leader Broker 宕机导致消息丢失的情况。 acks=all： 生产者在发送消息后会等待 Leader Broker 和所有副本的确认，确认后才视为消息发送成功。这种设置下，消息的可靠性和一致性得到最高级别的保证，但同时也会增加网络延迟和资源消耗。 import org.apache.kafka.clients.producer.*; import org.apache.kafka.common.serialization.StringSerializer; import java.util.Properties; public class KafkaProducerExample { private static final String TOPIC_NAME = "my-topic"; private static final String BOOTSTRAP_SERVERS = "localhost:9092"; public static void main(String[] args) { Properties props = new Properties(); props....</p>
-</section>
-<a class=entry-link aria-label="post link to 探索 Kafka 消息丢失的问题和解决方案" href=https://blog.zhangyingwei.com/posts/2024m4d2h10m23s15/ name="探索 Kafka 消息丢失的问题和解决方案">
-<span style=display:inline-block;width:0;height:0;opacity:0>探索 Kafka 消息丢失的问题和解决方案</span>
 </a>
 </article>
 </div>

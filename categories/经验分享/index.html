@@ -18,7 +18,7 @@
 <meta name=description content="胡说，一个寂寞的、即将被时代潮流冲刷在沙滩上的 IT 从业者的自言自语">
 <meta name=author content="zhangyw">
 <link rel=canonical href=https://blog.zhangyingwei.com/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/>
-<link crossorigin=anonymous href=/assets/css/stylesheet.min.bc60c2f68b02775df2edf558a5a457b0443b9889e71e4790d3df325f09e525ab.css integrity="sha256-vGDC9osCd13y7fVYpaRXsEQ7mInnHkeQ098yXwnlJas=" rel="preload stylesheet" as=style>
+<link crossorigin=anonymous href=/assets/css/stylesheet.min.7167373859bc6a85285ccd1ab606ec82162a99e4a3338401bc786b5cf72ec085.css integrity="sha256-cWc3OFm8aoUoXM0atgbsghYqmeSjM4QBvHhrXPcuwIU=" rel="preload stylesheet" as=style>
 <link rel=icon href=https://blog.zhangyingwei.com/images/favicon64.ico>
 <link rel=icon type=image/png sizes=16x16 href=https://blog.zhangyingwei.com/images/favicon16.ico>
 <link rel=icon type=image/png sizes=32x32 href=https://blog.zhangyingwei.com/images/favicon32.ico>
@@ -74,6 +74,26 @@
 <h1>经验分享 ✨</h1>
 </header>
 <div class="article-item-wrapper fg-color">
+<article class="post-entry tag-entry item-padding">
+<div class=post-date>
+📅 May 14, 2024
+</div>
+<header class=entry-header>
+<h2>在数据采集中使用对象池的实践
+</h2>
+</header>
+<section class=entry-content>
+<p>在我的日常工作中，有很大精力投入到数据采集上。我需要从 syslog 采集大量数据，通常的流程是，将每条数据进行校验之后解析为对象进行一系列的处理与分析。这会产生大量对象，在 Java 中，大量对象必然意味着大量堆内存和频繁的 GC。为提高对象利用率，降低 GC 压力，我们基于对象池技术进行了一些优化手段。
+一、为什么需要对象池 在数据采集系统中，每秒钟可能处理成千上万条日志记录，每条记录都需要转换为对象。频繁的对象创建和销毁会导致较高的性能开销，尤其是增加垃圾回收（GC）的频率，从而影响系统的整体性能。对象池通过复用对象减少创建和销毁的次数，提升性能和资源利用率。
+二、对象池的原理 在 Java 中，说到池，我们通常会想到连接池、线程池。实际上，所有的池都是为了解决同一个问题：降低资源重复创建和销毁的频率。
+对象池的工作机制与线程池和连接池相似。对象池通过维护一定数量的对象，当需要使用时从池中取出，使用完毕后再归还池中，避免了频繁的对象创建和销毁，显著减少了 GC 的负担。基本原理如下：
+预创建对象：在初始化时，预先创建一组对象或线程，放入池中备用。 获取和归还：需要时从池中取出，使用完毕后归还池中。 复用机制：通过复用已有的对象或线程，避免频繁创建和销毁，提升系统性能。 三、自定义对象池的核心实现 以下是一个自定义对象池在数据采集场景中的实战示例代码：
+import java.util.concurrent.BlockingQueue; import java.util.concurrent.LinkedBlockingQueue; public class ObjectPool&lt;T> { private BlockingQueue&lt;T> pool; private int maxPoolSize; private ObjectFactory&lt;T> factory; public ObjectPool(int maxPoolSize, ObjectFactory&lt;T> factory) { this.maxPoolSize = maxPoolSize; this.factory = factory; this.pool = new LinkedBlockingQueue&lt;>(maxPoolSize); initializePool(); } private void initializePool() { for (int i = 0; i &lt; maxPoolSize; i++) { pool....</p>
+</section>
+<a class=entry-link aria-label="post link to 在数据采集中使用对象池的实践" href=https://blog.zhangyingwei.com/posts/2024m5d14h9m58s26/ name=在数据采集中使用对象池的实践>
+<span style=display:inline-block;width:0;height:0;opacity:0>在数据采集中使用对象池的实践</span>
+</a>
+</article>
 <article class="post-entry tag-entry item-padding">
 <div class=post-date>
 📅 May 13, 2024
@@ -290,32 +310,12 @@ homepage 允许 Obsidian 在打开之后显示默认笔记页面作为仪表面�
 <span style=display:inline-block;width:0;height:0;opacity:0>Obsidian + Hugo 最佳配置推荐</span>
 </a>
 </article>
-<article class="post-entry tag-entry item-padding">
-<div class=post-date>
-📅 April 11, 2022
 </div>
-<header class=entry-header>
-<h2>Hugo 博客写作最佳实践
-</h2>
-</header>
-<section class=entry-content>
-<p>如今，如果你仅仅为了更好的分享或者记录东西，想做一个博客；静态博客几乎是最好的选择。不需要太多的技术含量，网上有大把的教程，不需要花钱买服务器，甚至不需要花钱买域名。
-这篇文章是在使用 hugo 将博客搭建起来的基础上，摸索出来的一套写作流程。可有最大程度上简化除了写作之外的流程。
-🏖️前提 这篇文章的前提是你已经通过 hugo 和 github 搭建起来一个可以访问的 Github Pages 主页。如果尚未完成这个步骤，建议通过其他教程先做到这一步。
-🤣当前痛点 在当前的流程中，假如你需要新建一篇文章并发布，大体流程如下：
-打开命令行工具，切换到博客目录下，执行 hugo new posts/newarticle.md 创建一个新页面 构思编写文章，如果中途需要贴图片，需要先将图片拷贝到指定静态资源目录下或者上传到图床并复制外链到剪贴板，然后在文章中通过图片引入语法添加图片。 文章写完之后，再次打开命令行工具，切换到博客目录下，执行 hugo -D 编译静态网站文件。 通过 git 命令行或者图形话工具，将更新上传至 Github 仓库中。完成！ 以上便是发布一篇文章的基础工作，其中最麻烦便是图片资源的管理以及来回切换工具操作。
-☝️如何解决 1. 自动编译 首要解决的问题是如何才能不需要每次手动编译之后再上传。这也是最好解决的部分。我们可以搭配 Github Actions 使仓库在更新的时候自动编译部署。
-Github Actions 是 Github 提供的一套持续集成服务。
-操作流程：
-在仓库的根目录新建 .github/workfolws 目录 在 .gitub/workflows 目录中新建流程配置文件 main.yml 在 main.yml 中配置每当监听到仓库提交更新，就触发编译，并将编译后的静态网页部署在 gh-pages 分支。 文件目录如下：
-配置内容如下：
-name: blog deploy pipline on: push: tags: - '*' branches: [ main ] env: REGISTRY: ghcr....</p>
-</section>
-<a class=entry-link aria-label="post link to Hugo 博客写作最佳实践" href=https://blog.zhangyingwei.com/posts/2022m4d11h19m42s28/ name="Hugo 博客写作最佳实践">
-<span style=display:inline-block;width:0;height:0;opacity:0>Hugo 博客写作最佳实践</span>
-</a>
-</article>
-</div>
+<footer class=page-footer>
+<nav class=pagination>
+<a class=next href=https://blog.zhangyingwei.com/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/page/2/>Next Page »</a>
+</nav>
+</footer>
 </main>
 <footer class=footer>
 <span>&copy; 2024 <a href=https://blog.zhangyingwei.com/>胡说</a></span>
