@@ -1,0 +1,254 @@
+<!doctype html><html lang=en dir=" auto">
+<head><meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta charset=utf-8>
+<meta name=Share-Source-Verification content="https://blog.zhangyingwei.com/">
+<meta http-equiv=cache-control content="no-transform">
+<meta http-equiv=cache-control content="no-siteapp">
+<meta name=renderer content="webkit">
+<meta name=apple-mobile-web-app-capable content="yes">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta property="og:title" content="N8N 自动化可编排流程，解放你的双手">
+<meta property="og:image" content="/images/favicon64.ico">
+<meta name=msvalidate.01 content="1B50C3A24BF817BB86D82C8429075AE4">
+<meta name=bytedance-verification-code content="rjX6knbDoNxpR4Asxe2M">
+<meta name=robots content="index, follow">
+<title>N8N 自动化可编排流程，解放你的双手 | 胡说</title>
+<meta name=keywords content="产品,胡说,静态博客,张英伟,张英伟的个人博客,开源,selfhost,Self-Host">
+<meta name=description content="在漫长的折腾生涯中，玩过太多东西，但是大浪淘沙，最终剩下来常用的只有那么几款。 在这个系列中，准备介绍一些非常有意思的开源产品。
+ n8n 是一个开源免费的自动化工作流平台，它提供了 200多个不同的节点来自动化工作流程，通过编排，可以实现跨不同服务的自动化流程。
+相比市面上已有的 Zapier 等其他商业化自动化工具，n8n稍显稚嫩。但是免费开源以及强大的拓展性和自定义能力使得n8n在这个领域也是独树一帜。
+部署 n8n 分为两个版本：
+ 云服务版本： 官方提供的云服务版本，到官网上注册账号使用，需要付费 自托管版本： n8n项目本身有开源版本，可以自己编译源码部署，也可以通过官方提供的Docker镜像，使用 Docker 部署  推荐使用 Docker 进行部署，简单快捷省心
+docker volume create n8n_data docker run -it --rm --name n8n -p 5678:5678 -v n8n_data:/home/node/.n8n docker.n8n.io/n8nio/n8n 在默认情况下，n8n会使用 SQLite 数据库进行数据存储，我们可以通过配置环境变量，把存储切换到 PostgresDB
+docker volume create n8n_data docker run -it --rm \  --name n8n \  -p 5678:5678 \  -e DB_TYPE=postgresdb \  -e DB_POSTGRESDB_DATABASE=<POSTGRES_DATABASE> \  -e DB_POSTGRESDB_HOST=<POSTGRES_HOST> \  -e DB_POSTGRESDB_PORT=<POSTGRES_PORT> \  -e DB_POSTGRESDB_USER=<POSTGRES_USER> \  -e DB_POSTGRESDB_SCHEMA=<POSTGRES_SCHEMA> \  -e DB_POSTGRESDB_PASSWORD=<POSTGRES_PASSWORD> \  -v n8n_data:/home/node/.">
+<meta name=author content="zhangyw">
+<link rel=canonical href=https://blog.zhangyingwei.com/posts/2024m8d8h10m40s35/>
+<link crossorigin=anonymous href=/assets/css/stylesheet.min.7167373859bc6a85285ccd1ab606ec82162a99e4a3338401bc786b5cf72ec085.css integrity="sha256-cWc3OFm8aoUoXM0atgbsghYqmeSjM4QBvHhrXPcuwIU=" rel="preload stylesheet" as=style>
+<script defer crossorigin=anonymous src=/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI=" onload=hljs.initHighlightingOnLoad()></script>
+<link rel=icon href=https://blog.zhangyingwei.com/images/favicon64.ico>
+<link rel=icon type=image/png sizes=16x16 href=https://blog.zhangyingwei.com/images/favicon16.ico>
+<link rel=icon type=image/png sizes=32x32 href=https://blog.zhangyingwei.com/images/favicon32.ico>
+<link rel=apple-touch-icon href=https://blog.zhangyingwei.com/apple-touch-icon.png>
+<link rel=mask-icon href=https://blog.zhangyingwei.com/safari-pinned-tab.svg>
+<meta name=theme-color content="#2e2e33">
+<meta name=msapplication-TileColor content="#2e2e33">
+<noscript>
+<style>#theme-toggle,.top-link{display:none}</style>
+<style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--hljs-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style>
+</noscript><link href=https://hushuo.zhangyingwei.com/NotoSerifSC.css rel=stylesheet>
+<link href=https://hushuo.zhangyingwei.com/JetBrainsMono.css rel=stylesheet>
+<script>var _hmt=_hmt||[];(function(){var a=document.createElement("script"),b;a.src="https://hm.baidu.com/hm.js?ba380df4e327c711daf3b841b4089ce4",b=document.getElementsByTagName("script")[0],b.parentNode.insertBefore(a,b)})()</script>
+<script async src=https://umami.zhangyingwei.com/script.js data-website-id=cb41ccbd-6ee9-4587-9c03-d872f2d10472></script><meta property="og:title" content="N8N 自动化可编排流程，解放你的双手">
+<meta property="og:description" content="在漫长的折腾生涯中，玩过太多东西，但是大浪淘沙，最终剩下来常用的只有那么几款。 在这个系列中，准备介绍一些非常有意思的开源产品。
+ n8n 是一个开源免费的自动化工作流平台，它提供了 200多个不同的节点来自动化工作流程，通过编排，可以实现跨不同服务的自动化流程。
+相比市面上已有的 Zapier 等其他商业化自动化工具，n8n稍显稚嫩。但是免费开源以及强大的拓展性和自定义能力使得n8n在这个领域也是独树一帜。
+部署 n8n 分为两个版本：
+ 云服务版本： 官方提供的云服务版本，到官网上注册账号使用，需要付费 自托管版本： n8n项目本身有开源版本，可以自己编译源码部署，也可以通过官方提供的Docker镜像，使用 Docker 部署  推荐使用 Docker 进行部署，简单快捷省心
+docker volume create n8n_data docker run -it --rm --name n8n -p 5678:5678 -v n8n_data:/home/node/.n8n docker.n8n.io/n8nio/n8n 在默认情况下，n8n会使用 SQLite 数据库进行数据存储，我们可以通过配置环境变量，把存储切换到 PostgresDB
+docker volume create n8n_data docker run -it --rm \  --name n8n \  -p 5678:5678 \  -e DB_TYPE=postgresdb \  -e DB_POSTGRESDB_DATABASE=<POSTGRES_DATABASE> \  -e DB_POSTGRESDB_HOST=<POSTGRES_HOST> \  -e DB_POSTGRESDB_PORT=<POSTGRES_PORT> \  -e DB_POSTGRESDB_USER=<POSTGRES_USER> \  -e DB_POSTGRESDB_SCHEMA=<POSTGRES_SCHEMA> \  -e DB_POSTGRESDB_PASSWORD=<POSTGRES_PASSWORD> \  -v n8n_data:/home/node/.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.zhangyingwei.com/posts/2024m8d8h10m40s35/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2024-08-08T10:40:36+08:00">
+<meta property="article:modified_time" content="2024-08-08T10:40:36+08:00"><meta property="og:site_name" content="胡说">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://blog.zhangyingwei.com/posts/"},{"@type":"ListItem","position":2,"name":"N8N 自动化可编排流程，解放你的双手","item":"https://blog.zhangyingwei.com/posts/2024m8d8h10m40s35/"}]}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"N8N 自动化可编排流程，解放你的双手","name":"N8N 自动化可编排流程，解放你的双手","description":"在漫长的折腾生涯中，玩过太多东西，但是大浪淘沙，最终剩下来常用的只有那么几款。 在这个系列中，准备介绍一些非常有意思的开源产品。\n n8n 是一个开源免费的自动化工作流平台，它提供了 200多个不同的节点来自动化工作流程，通过编排，可以实现跨不同服务的自动化流程。\n相比市面上已有的 Zapier 等其他商业化自动化工具，n8n稍显稚嫩。但是免费开源以及强大的拓展性和自定义能力使得n8n在这个领域也是独树一帜。\n部署 n8n 分为两个版本：\n 云服务版本： 官方提供的云服务版本，到官网上注册账号使用，需要付费 自托管版本： n8n项目本身有开源版本，可以自己编译源码部署，也可以通过官方提供的Docker镜像，使用 Docker 部署  推荐使用 Docker 进行部署，简单快捷省心\ndocker volume create n8n_data docker run -it --rm --name n8n -p 5678:5678 -v n8n_data:/home/node/.n8n docker.n8n.io/n8nio/n8n 在默认情况下，n8n会使用 SQLite 数据库进行数据存储，我们可以通过配置环境变量，把存储切换到 PostgresDB\ndocker volume create n8n_data docker run -it --rm \\  --name n8n \\  -p 5678:5678 \\  -e DB_TYPE=postgresdb \\  -e DB_POSTGRESDB_DATABASE=\u0026lt;POSTGRES_DATABASE\u0026gt; \\  -e DB_POSTGRESDB_HOST=\u0026lt;POSTGRES_HOST\u0026gt; \\  -e DB_POSTGRESDB_PORT=\u0026lt;POSTGRES_PORT\u0026gt; \\  -e DB_POSTGRESDB_USER=\u0026lt;POSTGRES_USER\u0026gt; \\  -e DB_POSTGRESDB_SCHEMA=\u0026lt;POSTGRES_SCHEMA\u0026gt; \\  -e DB_POSTGRESDB_PASSWORD=\u0026lt;POSTGRES_PASSWORD\u0026gt; \\  -v n8n_data:/home/node/.","keywords":["产品","胡说","静态博客","张英伟","张英伟的个人博客","开源","selfhost","Self-Host"],"articleBody":" 在漫长的折腾生涯中，玩过太多东西，但是大浪淘沙，最终剩下来常用的只有那么几款。 在这个系列中，准备介绍一些非常有意思的开源产品。\n n8n 是一个开源免费的自动化工作流平台，它提供了 200多个不同的节点来自动化工作流程，通过编排，可以实现跨不同服务的自动化流程。\n相比市面上已有的 Zapier 等其他商业化自动化工具，n8n稍显稚嫩。但是免费开源以及强大的拓展性和自定义能力使得n8n在这个领域也是独树一帜。\n部署 n8n 分为两个版本：\n 云服务版本： 官方提供的云服务版本，到官网上注册账号使用，需要付费 自托管版本： n8n项目本身有开源版本，可以自己编译源码部署，也可以通过官方提供的Docker镜像，使用 Docker 部署  推荐使用 Docker 进行部署，简单快捷省心\ndocker volume create n8n_data docker run -it --rm --name n8n -p 5678:5678 -v n8n_data:/home/node/.n8n docker.n8n.io/n8nio/n8n 在默认情况下，n8n会使用 SQLite 数据库进行数据存储，我们可以通过配置环境变量，把存储切换到 PostgresDB\ndocker volume create n8n_data docker run -it --rm \\  --name n8n \\  -p 5678:5678 \\  -e DB_TYPE=postgresdb \\  -e DB_POSTGRESDB_DATABASE= \\  -e DB_POSTGRESDB_HOST= \\  -e DB_POSTGRESDB_PORT= \\  -e DB_POSTGRESDB_USER= \\  -e DB_POSTGRESDB_SCHEMA= \\  -e DB_POSTGRESDB_PASSWORD= \\  -v n8n_data:/home/node/.n8n \\  docker.n8n.io/n8nio/n8n 部署完成之后，打开 http://:5678\n注册之后，就会正式进入n8n系统中\n图例可以看到，n8n的主界面分为两部分， Workflows 和 Credentials。Workflows 主要负责流程的编排+运行控制。Credentials主要负责流程运行中与其他第三方应用的连接与授权。\n功能节点介绍 n8n中的功能节点共分为 6 类，分别是：\n Action in an app  连接海量的第三方应用，包括常用的 Notion、AWS 相关产品、Google 相关产品以及长用的数据库类产品（MySQL、Redis、Elasticsearch等） 和社交类产品（Facebook、Twitter）等等共 1013 个\n详情可以参考： https://n8n.io/integrations/\nData transformation  关于数据转换相关的节点，包括时间操作、数据修改、数据过滤、循环遍历、数据统计、数据排序、自定义代码处理等。\nFlow  关于流程相关的节点，包括流程分支判断、流程过滤、流程合并、流程等待以及错误流程处理等相关。\nCore  核心节点，包括代码执行（JavaScript、Python）、HTTP请求、Webhook、指令执行、等等。\nAdvanced AI  关于 AI 大模型相关节点，包括OpenAI 相关调用、其他 LLM 相关调用以及AI相关的记忆功能节点、联网功能节点等。\nTrigger  触发器相关，n8n支持手动触发、定时触发 webhook 触发、聊天消息触发等多种触发方式。\n绘制第一个自动化流程 接下来通过制作一个基于 OpenAI 的聊天机器人来熟悉一下自动化流程的制作。整体流程如图。\n接下来从头一步一步来讲一下\n首先，在 Workflow 中新建一张画布，点击画布中的加号，添加第一个节点。在弹出的抽屉中，可以通过搜索功能，直接定位到 Chat Trigger。\n可以对 Chat Trigger 进行一些初始化设置。例如： 添加 Options 控制跨域、文件上传等。也可以开启公共服务选项，设置一些授权、聊天模式等。具体的不赘述。\n接下来点击 Chat 节点后的加号，添加 AI Agent 节点用于连接大模型，处理聊天相关内容。\nAI Agent 可以设置类型（工具类、聊天类、函数调用类、SQL执行类等等，还是非常丰富的）、设置自定义 Prompt、可以通过其他的 OutputParser 节点对输出内容进行格式化等，可玩性非常高。\n在 AI Agent 节点上，可以看到，需要连接 ChatModel（必要）、Memory（非必要）、Tool（非必要）、OutputParser（非必要）等节点。点击 ChatModel的加号，添加对应的大模型接口。\n可以看到目前工人支持 7 类接口。这里可以根据自己的情况选择对应的节点。 理论上配置完 chat model 节点之后，就已经完成了一个基础的基于大模型的聊天工具。点击下方的 caht 按钮，便可以开始聊天了。\n拓展：\n如果你不满足于仅仅制作一个类似 chatgpt 的聊天工具，那么推荐一些其他辅助工具帮助你打造一个更加个性化的聊天助手：\n Memory  通过 memory 接口可以使聊天具备历史记忆功能，每次聊天的时候可以让大模型知道前因后果。 memory 接口有：（Window Buffer Memory、Motorthead、Postgres Chat Memory、Redis Chat Memory、Xata、Zep 等选择）\n HTTP Request Tool 可以让你的大模型具备给指定接口发送请求的能力 Calculator 可以让你的大模型具备算数计算的能力 SerpApi 可以让你的大模型具备 Google 搜索的能力 Vector Store Tool 可以让你的大模型具备知识库检索的能力 Call n8n Workflow 可以让你的大模型能够调用其他的 n8n 流程  流程模板推荐 此外，官方还提供了一个模板库，允许你使用一些官方分享或者其他人分享的优秀流程\n参考地址： https://n8n.io/workflows/\n例如：\n  以下流程可以检查工作流中内置节点的版本号是不是最新版   从Zigbee2mqtt请求和接收Zigbee备份并通过SFTP保存   网页爬虫，并通过电子邮件把结果以CSV格式发送并保存到Google表格和Microsoft Excel   n8n 最大的优势是自由，通过自由开放的方式，集成了众多能力。你只要有需求，基本上都能在 n8n 中找到解决方案，以上远远不是 n8n 的极限，只是我们想象力的极限而已。\n","wordCount":"219","inLanguage":"en","datePublished":"2024-08-08T10:40:36+08:00","dateModified":"2024-08-08T10:40:36+08:00","author":{"@type":"Person","name":"zhangyw"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.zhangyingwei.com/posts/2024m8d8h10m40s35/"},"publisher":{"@type":"Organization","name":"胡说","logo":{"@type":"ImageObject","url":"https://blog.zhangyingwei.com/images/favicon64.ico"}}}</script>
+</head>
+<body class="font-activate bg-color mt-20" id="
+    top">
+<script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add('dark'):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove('dark'):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add('dark')</script>
+<header class="header font-activate sticky-element shadow-b">
+<nav class=nav>
+<div class=logo>
+<a href=https://blog.zhangyingwei.com/ accesskey=h title="胡说 (Alt + H)">胡说</a>
+<span class=logo-switches>
+<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+</span>
+</div>
+<ul id=menu>
+<li>
+<a href=https://blog.zhangyingwei.com/series/ title=系列文章>
+<span>系列文章</span>
+</a>
+</li>
+<li>
+<a href=https://blog.zhangyingwei.com/archives/ title=归档>
+<span>归档</span>
+</a>
+</li>
+<li>
+<a href=https://blog.zhangyingwei.com/tags/ title=标签>
+<span>标签</span>
+</a>
+</li>
+</ul>
+</nav>
+</header><div style=height:20px></div>
+<main class="main font-activate bg-color">
+<article class="post-single item-padding">
+<header class=post-header>
+<h1 class=post-title>
+N8N 自动化可编排流程，解放你的双手
+</h1>
+<div class=post-info>2024/08/08
+<ul id=series>
+🅰️
+<li> <a href=https://blog.zhangyingwei.com/%20topics/%E4%B8%80%E4%BA%9B%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E4%B8%9C%E8%A5%BF>一些有意思的东西</a> </li>
+</ul>
+<ul id=categories>
+✨
+<li><a href=https://blog.zhangyingwei.com/%20categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB>经验分享</a> </li>
+</ul>
+</div>
+</header>
+<div class=post-content><blockquote>
+<p>在漫长的折腾生涯中，玩过太多东西，但是大浪淘沙，最终剩下来常用的只有那么几款。 在这个<a href=/tags/selfhost/>系列</a>中，准备介绍一些非常有意思的开源产品。</p>
+</blockquote>
+<p><img loading=lazy src=https://hushuo.zhangyingwei.com/20240808110428.png alt=image.png>
+</p>
+<p>n8n 是一个开源免费的自动化工作流平台，它提供了 200多个不同的节点来自动化工作流程，通过编排，可以实现跨不同服务的自动化流程。</p>
+<p>相比市面上已有的 Zapier 等其他商业化自动化工具，n8n稍显稚嫩。但是免费开源以及强大的拓展性和自定义能力使得n8n在这个领域也是独树一帜。</p>
+<h3 id=部署>部署<a hidden class=anchor aria-hidden=true href=#部署>#</a></h3>
+<p>n8n 分为两个版本：</p>
+<ul>
+<li>云服务版本： 官方提供的云服务版本，到官网上注册账号使用，需要付费</li>
+<li>自托管版本： n8n项目本身有开源版本，可以自己编译源码部署，也可以通过官方提供的Docker镜像，使用 Docker 部署</li>
+</ul>
+<p><strong>推荐使用 Docker 进行部署，简单快捷省心</strong></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>docker volume create n8n_data
+
+docker run -it --rm --name n8n -p 5678:5678 -v n8n_data:/home/node/.n8n docker.n8n.io/n8nio/n8n
+</code></pre></div><p>在默认情况下，n8n会使用 SQLite 数据库进行数据存储，我们可以通过配置环境变量，把存储切换到 PostgresDB</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>docker volume create n8n_data
+
+docker run -it --rm <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span> --name n8n <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span> -p 5678:5678 <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span> -e DB_TYPE<span style=color:#f92672>=</span>postgresdb <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span> -e DB_POSTGRESDB_DATABASE<span style=color:#f92672>=</span>&lt;POSTGRES_DATABASE&gt; <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span> -e DB_POSTGRESDB_HOST<span style=color:#f92672>=</span>&lt;POSTGRES_HOST&gt; <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span> -e DB_POSTGRESDB_PORT<span style=color:#f92672>=</span>&lt;POSTGRES_PORT&gt; <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span> -e DB_POSTGRESDB_USER<span style=color:#f92672>=</span>&lt;POSTGRES_USER&gt; <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span> -e DB_POSTGRESDB_SCHEMA<span style=color:#f92672>=</span>&lt;POSTGRES_SCHEMA&gt; <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span> -e DB_POSTGRESDB_PASSWORD<span style=color:#f92672>=</span>&lt;POSTGRES_PASSWORD&gt; <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span> -v n8n_data:/home/node/.n8n <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span> docker.n8n.io/n8nio/n8n
+</code></pre></div><p>部署完成之后，打开 http://&lt;IP>:5678</p>
+<p><img loading=lazy src=https://hushuo.zhangyingwei.com/20240808165040.png alt=image.png>
+注册之后，就会正式进入n8n系统中</p>
+<p><img loading=lazy src=https://hushuo.zhangyingwei.com/20240808165152.png alt=image.png>
+</p>
+<p>图例可以看到，n8n的主界面分为两部分， Workflows 和 Credentials。Workflows 主要负责流程的编排+运行控制。Credentials主要负责流程运行中与其他第三方应用的连接与授权。</p>
+<h3 id=功能节点介绍>功能节点介绍<a hidden class=anchor aria-hidden=true href=#功能节点介绍>#</a></h3>
+<p>n8n中的功能节点共分为 6 类，分别是：</p>
+<ol>
+<li>Action in an app</li>
+</ol>
+<p>连接海量的第三方应用，包括常用的 Notion、AWS 相关产品、Google 相关产品以及长用的数据库类产品（MySQL、Redis、Elasticsearch等） 和社交类产品（Facebook、Twitter）等等共 1013 个</p>
+<p>详情可以参考： <a href=https://n8n.io/integrations/>https://n8n.io/integrations/</a></p>
+<ol start=2>
+<li>Data transformation</li>
+</ol>
+<p>关于数据转换相关的节点，包括时间操作、数据修改、数据过滤、循环遍历、数据统计、数据排序、自定义代码处理等。</p>
+<ol start=3>
+<li>Flow</li>
+</ol>
+<p>关于流程相关的节点，包括流程分支判断、流程过滤、流程合并、流程等待以及错误流程处理等相关。</p>
+<ol start=4>
+<li>Core</li>
+</ol>
+<p>核心节点，包括代码执行（JavaScript、Python）、HTTP请求、Webhook、指令执行、等等。</p>
+<ol start=5>
+<li>Advanced AI</li>
+</ol>
+<p>关于 AI 大模型相关节点，包括OpenAI 相关调用、其他 LLM 相关调用以及AI相关的记忆功能节点、联网功能节点等。</p>
+<ol start=6>
+<li>Trigger</li>
+</ol>
+<p>触发器相关，n8n支持手动触发、定时触发 webhook 触发、聊天消息触发等多种触发方式。</p>
+<h3 id=绘制第一个自动化流程>绘制第一个自动化流程<a hidden class=anchor aria-hidden=true href=#绘制第一个自动化流程>#</a></h3>
+<p>接下来通过制作一个基于 OpenAI 的聊天机器人来熟悉一下自动化流程的制作。整体流程如图。</p>
+<p><img loading=lazy src=https://hushuo.zhangyingwei.com/20240809144842.png alt=image.png>
+</p>
+<p>接下来从头一步一步来讲一下</p>
+<p>首先，在 Workflow 中新建一张画布，点击画布中的加号，添加第一个节点。在弹出的抽屉中，可以通过搜索功能，直接定位到 Chat Trigger。</p>
+<p><img loading=lazy src=https://hushuo.zhangyingwei.com/20240809145427.png alt>
+</p>
+<p>可以对 Chat Trigger 进行一些初始化设置。例如： 添加 Options 控制跨域、文件上传等。也可以开启公共服务选项，设置一些授权、聊天模式等。具体的不赘述。</p>
+<p>接下来点击 Chat 节点后的加号，添加 AI Agent 节点用于连接大模型，处理聊天相关内容。</p>
+<p><img loading=lazy src=https://hushuo.zhangyingwei.com/20240809145848.png alt=image.png>
+</p>
+<p><img loading=lazy src=https://hushuo.zhangyingwei.com/20240809150953.png alt=image.png>
+AI Agent 可以设置类型（工具类、聊天类、函数调用类、SQL执行类等等，还是非常丰富的）、设置自定义 Prompt、可以通过其他的 OutputParser 节点对输出内容进行格式化等，可玩性非常高。</p>
+<p><img loading=lazy src=https://hushuo.zhangyingwei.com/20240809151254.png alt=image.png>
+</p>
+<p>在 AI Agent 节点上，可以看到，需要连接 ChatModel（必要）、Memory（非必要）、Tool（非必要）、OutputParser（非必要）等节点。点击 ChatModel的加号，添加对应的大模型接口。</p>
+<p><img loading=lazy src=https://hushuo.zhangyingwei.com/20240809153635.png alt=image.png>
+</p>
+<p>可以看到目前工人支持 7 类接口。这里可以根据自己的情况选择对应的节点。 理论上配置完 chat model 节点之后，就已经完成了一个基础的基于大模型的聊天工具。点击下方的 caht 按钮，便可以开始聊天了。</p>
+<p><img loading=lazy src=https://hushuo.zhangyingwei.com/20240809153918.png alt=image.png>
+</p>
+<p><strong>拓展：</strong></p>
+<p>如果你不满足于仅仅制作一个类似 chatgpt 的聊天工具，那么推荐一些其他辅助工具帮助你打造一个更加个性化的聊天助手：</p>
+<ul>
+<li>Memory</li>
+</ul>
+<p>通过 memory 接口可以使聊天具备历史记忆功能，每次聊天的时候可以让大模型知道前因后果。 memory 接口有：（Window Buffer Memory、Motorthead、Postgres Chat Memory、Redis Chat Memory、Xata、Zep 等选择）</p>
+<ul>
+<li>HTTP Request Tool 可以让你的大模型具备给指定接口发送请求的能力</li>
+<li>Calculator 可以让你的大模型具备算数计算的能力</li>
+<li>SerpApi 可以让你的大模型具备 Google 搜索的能力</li>
+<li>Vector Store Tool 可以让你的大模型具备知识库检索的能力</li>
+<li>Call n8n Workflow 可以让你的大模型能够调用其他的 n8n 流程</li>
+</ul>
+<h3 id=流程模板推荐>流程模板推荐<a hidden class=anchor aria-hidden=true href=#流程模板推荐>#</a></h3>
+<p>此外，官方还提供了一个模板库，允许你使用一些官方分享或者其他人分享的优秀流程</p>
+<p>参考地址： <a href=https://n8n.io/workflows/>https://n8n.io/workflows/</a></p>
+<p><strong>例如：</strong></p>
+<ul>
+<li>
+<p>以下流程可以检查工作流中内置节点的版本号是不是最新版
+<img loading=lazy src=https://hushuo.zhangyingwei.com/20240809154912.png alt=image.png>
+</p>
+</li>
+<li>
+<p>从Zigbee2mqtt请求和接收Zigbee备份并通过SFTP保存
+<img loading=lazy src=https://hushuo.zhangyingwei.com/20240809155023.png alt=image.png>
+</p>
+</li>
+<li>
+<p>网页爬虫，并通过电子邮件把结果以CSV格式发送并保存到Google表格和Microsoft Excel
+<img loading=lazy src=https://hushuo.zhangyingwei.com/20240809155208.png alt=image.png>
+</p>
+</li>
+</ul>
+<p>n8n 最大的优势是自由，通过自由开放的方式，集成了众多能力。你只要有需求，基本上都能在 n8n 中找到解决方案，以上远远不是 n8n 的极限，只是我们想象力的极限而已。</p>
+</div>
+<link href=https://comment.fascloud.org/dist/Artalk.css rel=stylesheet>
+<style>.dark .atk-main-editor{background-color:#37383e!important;border:1px solid #555660!important}.dark .artalk{color:#bdbdbe!important}.dark .atk-main-editor>.atk-textarea-wrap>.atk-textarea{background-color:#37383e!important;color:#bdbdbe!important}.dark .atk-editor-plug-emoticons>.atk-grp-switcher{background:#37383e!important;border-top:1px solid #555660!important;border-bottom:1px solid #555660!important}.dark .atk-editor-plug-emoticons>.atk-grp-switcher>span:hover,.dark .atk-editor-plug-emoticons>.atk-grp-switcher>span.active{background:#262629!important}.dark .atk-main-editor>.atk-plug-panel-wrap{border-top:1px solid #555660!important}.dark .atk-comment>.atk-main>.atk-header .badge,.atk-comment>.atk-main>.atk-header .atk-ua,.atk-comment>.atk-main>.atk-header .atk-pinned-badge,.atk-comment>.atk-main>.atk-header .atk-region-badge,.atk-comment>.atk-main>.atk-header .atk-badge{color:#bdc6d9!important;background:#000!important}.dark .atk-main-editor>.atk-textarea-wrap>.atk-send-reply{background:rgb(134 134 134/75%)!important}.comment-split-line{text-align:center;font-size:14px;border-bottom:1px solid #eaecef;margin:50px 0;height:0}.comment-split-line::after{content:"评论";background-color:#ececec;border-radius:10px;padding:0 10px;position:relative;top:-10px;color:#6a737d}.dark .comment-split-line::after{background-color:#37383e;color:#bdc6d9}.dark .comment-split-line{border-bottom:1px solid #555660}</style>
+<script src=https://comment.fascloud.org/dist/Artalk.js></script>
+<div class=comment-split-line></div>
+<div id=Comments></div>
+<script>Artalk.init({el:'#Comments',pageKey:'',pageTitle:'',server:'https://comment.fascloud.org/',site:'blog-hushuo'})</script>
+</article>
+</main>
+<footer class=footer>
+<span>&copy; 2024 <a href=https://blog.zhangyingwei.com/>胡说</a></span>
+<span>
+Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a>
+</span>
+<span>
+订阅
+<a href=/index.xml rel=noopener target=_blank>RSS</a>
+</span>
+</footer>
+<a href=# aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a>
+<script></script>
+<script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
+<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
+<script>document.querySelectorAll('pre > code').forEach(b=>{const c=b.parentNode.parentNode;b.classList.add('font-activate');const a=document.createElement('button');a.classList.add('copy-code'),a.innerText='copy';function d(){a.innerText='copied!',setTimeout(()=>{a.innerText='copy'},2e3)}a.addEventListener('click',e=>{if('clipboard'in navigator){navigator.clipboard.writeText(b.textContent),d();return}const a=document.createRange();a.selectNodeContents(b);const c=window.getSelection();c.removeAllRanges(),c.addRange(a);try{document.execCommand('copy'),d()}catch(a){}c.removeRange(a)}),c.classList.contains("highlight")?c.appendChild(a):c.parentNode.firstChild==c||(b.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?b.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(a):b.parentNode.appendChild(a))})</script></body>
+</html>

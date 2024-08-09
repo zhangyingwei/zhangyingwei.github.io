@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>一些有意思的东西 on 胡说</title>
+    <link>https://blog.zhangyingwei.com/series/%E4%B8%80%E4%BA%9B%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E4%B8%9C%E8%A5%BF/</link>
+    <description>Recent content in 一些有意思的东西 on 胡说</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-ch</language>
+    <lastBuildDate>Thu, 08 Aug 2024 10:40:36 +0800</lastBuildDate><atom:link href="https://blog.zhangyingwei.com/series/%E4%B8%80%E4%BA%9B%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E4%B8%9C%E8%A5%BF/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>N8N 自动化可编排流程，解放你的双手</title>
+      <link>https://blog.zhangyingwei.com/posts/2024m8d8h10m40s35/</link>
+      <pubDate>Thu, 08 Aug 2024 10:40:36 +0800</pubDate>
+      
+      <guid>https://blog.zhangyingwei.com/posts/2024m8d8h10m40s35/</guid>
+      <description>在漫长的折腾生涯中，玩过太多东西，但是大浪淘沙，最终剩下来常用的只有那么几款。 在这个系列中，准备介绍一些非常有意思的开源产品。
+ n8n 是一个开源免费的自动化工作流平台，它提供了 200多个不同的节点来自动化工作流程，通过编排，可以实现跨不同服务的自动化流程。
+相比市面上已有的 Zapier 等其他商业化自动化工具，n8n稍显稚嫩。但是免费开源以及强大的拓展性和自定义能力使得n8n在这个领域也是独树一帜。
+部署 n8n 分为两个版本：
+ 云服务版本： 官方提供的云服务版本，到官网上注册账号使用，需要付费 自托管版本： n8n项目本身有开源版本，可以自己编译源码部署，也可以通过官方提供的Docker镜像，使用 Docker 部署  推荐使用 Docker 进行部署，简单快捷省心
+docker volume create n8n_data docker run -it --rm --name n8n -p 5678:5678 -v n8n_data:/home/node/.n8n docker.n8n.io/n8nio/n8n 在默认情况下，n8n会使用 SQLite 数据库进行数据存储，我们可以通过配置环境变量，把存储切换到 PostgresDB
+docker volume create n8n_data docker run -it --rm \  --name n8n \  -p 5678:5678 \  -e DB_TYPE=postgresdb \  -e DB_POSTGRESDB_DATABASE=&amp;lt;POSTGRES_DATABASE&amp;gt; \  -e DB_POSTGRESDB_HOST=&amp;lt;POSTGRES_HOST&amp;gt; \  -e DB_POSTGRESDB_PORT=&amp;lt;POSTGRES_PORT&amp;gt; \  -e DB_POSTGRESDB_USER=&amp;lt;POSTGRES_USER&amp;gt; \  -e DB_POSTGRESDB_SCHEMA=&amp;lt;POSTGRES_SCHEMA&amp;gt; \  -e DB_POSTGRESDB_PASSWORD=&amp;lt;POSTGRES_PASSWORD&amp;gt; \  -v n8n_data:/home/node/.</description>
+    </item>
+    
+  </channel>
+</rss>
