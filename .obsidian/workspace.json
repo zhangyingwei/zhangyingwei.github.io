@@ -22,12 +22,12 @@
             }
           },
           {
-            "id": "92463dcdb6623000",
+            "id": "c35ec736c1d374ed",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "content/posts/2024m5d14h9m58s26.md",
+                "file": "content/posts/2024m8d8h10m40s35.md",
                 "mode": "source",
                 "source": false
               }
@@ -158,8 +158,11 @@
   },
   "active": "6c42e4f1ae7fc84c",
   "lastOpenFiles": [
-    "content/posts/2024m5d14h9m58s26.md",
+    "content/posts/2024m8d8h10m40s35.md",
     "obs_scripts/主面板.md",
+    "content/posts/2024m7d16h14m31s36.md",
+    "content/posts/2024m5d14h9m58s26.md",
+    "content/posts/2024m4d2h10m4s42.md",
     "content/posts/2024m5d13h17m11s53.md",
     "content/posts/2024m4d25h10m17s3.md",
     "obs_scripts/start_server.sh",
@@ -168,7 +171,6 @@
     "content/posts/2024m4d12h14m25s41.md",
     "content/posts/2024m4d2h10m23s15.md",
     "themes/PaperMod/layouts/partials/mermaid.html",
-    "content/posts/2024m4d2h10m4s42.md",
     "content/posts/2024m1d31h10m33s20.md",
     "content/posts/2024m1d30h10m7s52.md",
     "content/posts/2024m1d25h13m45s53.md",
@@ -195,8 +197,6 @@
     "content/posts/2022m10d28h10m10s31.md",
     "content/posts/2022m5d16h20m22s20.md",
     "content/posts/2022m4d11h21m28s19.md",
-    "content/posts/2022m4d11h21m26s57.md",
-    "archetypes/default.md",
-    "content/posts/2022m4d11h17m57s48.md"
+    "content/posts/2022m4d11h21m26s57.md"
   ]
 }
